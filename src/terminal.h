@@ -22,8 +22,14 @@ struct GameSettings read_game_settings();
 struct Move read_player_move();
 
 /**
- * Mostra un messaggio di errore per aver fatto una mossa non corretta
+ * Stampa un messaggio di errore per aver fatto una mossa non corretta sul terminale
  */
 void display_error_incorrect_move();
+
+/**
+ * Stampa il vincitore sul terminale
+ * @param state, stato della scacchiera
+ */
+void display_winner(enum GameState state);
 
 #endif //MINILASKA_TERMINAL_H

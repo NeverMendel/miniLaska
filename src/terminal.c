@@ -1,4 +1,5 @@
 #include "terminal.h"
+#include <stdio.h>
 
 void display_board(struct Piece* board){
     int r;
@@ -10,4 +11,21 @@ void display_board(struct Piece* board){
             }
         }
     }
+}
+
+void display_winner(enum GameState state){
+    switch (state) {
+        case DRAW:
+            printf("Draw");
+            break;
+        case WHITE_WIN:
+            printf("The winner is white");
+            break;
+        case BLACK_WIN:
+            printf("The winner is black");
+            break;
+        default:
+            printf("Invalid state");
+            break;
+    };
 }

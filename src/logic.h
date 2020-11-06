@@ -1,7 +1,6 @@
 #ifndef MINILASKA_LOGIC_H
 #define MINILASKA_LOGIC_H
 
-#include <stdbool.h>
 #include "constants.h"
 
 /**
@@ -12,13 +11,13 @@
 enum GameState compute_state(struct Piece* board);
 
 /**
- * Calcola la mossa migliore utilizzando l'algoritmo min-max
+ * Calcola la mossa migliore utilizzando l'algoritmo mini-max
  * @param board, scacchiara su cui calcolare la mossa
  * @param depth, profondità del calcolo della mossa
- * @param whiteTurn, vero se è il turno del bianco, falso altrimenti
+ * @param whiteToMove, vero se è il turno del bianco, falso altrimenti
  * @return Move, mossa migliore che può venire giocata
  */
-struct Move best_move_minimax(struct Piece* board, int depth, bool whiteTurn);
+struct Move best_move_minimax(struct Piece* board, int depth, bool whiteToMove);
 
 /**
  * Applica la mossa sulla scacchiera se la mossa è valida

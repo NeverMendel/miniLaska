@@ -4,6 +4,8 @@
 #define ROWS 7
 #define COLUMNS 7
 
+#include <stdbool.h>
+
 /**
  * Rappresenta un pezzo sulla scacchiera
  */
