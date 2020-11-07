@@ -29,9 +29,9 @@ int main() {
         bool toMove = true;
         while(toMove){
             if(currentPlayer == HUMAN) currentMove = read_player_move();
-            else currentMove = best_move_minimax(board, 4, whiteToMove);
+            else currentMove = best_move_minimax(board, 4, whiteToMove, settings);
             toMove = !apply_move(board, currentMove);
-            if(toMove) display_error_incorrect_move();
+            if(toMove) display_error_incorrect_move(currentMove);
         }
 
         //TODO

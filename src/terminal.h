@@ -24,7 +24,7 @@ struct Move read_player_move();
 /**
  * Stampa un messaggio di errore per aver fatto una mossa non corretta sul terminale
  */
-void display_error_incorrect_move();
+void display_error_incorrect_move(struct Move move);
 
 /**
  * Stampa il vincitore sul terminale

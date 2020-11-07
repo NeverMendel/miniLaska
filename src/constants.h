@@ -40,11 +40,22 @@ enum PlayerType{
 };
 
 /**
+ * Difficoltà del giocatore Computer
+ */
+enum ComputerLevel{
+    EASY,
+    MEDIUM,
+    HARD
+};
+
+/**
  * Impostazioni del gioco, determina chi gioca
  */
 struct GameSettings{
     enum PlayerType white;
+    enum ComputerLevel whiteLevel;
     enum PlayerType black;
+    enum ComputerLevel blackLevel;
 };
 
 /**

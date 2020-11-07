@@ -15,9 +15,10 @@ enum GameState compute_state(struct Piece* board);
  * @param board, scacchiara su cui calcolare la mossa
  * @param depth, profondità del calcolo della mossa
  * @param whiteToMove, vero se è il turno del bianco, falso altrimenti
+ * @param settings, impostazioni del gioco con la difficoltà del computer
  * @return Move, mossa migliore che può venire giocata
  */
-struct Move best_move_minimax(struct Piece* board, int depth, bool whiteToMove);
+struct Move best_move_minimax(struct Piece* board, int depth, bool whiteToMove, struct GameSettings settings);
 
 /**
  * Applica la mossa sulla scacchiera se la mossa è valida
