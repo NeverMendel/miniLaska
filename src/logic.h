@@ -4,6 +4,12 @@
 #include "constants.h"
 
 /**
+ * Inizializza la schacchiera allo stato di inizio gioco
+ * @param board, schacchiera da inizializzare
+ */
+void initialize_board(struct Piece* board);
+
+/**
  * Calcola lo stato della scacchiera
  * @param board, scacchiera di cui calcolare lo stato
  * @return GameState, stato della scacchiera

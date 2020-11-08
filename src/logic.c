@@ -1,5 +1,14 @@
 #include "logic.h"
 
+void initialize_board(struct Piece* board){
+    int r, c;
+    for(r = 0; r < ROWS; r++){
+        for(c = 0; c < COLUMNS; c++){
+            // TODO
+        }
+    }
+}
+
 enum GameState compute_state(struct Piece* board){
     enum GameState state = PLAYING;
     // TODO

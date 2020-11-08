@@ -13,6 +13,8 @@ int main() {
         return 1;
     }
 
+    initialize_board(board);
+
     enum GameState state = PLAYING;
     bool whiteToMove = true;
     struct GameSettings settings = read_game_settings();
