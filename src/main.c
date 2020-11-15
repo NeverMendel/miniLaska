@@ -16,7 +16,7 @@ int main() {
     initialize_board(board);
 
     enum GameState state = PLAYING;
-    bool whiteToMove = true;
+    enum Color colorToMove = WHITE;
     struct GameSettings settings = read_game_settings();
 
     struct Move currentMove;
@@ -25,20 +25,20 @@ int main() {
     while(state == PLAYING){
         display_board(board);
 
-        if(whiteToMove) currentPlayer = settings.white;
+        if(colorToMove == WHITE) currentPlayer = settings.white;
         else currentPlayer = settings.black;
 
         bool toMove = true;
         while(toMove){
             if(currentPlayer == HUMAN) currentMove = read_player_move();
-            else currentMove = best_move_minimax(board, 4, whiteToMove, settings);
+            else currentMove = best_move_minimax(board, 4, colorToMove, settings);
             toMove = !apply_move(board, currentMove);
             if(toMove) display_error_incorrect_move(currentMove);
         }
 
         //TODO
 
-        whiteToMove = !whiteToMove;
+        colorToMove = (colorToMove == WHITE ? BLACK : WHITE);
         state = compute_state(board);
     }
 
