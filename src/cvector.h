@@ -211,7 +211,8 @@
  */
 #define cvector_copy(from, to)									\
 	do {														\
-		for(size_t i = 0; i < cvector_size(from); i++) {		\
+        size_t i;                                               \
+		for(i = 0; i < cvector_size(from); i++) {       		\
 			cvector_push_back(to, from[i]);						\
 		}														\
 	} while (0)													\
