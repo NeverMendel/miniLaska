@@ -31,8 +31,8 @@ struct Piece{
  * Rappresenta una posizione nella scacchiera
  */
 struct Pos{
-    int x;
-    int y;
+    int c;
+    int r;
 };
 
 /**

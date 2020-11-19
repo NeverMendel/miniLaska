@@ -6,6 +6,14 @@
 
 /**
  * Calcola la posizione di una cella all'interno della matrice
+ * @param c, indice della colonna
+ * @param r, indice della riga
+ * @return int, indice della matrice
+ */
+//inline int get_index_from_pos(int c, int r);
+
+/**
+ * Calcola la posizione di una cella all'interno della matrice
  * @param pos, posizione della scacchiera
  * @return int, indice della matrice
  */

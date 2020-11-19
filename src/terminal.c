@@ -65,7 +65,7 @@ struct Move read_player_move(struct Piece* board, enum Color color){
 }
 
 void display_error_incorrect_move(struct Move move){
-    printf("The move {%d, %d} -> {%d, %d} is not valid", move.from.x, move.from.y, move.to.x, move.to.y);
+    printf("The move {%d, %d} -> {%d, %d} is not valid", move.from.c, move.from.r, move.to.c, move.to.r);
 }
 
 void display_winner(enum GameState state){

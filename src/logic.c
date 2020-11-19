@@ -1,9 +1,8 @@
 #include "logic.h"
-#include "cvector.h"
 #include <stdlib.h>
 
 inline int get_index_from_pos(struct Pos pos){
-    return pos.y * ROWS + pos.x;
+    return pos.r * COLUMNS + pos.c;
 }
 
 void initialize_board(struct Piece* board){
@@ -40,15 +39,15 @@ bool apply_move(struct Piece* board, enum Color colorToMove, struct Move move){
 
 bool is_move_valid(struct Piece* board, struct Move move){
     bool res = is_pos_valid(move.from) && is_pos_valid(move.to);
-    int dx = abs(move.from.x - move.to.x);
-    int dy = abs(move.from.y - move.to.y);
+    int dx = abs(move.from.c - move.to.c);
+    int dy = abs(move.from.r - move.to.r);
     int maxDiff = does_move_eat(board, move) ? 2 : 1;
     res = res && dx <= maxDiff && dy <= maxDiff;
     return res;
 }
 
 inline bool is_pos_valid(struct Pos pos){
-    return pos.x >=0 && pos.x < 7 && pos.y >=0 && pos.y < 7 && (pos.x % 2 == pos.y % 2 || (pos.x + pos.y) % 2 == 0);
+    return pos.c >= 0 && pos.c < 7 && pos.r >= 0 && pos.r < 7 && (pos.c % 2 == pos.r % 2 || (pos.c + pos.r) % 2 == 0);
 }
 
 bool does_move_eat(struct Piece* board, struct Move move) {
@@ -61,9 +60,9 @@ cvector_vector_type(struct Move) get_possible_moves_by_color(struct Piece* board
     int r, c, pos;
     for(r = 0; r < ROWS; r++){
         for(c = 0; c < COLUMNS; c++){
-            pos = r * COLUMNS + c;
+            pos = get_index_from_pos((struct Pos){c, r});
             if((board + pos) != NULL && *board[pos].color == color){
-                struct Pos currentPos = {r, c};
+                struct Pos currentPos = {c, r};
                 cvector_vector_type(struct Move) pieceMoves = get_possible_moves_by_piece(board, currentPos);
                 cvector_copy(pieceMoves, allMoves);
             }
@@ -95,7 +94,7 @@ cvector_vector_type(struct Move) get_possible_moves_by_piece(struct Piece* board
     if(piece.color[0] == WHITE || piece.promoted) {
         int i;
         for(i = -1; i <=1; i += 2){
-            struct Pos newPos = {piecePos.x + i, piecePos.y + 1};
+            struct Pos newPos = {piecePos.c + i, piecePos.r + 1};
             if(is_pos_valid(newPos)){
                 struct Move move = {piecePos, newPos};
                 if(is_move_valid(board, move)){
@@ -107,7 +106,7 @@ cvector_vector_type(struct Move) get_possible_moves_by_piece(struct Piece* board
     if(piece.color[0] == BLACK || piece.promoted){
         int i;
         for(i = -1; i <=1; i += 2){
-            struct Pos newPos = {piecePos.x + 1, piecePos.y + i};
+            struct Pos newPos = {piecePos.c + 1, piecePos.r + i};
             if(is_pos_valid(newPos)){
                 struct Move move = {piecePos, newPos};
                 if(is_move_valid(board, move)){
