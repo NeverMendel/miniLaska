@@ -6,11 +6,12 @@ void display_board(struct Piece* board){
     int c;
     for(r = 0; r < ROWS; r++){
         for(c = 0; c < COLUMNS; c++){
-            if(board[r * COLUMNS + c].color == WHITE){
-                //TODO
-            } else {
-
-            }
+            // TODO Giulia
+//            if(board[r * COLUMNS + c] == WHITE){
+//
+//            } else {
+//
+//            }
         }
     }
 }
@@ -52,9 +53,14 @@ struct GameSettings read_game_settings(){
     return settings;
 }
 
-struct Move read_player_move(){
+struct Move read_player_move(struct Piece* board, enum Color color){
     struct Move move;
-    // TODO
+    // Visualizza tutte le mosse che il giocatore può giocare e fa selezionare all'utente una di quelle
+    // Es: 1 - a3-b4
+    //     2 - c3-b4
+    //     etc...
+    // get_possible_moves_by_color
+    // TODO Giulia
     return move;
 }
 

@@ -10,7 +10,7 @@ int main() {
 
     if(board == NULL){
         printf("Error allocating the board in the memory");
-        return 1;
+        exit(EXIT_FAILURE);
     }
 
     initialize_board(board);
@@ -28,13 +28,8 @@ int main() {
         if(colorToMove == WHITE) currentPlayer = settings.white;
         else currentPlayer = settings.black;
 
-        bool toMove = true;
-        while(toMove){
-            if(currentPlayer == HUMAN) currentMove = read_player_move();
-            else currentMove = best_move_minimax(board, 4, colorToMove, settings);
-            toMove = !apply_move(board, currentMove);
-            if(toMove) display_error_incorrect_move(currentMove);
-        }
+        if(currentPlayer == HUMAN) currentMove = read_player_move();
+        else currentMove = best_move_minimax(board, 4, colorToMove, settings);
 
         //TODO
 
