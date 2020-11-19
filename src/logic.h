@@ -9,7 +9,7 @@
  * @param pos, posizione della scacchiera
  * @return int, indice della matrice
  */
-//inline int get_index_from_pos(struct Pos pos);
+inline int get_index_from_pos(struct Pos pos);
 
 /**
  * Inizializza la schacchiera allo stato di inizio gioco
@@ -49,7 +49,14 @@ bool apply_move(struct Piece* board, enum Color colorToMove, struct Move move);
  * @param move, mossa da controllare
  * @return bool, vero se la mossa è valida, falso altrimenti
  */
-//bool is_move_valid(struct Piece* board, struct Move move);
+bool is_move_valid(struct Piece* board, struct Move move);
+
+/**
+ * Controlla se una posizione è valida, se è all'interno della scacchiera ed è una cella utilizzata nel gioco Lasca
+ * @param pos, posizione dellla cella
+ * @return bool, vero se la cella è valida, falso altrimenti
+ */
+inline bool is_pos_valid(struct Pos pos);
 
 /**
  * Controlla se una mossa prevede di mangiare una pedina dell'avversario
