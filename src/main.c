@@ -6,7 +6,7 @@
 
 int main() {
 
-    struct Piece* board = malloc(ROWS * COLUMNS * sizeof(struct Piece));
+    Piece* board = malloc(ROWS * COLUMNS * sizeof(Piece));
 
     if(board == NULL){
         printf("Error allocating the board in the memory");
@@ -15,12 +15,12 @@ int main() {
 
     initialize_board(board);
 
-    enum GameState state = PLAYING;
-    enum Color colorToMove = WHITE;
-    struct GameSettings settings = read_game_settings();
+    GameState state = PLAYING;
+    Color colorToMove = WHITE;
+    GameSettings settings = read_game_settings();
 
-    struct Move currentMove;
-    enum PlayerType currentPlayer;
+    Move currentMove;
+    PlayerType currentPlayer;
 
     while(state == PLAYING){
         display_board(board);

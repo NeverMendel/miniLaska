@@ -1,7 +1,7 @@
 #include "terminal.h"
 #include <stdio.h>
 
-void display_board(struct Piece* board){
+void display_board(Piece* board){
     int r;
     int c;
     for(r = 0; r < ROWS; r++){
@@ -16,8 +16,8 @@ void display_board(struct Piece* board){
     }
 }
 
-struct GameSettings read_game_settings(){
-    struct GameSettings settings;
+GameSettings read_game_settings(){
+    GameSettings settings;
     char input = 0;
 
     // white
@@ -53,8 +53,8 @@ struct GameSettings read_game_settings(){
     return settings;
 }
 
-struct Move read_player_move(struct Piece* board, enum Color color){
-    struct Move move;
+Move read_player_move(Piece* board, Color color){
+    Move move;
     // Visualizza tutte le mosse che il giocatore può giocare e fa selezionare all'utente una di quelle
     // Es: 1 - a3-b4
     //     2 - c3-b4
@@ -64,11 +64,11 @@ struct Move read_player_move(struct Piece* board, enum Color color){
     return move;
 }
 
-void display_error_incorrect_move(struct Move move){
+void display_error_incorrect_move(Move move){
     printf("The move {%d, %d} -> {%d, %d} is not valid", move.from.c, move.from.r, move.to.c, move.to.r);
 }
 
-void display_winner(enum GameState state){
+void display_winner(GameState state){
     switch (state) {
         case DRAW:
             printf("Draw");

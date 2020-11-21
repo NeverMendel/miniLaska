@@ -2,7 +2,7 @@
 #include "../src/logic.h"
 
 MU_TEST(test_compute_state_initial_state) {
-    struct Piece* board = malloc(ROWS * COLUMNS * sizeof(struct Piece));
+    Piece* board = malloc(ROWS * COLUMNS * sizeof(Piece));
     initialize_board(board);
     bool expected = PLAYING;
     bool actual = compute_state(board);
@@ -11,7 +11,7 @@ MU_TEST(test_compute_state_initial_state) {
 
 MU_TEST(test_compute_state_black_win) {
     // Inizializzi la scacchiera in una situazione di vittoria per il nero
-    struct Piece* board = malloc(ROWS * COLUMNS * sizeof(struct Piece));
+    Piece* board = malloc(ROWS * COLUMNS * sizeof(Piece));
     // TODO Christian
     bool expected = BLACK_WIN;
     bool actual = compute_state(board);
@@ -19,35 +19,35 @@ MU_TEST(test_compute_state_black_win) {
 }
 
 MU_TEST(test_is_pos_valid_valid_pos1) {
-    struct Pos pos = {4, 4};
+    Pos pos = {4, 4};
     bool expected = true;
     bool actual = is_pos_valid(pos);
     mu_check(expected == actual);
 }
 
 MU_TEST(test_is_pos_valid_valid_pos2) {
-    struct Pos pos = {6, 0};
+    Pos pos = {6, 0};
     bool expected = true;
     bool actual = is_pos_valid(pos);
     mu_check(expected == actual);
 }
 
 MU_TEST(test_is_pos_valid_out_of_bound) {
-    struct Pos pos = {7,2};
+    Pos pos = {7,2};
     bool expected = false;
     bool actual = is_pos_valid(pos);
     mu_check(expected == actual);
 }
 
 MU_TEST(test_is_pos_valid_not_used_cell1) {
-    struct Pos pos = {1,2};
+    Pos pos = {1,2};
     bool expected = false;
     bool actual = is_pos_valid(pos);
     mu_check(expected == actual);
 }
 
 MU_TEST(test_is_pos_valid_not_used_cell2) {
-    struct Pos pos = {3,6};
+    Pos pos = {3,6};
     bool expected = false;
     bool actual = is_pos_valid(pos);
     mu_check(expected == actual);

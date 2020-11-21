@@ -17,20 +17,20 @@
  * @param pos, posizione della scacchiera
  * @return int, indice della matrice
  */
-inline int get_index_from_pos(struct Pos pos);
+inline int get_index_from_pos(Pos pos);
 
 /**
  * Inizializza la schacchiera allo stato di inizio gioco
  * @param board, schacchiera da inizializzare
  */
-void initialize_board(struct Piece* board);
+void initialize_board(Piece* board);
 
 /**
  * Calcola lo stato della scacchiera
  * @param board, scacchiera di cui calcolare lo stato
  * @return GameState, stato della scacchiera
  */
-enum GameState compute_state(struct Piece* board);
+GameState compute_state(Piece* board);
 
 /**
  * Calcola la mossa migliore utilizzando l'algoritmo mini-max
@@ -40,7 +40,7 @@ enum GameState compute_state(struct Piece* board);
  * @param settings, impostazioni del gioco con la difficoltà del computer
  * @return Move, mossa migliore che può venire giocata
  */
-struct Move best_move_minimax(struct Piece* board, int depth, enum Color colorToMove, struct GameSettings settings);
+Move best_move_minimax(Piece* board, int depth, Color colorToMove, GameSettings settings);
 
 /**
  * Applica la mossa sulla scacchiera se la mossa è valida
@@ -49,7 +49,7 @@ struct Move best_move_minimax(struct Piece* board, int depth, enum Color colorTo
  * @param move, mossa da applicare
  * @return bool, vero se la mossa è valida, falsa altrimenti
  */
-bool apply_move(struct Piece* board, enum Color colorToMove, struct Move move);
+bool apply_move(Piece* board, Color colorToMove, Move move);
 
 /**
  * Controlla se una mossa è valida
@@ -57,14 +57,14 @@ bool apply_move(struct Piece* board, enum Color colorToMove, struct Move move);
  * @param move, mossa da controllare
  * @return bool, vero se la mossa è valida, falso altrimenti
  */
-bool is_move_valid(struct Piece* board, struct Move move);
+bool is_move_valid(Piece* board, Move move);
 
 /**
  * Controlla se una posizione è valida, se è all'interno della scacchiera ed è una cella utilizzata nel gioco Lasca
  * @param pos, posizione dellla cella
  * @return bool, vero se la cella è valida, falso altrimenti
  */
-inline bool is_pos_valid(struct Pos pos);
+inline bool is_pos_valid(Pos pos);
 
 /**
  * Controlla se una mossa prevede di mangiare una pedina dell'avversario
@@ -72,7 +72,7 @@ inline bool is_pos_valid(struct Pos pos);
  * @param move, mossa da controllare
  * @return bool, vero se la mossa prevede di mangiare una pedina dell'avversario, falso altrimenti
  */
-bool does_move_eat(struct Piece* board, struct Move move);
+bool does_move_eat(Piece* board, Move move);
 
 /**
  * Restituisce un array con tutte le mosse che un determinato colore può effettuare
@@ -80,7 +80,7 @@ bool does_move_eat(struct Piece* board, struct Move move);
  * @param color, colore del giocatore di cui calcolare le mosse possibili
  * @return Move*, array di mosse che il colore può eseguire
  */
-cvector_vector_type(struct Move) get_possible_moves_by_color(struct Piece* board, enum Color color);
+cvector_vector_type(Move) get_possible_moves_by_color(Piece* board, Color color);
 
 /**
  * Restituisce un array con tutte le mosse che un determinato pezzo può effettuare
@@ -88,6 +88,6 @@ cvector_vector_type(struct Move) get_possible_moves_by_color(struct Piece* board
  * @param piecePos, posizione del pezzo di cui calcolare le mosse possibili
  * @return Move*, array di mosse che il pezzo può eseguire
  */
-cvector_vector_type(struct Move) get_possible_moves_by_piece(struct Piece* board, struct Pos piecePos);
+cvector_vector_type(Move) get_possible_moves_by_piece(Piece* board, Pos piecePos);
 
 #endif //MINILASKA_LOGIC_H

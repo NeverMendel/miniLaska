@@ -11,73 +11,73 @@
 /**
  * Rappresenta il colore di un giocatore
  */
-enum Color{
+typedef enum {
     UNDEFINED,
     WHITE,
     BLACK
-};
+} Color;
 
 /**
  * Rappresenta un pezzo sulla scacchiera
  */
-struct Piece{
+typedef struct {
     // 0 - colore in cima, 1 - colore in mezzo, 2 - colore in fondo. UNDEFINED se non c'è nessuna pedina
-    enum Color color[MAX_HEIGHT];
+    Color color[MAX_HEIGHT];
     bool promoted;
     int height;
-};
+} Piece;
 
 /**
  * Rappresenta una posizione nella scacchiera
  */
-struct Pos{
+typedef struct {
     int c;
     int r;
-};
+} Pos;
 
 /**
  * Rappresenta una mossa
  */
-struct Move{
-    struct Pos from;
-    struct Pos to;
-};
+typedef struct {
+    Pos from;
+    Pos to;
+} Move;
 
 /**
  * Rappresenta il tipo di giocatore, umano o computer
  */
-enum PlayerType{
+typedef enum {
     HUMAN,
     COMPUTER
-};
+} PlayerType;
 
 /**
  * Difficoltà del giocatore Computer
  */
-enum ComputerLevel{
+typedef enum {
     EASY,
     MEDIUM,
     HARD
-};
+} ComputerLevel;
 
 /**
  * Impostazioni del gioco, determina chi gioca
  */
-struct GameSettings{
-    enum PlayerType white;
-    enum ComputerLevel whiteLevel;
-    enum PlayerType black;
-    enum ComputerLevel blackLevel;
-};
+typedef struct {
+    PlayerType white;
+    ComputerLevel whiteLevel;
+    PlayerType black;
+    ComputerLevel blackLevel;
+} GameSettings;
 
 /**
  * Stato del gioco
  */
-enum GameState{
+typedef enum {
     PLAYING,
     DRAW,
     WHITE_WIN,
     BLACK_WIN
-};
+} GameState;
 
 #endif //MINILASKA_CONSTANTS_H
