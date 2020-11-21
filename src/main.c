@@ -1,12 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "constants.h"
+#include "utility.h"
 #include "terminal.h"
 #include "logic.h"
 
 int main() {
 
-    Piece* board = malloc(ROWS * COLUMNS * sizeof(Piece));
+    Piece* board = calloc(ROWS * COLUMNS, sizeof(Piece));
 
     if(board == NULL){
         printf("Error allocating the board in the memory");

@@ -3,6 +3,7 @@
 
 #include "constants.h"
 #include "cvector.h"
+#include "utility.h"
 
 /**
  * Calcola la posizione di una cella all'interno della matrice

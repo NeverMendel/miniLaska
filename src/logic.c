@@ -9,7 +9,8 @@ void initialize_board(Piece* board){
     int r, c;
     for(r = 0; r < ROWS; r++){
         for(c = 0; c < COLUMNS; c++){
-            // TODO Giulia
+//            TODO Giulia
+//            board[get_index_from_pos((Pos){c,r})] = NULL_PIECE;
         }
     }
 }
@@ -43,6 +44,8 @@ bool is_move_valid(Piece* board, Move move){
     int dy = abs(move.from.r - move.to.r);
     int maxDiff = does_move_eat(board, move) ? 2 : 1;
     res = res && dx <= maxDiff && dy <= maxDiff;
+    // Controlla se la nuova cella è vuota
+    res = res && is_piece_null(board[get_index_from_pos(move.to)]);
     return res;
 }
 
@@ -61,7 +64,7 @@ cvector_vector_type(Move) get_possible_moves_by_color(Piece* board, Color color)
     for(r = 0; r < ROWS; r++){
         for(c = 0; c < COLUMNS; c++){
             pos = get_index_from_pos((Pos){c, r});
-            if((board + pos) != NULL && *board[pos].color == color){
+            if(!is_piece_null(board[pos]) && *board[pos].color == color){
                 Pos currentPos = {c, r};
                 cvector_vector_type(Move) pieceMoves = get_possible_moves_by_piece(board, currentPos);
                 cvector_copy(pieceMoves, allMoves);
@@ -69,21 +72,21 @@ cvector_vector_type(Move) get_possible_moves_by_color(Piece* board, Color color)
         }
     }
     // Controlla se il colore che deve muovere è obbligato a mangiare
-    Move* movesIterator;
     bool mustEat = false;
-    for(movesIterator = allMoves; movesIterator != NULL; movesIterator++){
-        if(does_move_eat(board, *movesIterator)){
+    int i;
+    for(i = 0; i < cvector_size(allMoves); i++){
+        if(does_move_eat(board, allMoves[i])){
             mustEat = true;
             break;
         }
     }
     if(!mustEat) return allMoves;
     cvector_vector_type(Move) validMoves = NULL;
-    int i;
     for(i = 0; i < cvector_size(allMoves); i++){
         if(does_move_eat(board, allMoves[i]))
             cvector_push_back(validMoves, allMoves[i]);
     }
+    free(allMoves);
     // TODO check this Davide
     return validMoves;
 }
@@ -91,11 +94,16 @@ cvector_vector_type(Move) get_possible_moves_by_color(Piece* board, Color color)
 cvector_vector_type(Move) get_possible_moves_by_piece(Piece* board, Pos piecePos) {
     cvector_vector_type(Move) moves = NULL;
     Piece piece = board[get_index_from_pos(piecePos)];
+    // Controlla le celle in "alto"
     if(piece.color[0] == WHITE || piece.promoted) {
         int i;
         for(i = -1; i <=1; i += 2){
             Pos newPos = {piecePos.c + i, piecePos.r + 1};
             if(is_pos_valid(newPos)){
+                // Se nella nuova cella c'è un avversario, controlla se lo può mangiare
+                if(is_opposite_color(board[get_index_from_pos(piecePos)].color[0], board[get_index_from_pos(newPos)].color[0])){
+                    newPos = (Pos) {piecePos.c + i * 2, piecePos.r + 1 * 2};
+                }
                 Move move = {piecePos, newPos};
                 if(is_move_valid(board, move)){
                     cvector_push_back(moves, move);
@@ -103,11 +111,16 @@ cvector_vector_type(Move) get_possible_moves_by_piece(Piece* board, Pos piecePos
             }
         }
     }
+    // Controlla le celle in "basso"
     if(piece.color[0] == BLACK || piece.promoted){
         int i;
         for(i = -1; i <=1; i += 2){
-            Pos newPos = {piecePos.c + 1, piecePos.r + i};
+            Pos newPos = {piecePos.c + i, piecePos.r - 1};
             if(is_pos_valid(newPos)){
+                // Se nella nuova cella c'è un avversario, controlla se lo può mangiare
+                if(board[get_index_from_pos(piecePos)].color[0] != board[get_index_from_pos(newPos)].color[0]){
+                    newPos = (Pos) {piecePos.c + i * 2, piecePos.r + 1 * 2};
+                }
                 Move move = {piecePos, newPos};
                 if(is_move_valid(board, move)){
                     cvector_push_back(moves, move);
@@ -115,5 +128,6 @@ cvector_vector_type(Move) get_possible_moves_by_piece(Piece* board, Pos piecePos
             }
         }
     }
+    // TODO add more tests Davide
     return moves;
 }

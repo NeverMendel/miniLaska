@@ -2,6 +2,7 @@
 #define MINILASKA_TERMINAL_H
 
 #include "constants.h"
+#include "utility.h"
 
 /**
  * Visualizza la scacchiera
