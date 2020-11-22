@@ -2,6 +2,25 @@
 #include "../src/logic.h"
 #include "../src/utility.h"
 
+MU_TEST(test_does_move_eat1) {
+    Piece* board = malloc(ROWS * COLUMNS * sizeof(Piece));
+    initialize_board(board);
+
+    Pos piecePos1 = {1,1};
+    board[get_index_from_pos(piecePos1)] = (Piece) {{WHITE, UNDEFINED, UNDEFINED}, false, 1};
+
+    Pos piecePos2 = {2,2};
+    board[get_index_from_pos(piecePos2)] = (Piece) {{BLACK, UNDEFINED, UNDEFINED}, false, 1};
+    
+    Pos pos3 = {3,3};
+
+    Move move = {piecePos1, pos3};
+
+    bool actual = does_move_eat(board, move);
+
+    mu_check(actual == true);
+}
+
 MU_TEST(test_compute_state_initial_state) {
     Piece* board = malloc(ROWS * COLUMNS * sizeof(Piece));
     initialize_board(board);

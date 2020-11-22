@@ -54,8 +54,14 @@ inline bool is_pos_valid(Pos pos){
 }
 
 bool does_move_eat(Piece* board, Move move) {
-    //TODO Christian
-    return 0;
+    Piece movedPiece = board[move.from.r * COLUMNS + move.from.c];
+    Piece middlePiece = board[(move.from.r+move.to.r)/2 * COLUMNS + (move.from.c + move.to.c)/2];
+
+    if(middlePiece.color != movedPiece.color && middlePiece.height <= movedPiece.height) {
+        return true;
+    }
+
+    return false;
 }
 
 cvector_vector_type(Move) get_possible_moves_by_color(Piece* board, Color color){
