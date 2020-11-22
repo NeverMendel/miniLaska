@@ -11,7 +11,7 @@
  * @param r, indice della riga
  * @return int, indice della matrice
  */
-//inline int get_index_from_pos(int c, int r);
+inline int get_index_from_coordinates(int c, int r);
 
 /**
  * Calcola la posizione di una cella all'interno della matrice

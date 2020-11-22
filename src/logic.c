@@ -1,8 +1,12 @@
 #include "logic.h"
 #include <stdlib.h>
 
+inline int get_index_from_coordinates(int c, int r){
+    return r * COLUMNS + c;
+}
+
 inline int get_index_from_pos(Pos pos){
-    return pos.r * COLUMNS + pos.c;
+    return get_index_from_coordinates(pos.c, pos.r);
 }
 
 void initialize_board(Piece* board){
@@ -69,7 +73,7 @@ cvector_vector_type(Move) get_possible_moves_by_color(Piece* board, Color color)
     int r, c, pos;
     for(r = 0; r < ROWS; r++){
         for(c = 0; c < COLUMNS; c++){
-            pos = get_index_from_pos((Pos){c, r});
+            pos = get_index_from_coordinates(c, r);
             if(!is_piece_null(board[pos]) && *board[pos].color == color){
                 Pos currentPos = {c, r};
                 cvector_vector_type(Move) pieceMoves = get_possible_moves_by_piece(board, currentPos);

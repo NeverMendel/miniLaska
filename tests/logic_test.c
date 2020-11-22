@@ -97,6 +97,8 @@ MU_TEST_SUITE(test_suite) {
     MU_RUN_TEST(test_is_pos_valid_not_used_cell2);
 
     MU_RUN_TEST(test_get_possible_moves_by_piece1);
+
+    MU_RUN_TEST(test_does_move_eat1);
 }
 
 int main(int argc, char *argv[]) {
