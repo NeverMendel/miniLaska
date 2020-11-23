@@ -17,8 +17,9 @@ MU_TEST(test_does_move_eat1) {
     Move move = {piecePos1, pos3};
 
     bool actual = does_move_eat(board, move);
+    bool expected = true;
 
-    mu_check(actual == true);
+    mu_check(expected == actual);
 }
 
 MU_TEST(test_does_move_eat2) {
@@ -36,8 +37,9 @@ MU_TEST(test_does_move_eat2) {
     Move move = {piecePos1, pos3};
 
     bool actual = does_move_eat(board, move);
+    bool expected = false;
 
-    mu_check(actual == false);
+    mu_check(expected == actual);
 }
 
 MU_TEST(test_does_move_eat3) {
@@ -55,8 +57,9 @@ MU_TEST(test_does_move_eat3) {
     Move move = {piecePos1, pos3};
 
     bool actual = does_move_eat(board, move);
+    bool expected = false;
 
-    mu_check(actual == false);
+    mu_check(expected == actual);
 }
 
 MU_TEST(test_compute_state_initial_state) {
@@ -68,9 +71,20 @@ MU_TEST(test_compute_state_initial_state) {
 }
 
 MU_TEST(test_compute_state_black_win) {
-    // Inizializzi la scacchiera in una situazione di vittoria per il nero
     Piece* board = malloc(ROWS * COLUMNS * sizeof(Piece));
-    // TODO Christian
+    
+    Pos piecePos = {3,3};
+    board[get_index_from_pos(piecePos)] = (Piece) {{WHITE, UNDEFINED, UNDEFINED}, false, 1};
+    
+    Pos piecePos2 = {2,2};
+    board[get_index_from_pos(piecePos2)] = (Piece) {{BLACK, WHITE, UNDEFINED}, false, 2};
+
+    Pos newPos = {4,4};
+
+    Move move = {piecePos2, newPos};
+
+    apply_move(board, BLACK, move);
+
     GameState expected = BLACK_WIN;
     GameState actual = compute_state(board);
     mu_check(expected == actual);

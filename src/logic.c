@@ -22,9 +22,8 @@ void initialize_board(Piece* board){
 GameState compute_state(Piece* board){
     if(cvector_size(get_possible_moves_by_color(board, WHITE)) == 0) return BLACK_WIN;
     if(cvector_size(get_possible_moves_by_color(board, BLACK)) == 0) return WHITE_WIN;
-    GameState state = PLAYING;
-    // TODO Christian
-    return state;
+
+    return PLAYING;
 }
 
 Move best_move_minimax(Piece* board, int depth, Color colorToMove, GameSettings settings){
@@ -68,6 +67,8 @@ bool apply_move(Piece* board, Color colorToMove, Move move) {
             flag = 1;
         }
     }
+
+    cvector_free(colorMoves);
 
     return true;
 }
@@ -140,7 +141,8 @@ cvector_vector_type(Move) get_possible_moves_by_color(Piece* board, Color color)
         if(does_move_eat(board, allMoves[i]))
             cvector_push_back(validMoves, allMoves[i]);
     }
-    free(allMoves);
+
+    cvector_free(allMoves);
     // TODO check this Davide
     return validMoves;
 }
