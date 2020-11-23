@@ -35,7 +35,7 @@ int main() {
         //TODO
 
         colorToMove = (colorToMove == WHITE ? BLACK : WHITE);
-        state = compute_state(board);
+        state = compute_state(board, colorToMove);
     }
 
     display_winner(state);

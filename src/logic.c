@@ -19,10 +19,18 @@ void initialize_board(Piece* board){
     }
 }
 
-GameState compute_state(Piece* board){
-    if(cvector_size(get_possible_moves_by_color(board, WHITE)) == 0) return BLACK_WIN;
-    if(cvector_size(get_possible_moves_by_color(board, BLACK)) == 0) return WHITE_WIN;
-
+GameState compute_state(Piece* board, Color colorToMove){
+    // Se il giocatore che deve muovere non ha nessuna mossa a disposizione ha perso
+    if(cvector_size(get_possible_moves_by_color(board, colorToMove)) == 0){
+        if(colorToMove == WHITE) return BLACK_WIN;
+        else return WHITE_WIN;
+    }
+    // Se un giocatore finisce i pezzi ha perso
+    if(cvector_size(get_pieces_pos_by_color(board, WHITE)) == 0)
+        return BLACK_WIN;
+    if(cvector_size(get_pieces_pos_by_color(board, BLACK)) == 0)
+        return WHITE_WIN;
+    // Altrimenti il gioco continua
     return PLAYING;
 }
 
@@ -192,4 +200,16 @@ cvector_vector_type(Move) get_possible_moves_by_piece(Piece* board, Pos piecePos
     }
     // TODO add more tests Davide
     return moves;
+}
+
+cvector_vector_type(Pos) get_pieces_pos_by_color(Piece* board, Color color){
+    cvector_vector_type(Pos) pieces = NULL;
+    int r, c;
+    for(r = 0; r < ROWS; r++){
+        for(c = 0; c < COLUMNS; c++){
+            if(board[r].color[0] == color)
+                cvector_push_back(pieces, ((Pos){c,r}));
+        }
+    }
+    return pieces;
 }

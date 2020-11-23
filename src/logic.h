@@ -29,9 +29,10 @@ void initialize_board(Piece* board);
 /**
  * Calcola lo stato della scacchiera
  * @param board, scacchiera di cui calcolare lo stato
+ * @param colorToMove, colore del giocatore che deve muovere
  * @return GameState, stato della scacchiera
  */
-GameState compute_state(Piece* board);
+GameState compute_state(Piece* board, Color colorToMove);
 
 /**
  * Calcola la mossa migliore utilizzando l'algoritmo mini-max
@@ -90,5 +91,13 @@ cvector_vector_type(Move) get_possible_moves_by_color(Piece* board, Color color)
  * @return Move*, array di mosse che il pezzo può eseguire
  */
 cvector_vector_type(Move) get_possible_moves_by_piece(Piece* board, Pos piecePos);
+
+/**
+ * Restituisce un array con tutte le posizioni delle pedine di un determinato colore
+ * @param board, scacchiera sulla quale cercare le pedine
+ * @param color, colore del giocatore di cui cercare le pedine
+ * @return Pos*, array di posizioni
+ */
+cvector_vector_type(Pos) get_pieces_pos_by_color(Piece* board, Color color);
 
 #endif //MINILASKA_LOGIC_H

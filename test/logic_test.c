@@ -66,7 +66,7 @@ MU_TEST(test_compute_state_initial_state) {
     Piece* board = calloc(ROWS * COLUMNS, sizeof(Piece));
     initialize_board(board);
     GameState expected = PLAYING;
-    GameState actual = compute_state(board);
+    GameState actual = compute_state(board, WHITE);
     mu_check(expected == actual);
 }
 
@@ -77,7 +77,7 @@ MU_TEST(test_compute_state_black_win) {
     board[get_index_from_pos(piecePos)] = (Piece) {{BLACK, WHITE, UNDEFINED}, false, 2};
 
     GameState expected = BLACK_WIN;
-    GameState actual = compute_state(board);
+    GameState actual = compute_state(board, WHITE);
     mu_check(expected == actual);
 }
 
