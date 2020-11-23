@@ -1,11 +1,11 @@
 #include "logic.h"
 #include <stdlib.h>
 
-inline int get_index_from_coordinates(int c, int r){
+int get_index_from_coordinates(int c, int r){
     return r * COLUMNS + c;
 }
 
-inline int get_index_from_pos(Pos pos){
+int get_index_from_pos(Pos pos){
     return get_index_from_coordinates(pos.c, pos.r);
 }
 
@@ -53,7 +53,7 @@ bool is_move_valid(Piece* board, Move move){
     return res;
 }
 
-inline bool is_pos_valid(Pos pos){
+bool is_pos_valid(Pos pos){
     return pos.c >= 0 && pos.c < 7 && pos.r >= 0 && pos.r < 7 && (pos.c % 2 == pos.r % 2 || (pos.c + pos.r) % 2 == 0);
 }
 

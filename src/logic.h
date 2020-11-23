@@ -11,14 +11,14 @@
  * @param r, indice della riga
  * @return int, indice della matrice
  */
-inline int get_index_from_coordinates(int c, int r);
+int get_index_from_coordinates(int c, int r);
 
 /**
  * Calcola la posizione di una cella all'interno della matrice
  * @param pos, posizione della scacchiera
  * @return int, indice della matrice
  */
-inline int get_index_from_pos(Pos pos);
+int get_index_from_pos(Pos pos);
 
 /**
  * Inizializza la schacchiera allo stato di inizio gioco
@@ -65,7 +65,7 @@ bool is_move_valid(Piece* board, Move move);
  * @param pos, posizione dellla cella
  * @return bool, vero se la cella è valida, falso altrimenti
  */
-inline bool is_pos_valid(Pos pos);
+bool is_pos_valid(Pos pos);
 
 /**
  * Controlla se una mossa prevede di mangiare una pedina dell'avversario

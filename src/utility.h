@@ -81,7 +81,7 @@ typedef enum {
  * @param piece, pezzo da controllare
  * @return bool, vero se il pezzo è nullo, falso altrimenti
  */
-inline bool is_piece_null(Piece piece);
+bool is_piece_null(Piece piece);
 
 /**
  * Compara due Move e restituisce vero se sono uguali
@@ -89,7 +89,7 @@ inline bool is_piece_null(Piece piece);
  * @param b, seconda Move
  * @return bool, vero se le due Move sono uguali, falso altrimenti
  */
-inline bool is_move_equal(Move a, Move b);
+bool is_move_equal(Move a, Move b);
 
 /**
  * Compara due Pos e restituisce vero se sono uguali
@@ -97,7 +97,7 @@ inline bool is_move_equal(Move a, Move b);
  * @param b, seconda Pos
  * @return bool, vero se le due Pos sono uguali, falso altrimenti
  */
-inline bool is_pos_equal(Pos a, Pos b);
+bool is_pos_equal(Pos a, Pos b);
 
 /**
  * Compara due Color e restituisce vero se sono opposti, es. Bianco e Nero
@@ -105,6 +105,6 @@ inline bool is_pos_equal(Pos a, Pos b);
  * @param b, secondo Color
  * @return bool, vero se i due Color sono opposti, falso altrimenti
  */
-inline bool is_opposite_color(Color a, Color b);
+bool is_opposite_color(Color a, Color b);
 
 #endif //MINILASKA_UTILITY_H
