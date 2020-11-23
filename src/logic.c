@@ -58,11 +58,24 @@ bool is_pos_valid(Pos pos){
 }
 
 bool does_move_eat(Piece* board, Move move) {
-    Piece movedPiece = board[move.from.r * COLUMNS + move.from.c];
-    Piece middlePiece = board[(move.from.r+move.to.r)/2 * COLUMNS + (move.from.c + move.to.c)/2];
+    Piece movedPiece =
+        board[get_index_from_coordinates(move.from.c, move.from.r)];
 
-    if(middlePiece.color != movedPiece.color && middlePiece.height <= movedPiece.height) {
-        return true;
+    Piece middlePiece = board[get_index_from_coordinates(
+        (move.from.c + move.to.c) / 2, (move.from.r + move.to.r) / 2)];
+
+    int dx = abs(move.from.r - move.to.r);
+    int dy = abs(move.from.c - move.to.c);
+
+    if (dx == 1 && dy == 1) {
+        return false;
+    }
+
+    if (middlePiece.color[0] != UNDEFINED) {
+        if (middlePiece.color[0] != movedPiece.color[0] &&
+            middlePiece.height <= movedPiece.height) {
+            return true;
+        }
     }
 
     return false;

@@ -21,6 +21,44 @@ MU_TEST(test_does_move_eat1) {
     mu_check(actual == true);
 }
 
+MU_TEST(test_does_move_eat2) {
+    Piece* board = malloc(ROWS * COLUMNS * sizeof(Piece));
+    initialize_board(board);
+
+    Pos piecePos1 = {1,1};
+    board[get_index_from_pos(piecePos1)] = (Piece) {{WHITE, UNDEFINED, UNDEFINED}, false, 1};
+
+    Pos piecePos2 = {3,3};
+    board[get_index_from_pos(piecePos2)] = (Piece) {{BLACK, UNDEFINED, UNDEFINED}, false, 1};
+    
+    Pos pos3 = {2,2};
+
+    Move move = {piecePos1, pos3};
+
+    bool actual = does_move_eat(board, move);
+
+    mu_check(actual == false);
+}
+
+MU_TEST(test_does_move_eat3) {
+    Piece* board = malloc(ROWS * COLUMNS * sizeof(Piece));
+    initialize_board(board);
+
+    Pos piecePos1 = {1,1};
+    board[get_index_from_pos(piecePos1)] = (Piece) {{WHITE, UNDEFINED, UNDEFINED}, false, 1};
+
+    Pos piecePos2 = {3,3};
+    board[get_index_from_pos(piecePos2)] = (Piece) {{BLACK, UNDEFINED, UNDEFINED}, false, 1};
+    
+    Pos pos3 = {4,4};
+
+    Move move = {piecePos1, pos3};
+
+    bool actual = does_move_eat(board, move);
+
+    mu_check(actual == false);
+}
+
 MU_TEST(test_compute_state_initial_state) {
     Piece* board = malloc(ROWS * COLUMNS * sizeof(Piece));
     initialize_board(board);
@@ -99,6 +137,8 @@ MU_TEST_SUITE(test_suite) {
     MU_RUN_TEST(test_get_possible_moves_by_piece1);
 
     MU_RUN_TEST(test_does_move_eat1);
+    MU_RUN_TEST(test_does_move_eat2);
+    MU_RUN_TEST(test_does_move_eat3);
 }
 
 int main(int argc, char *argv[]) {
