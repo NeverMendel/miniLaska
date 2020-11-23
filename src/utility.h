@@ -107,4 +107,12 @@ bool is_pos_equal(Pos a, Pos b);
  */
 bool is_opposite_color(Color a, Color b);
 
+/**
+ * Compara due Piece e resituisce vero se sono uguali
+ * @param a, primo Piece
+ * @param b, secondo Piece
+ * @return bool, vero se i due Piece sono uguali, falso altrimenti
+ */
+bool is_piece_equal(Piece a, Piece b);
+
 #endif //MINILASKA_UTILITY_H
