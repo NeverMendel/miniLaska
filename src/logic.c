@@ -13,8 +13,8 @@ void initialize_board(Piece* board){
     int r, c;
     for(r = 0; r < ROWS; r++){
         for(c = 0; c < COLUMNS; c++){
-//            TODO Giulia
-//            board[get_index_from_pos((Pos){c,r})] = NULL_PIECE;
+/*          TODO Giulia
+            board[get_index_from_pos((Pos){c,r})] = NULL_PIECE; /*
         }
     }
 }

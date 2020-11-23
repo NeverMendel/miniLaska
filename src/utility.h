@@ -1,7 +1,6 @@
 #ifndef MINILASKA_UTILITY_H
 #define MINILASKA_UTILITY_H
 
-#include <stdbool.h>
 #include "constants.h"
 
 /**
@@ -17,7 +16,7 @@ typedef enum {
  * Rappresenta un pezzo sulla scacchiera
  */
 typedef struct {
-    // 0 - colore in cima, 1 - colore in mezzo, 2 - colore in fondo. UNDEFINED se non c'è nessuna pedina
+    /* 0 - colore in cima, 1 - colore in mezzo, 2 - colore in fondo. UNDEFINED se non c'è nessuna pedina /*
     Color color[MAX_HEIGHT];
     bool promoted;
     int height;
@@ -115,4 +114,4 @@ bool is_opposite_color(Color a, Color b);
  */
 bool is_piece_equal(Piece a, Piece b);
 
-#endif //MINILASKA_UTILITY_H
+#endif

@@ -160,7 +160,7 @@ MU_TEST(test_get_possible_moves_by_piece1) {
 }
 
 MU_TEST_SUITE(test_suite) {
-//    MU_RUN_TEST(test_compute_state_initial_state);
+/*  MU_RUN_TEST(test_compute_state_initial_state); */
     MU_RUN_TEST(test_compute_state_black_win);
 
     MU_RUN_TEST(test_is_pos_valid_valid_pos1);

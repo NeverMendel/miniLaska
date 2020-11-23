@@ -100,4 +100,4 @@ cvector_vector_type(Move) get_possible_moves_by_piece(Piece* board, Pos piecePos
  */
 cvector_vector_type(Pos) get_pieces_pos_by_color(Piece* board, Color color);
 
-#endif //MINILASKA_LOGIC_H
+#endif
