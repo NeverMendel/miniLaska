@@ -15,3 +15,12 @@ bool is_pos_equal(Pos a, Pos b){
 bool is_opposite_color(Color a, Color b){
     return (a == WHITE && b == BLACK) || (a == BLACK && b == WHITE);
 }
+
+bool is_piece_equal(Piece a, Piece b) {
+    int i;
+    for (i = 0; i < MAX_HEIGHT; i++) {
+        if (a.color[i] != b.color[i]) return false;
+    }
+
+    return a.promoted == b.promoted && a.height == b.height;
+}

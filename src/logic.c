@@ -41,7 +41,7 @@ bool apply_move(Piece* board, Color colorToMove, Move move) {
     // Controllare campi pezzo vuoto
     Piece emptyPiece = (Piece){{UNDEFINED, UNDEFINED, UNDEFINED}, false, 0};
 
-    for (i = 0; i < cvector_capacity(colorMoves) && !flag; i++) {
+    for (i = 0; i < cvector_size(colorMoves) && !flag; i++) {
         if (is_move_equal(move, colorMoves[i])) {
             if (does_move_eat(board, move)) {
                 int eaetenIndex = get_index_from_coordinates((move.from.c + move.to.c) / 2, (move.from.r + move.to.r) / 2);
@@ -52,10 +52,16 @@ bool apply_move(Piece* board, Color colorToMove, Move move) {
                 board[eaetenIndex] = emptyPiece;
 
                 // Aggiorno l'altezza, da controllare in caso sia >3
-                fromPiece.height += fromPiece.height <= 3 ? 1 : 0;
+                fromPiece.height += eatenPiece.height;
+    
+                if(fromPiece.height > MAX_HEIGHT) {
+                    fromPiece.height = MAX_HEIGHT;
+                }
 
-                // Aggiorno i colori
-                fromPiece.color[fromPiece.height - 1] = eatenPiece.color[0];
+                if(fromPiece.color[MAX_HEIGHT-1] == UNDEFINED) {
+                    // Aggiorno i colori
+                    fromPiece.color[fromPiece.height - 1] = eatenPiece.color[0];
+                }
 
                 // Muovo il pezzo che mangia
                 board[get_index_from_pos(move.to)] = fromPiece;
@@ -70,7 +76,7 @@ bool apply_move(Piece* board, Color colorToMove, Move move) {
 
     cvector_free(colorMoves);
 
-    return true;
+    return flag;
 }
 
 bool is_move_valid(Piece* board, Move move){
