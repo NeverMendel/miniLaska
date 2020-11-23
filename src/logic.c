@@ -33,12 +33,42 @@ Move best_move_minimax(Piece* board, int depth, Color colorToMove, GameSettings 
     return move;
 }
 
-bool apply_move(Piece* board, Color colorToMove, Move move){
+bool apply_move(Piece* board, Color colorToMove, Move move) {
     // Controlla se la mossa è valida, se è in quelle possibili per quel colore
-    // get_possible_moves_by_color
-
     // Sposta i pezzi e li modifica nel caso qualcuno abbia mangiato
-    // TODO Christian
+    cvector_vector_type(Move) colorMoves = get_possible_moves_by_color(board, colorToMove);
+    int i, flag = 0;
+
+    // Controllare campi pezzo vuoto
+    Piece emptyPiece = (Piece){{UNDEFINED, UNDEFINED, UNDEFINED}, false, 0};
+
+    for (i = 0; i < cvector_capacity(colorMoves) && !flag; i++) {
+        if (is_move_equal(move, colorMoves[i])) {
+            if (does_move_eat(board, move)) {
+                int eaetenIndex = get_index_from_coordinates((move.from.c + move.to.c) / 2, (move.from.r + move.to.r) / 2);
+                Piece fromPiece = board[get_index_from_pos(move.from)];
+                Piece eatenPiece = board[eaetenIndex];
+
+                // Rimuovo il pezzo dalla board
+                board[eaetenIndex] = emptyPiece;
+
+                // Aggiorno l'altezza, da controllare in caso sia >3
+                fromPiece.height += fromPiece.height <= 3 ? 1 : 0;
+
+                // Aggiorno i colori
+                fromPiece.color[fromPiece.height - 1] = eatenPiece.color[0];
+
+                // Muovo il pezzo che mangia
+                board[get_index_from_pos(move.to)] = fromPiece;
+            } else {
+                board[get_index_from_pos(move.to)] = board[get_index_from_pos(move.from)];
+                board[get_index_from_pos(move.from)] = emptyPiece;
+            }
+
+            flag = 1;
+        }
+    }
+
     return true;
 }
 
@@ -72,7 +102,8 @@ bool does_move_eat(Piece* board, Move move) {
     }
 
     if (middlePiece.color[0] != UNDEFINED) {
-        if (middlePiece.color[0] != movedPiece.color[0] &&
+        // Controllare condizioni
+        if (is_opposite_color(middlePiece.color[0], movedPiece.color[0]) &&
             middlePiece.height <= movedPiece.height) {
             return true;
         }
