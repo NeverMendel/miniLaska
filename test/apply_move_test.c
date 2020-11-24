@@ -2,7 +2,7 @@
 #include "../src/utility.h"
 
 void test_apply_move1() {
-    Piece* board = calloc(ROWS * COLUMNS, sizeof(Piece));
+    Piece *board = calloc(ROWS * COLUMNS, sizeof(Piece));
     Pos piecePos1, piecePos2, piecePos3;
     Pos newPos1, newPos2;
     Move move1, move2;
@@ -38,6 +38,6 @@ void test_apply_move1() {
     assert(is_piece_equal(expectedPiece, actualPiece));
 }
 
-int main(){
+int main() {
     test_apply_move1();
 }

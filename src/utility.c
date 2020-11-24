@@ -1,18 +1,18 @@
 #include "utility.h"
 
-bool is_piece_null(Piece piece){
+bool is_piece_null(Piece piece) {
     return piece.color[0] == UNDEFINED;
 }
 
-bool is_move_equal(Move a, Move b){
+bool is_move_equal(Move a, Move b) {
     return is_pos_equal(a.from, b.from) && is_pos_equal(a.to, b.to);
 }
 
-bool is_pos_equal(Pos a, Pos b){
+bool is_pos_equal(Pos a, Pos b) {
     return a.c == b.c && a.r == b.r;
 }
 
-bool is_opposite_color(Color a, Color b){
+bool is_opposite_color(Color a, Color b) {
     return (a == WHITE && b == BLACK) || (a == BLACK && b == WHITE);
 }
 
@@ -24,21 +24,21 @@ bool is_piece_equal(Piece a, Piece b) {
     return a.promoted == b.promoted && a.height == b.height;
 }
 
-Pos initialize_pos(int c, int r){
+Pos initialize_pos(int c, int r) {
     Pos pos;
     pos.c = c;
     pos.r = r;
     return pos;
 }
 
-Move initialize_move(Pos from, Pos to){
+Move initialize_move(Pos from, Pos to) {
     Move move;
     move.from = from;
     move.to = to;
     return move;
 }
 
-Piece initialize_piece(Color color0, Color color1, Color color2, bool promoted, int height){
+Piece initialize_piece(Color color0, Color color1, Color color2, bool promoted, int height) {
     Piece piece;
     piece.color[0] = color0;
     piece.color[1] = color1;
@@ -48,6 +48,6 @@ Piece initialize_piece(Color color0, Color color1, Color color2, bool promoted, 
     return piece;
 }
 
-Piece initialize_null_piece(){
+Piece initialize_null_piece() {
     return initialize_piece(UNDEFINED, UNDEFINED, UNDEFINED, false, 0);
 }

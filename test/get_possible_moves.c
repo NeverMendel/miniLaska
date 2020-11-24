@@ -2,7 +2,7 @@
 #include "../src/utility.h"
 
 void test_get_possible_moves_by_piece1() {
-    Piece* board = calloc(ROWS * COLUMNS, sizeof(Piece));
+    Piece *board = calloc(ROWS * COLUMNS, sizeof(Piece));
     Pos piecePos;
     Move move1, move2;
     cvector_vector_type(Move) expected = NULL;
@@ -17,10 +17,10 @@ void test_get_possible_moves_by_piece1() {
     cvector_push_back(expected, move2);
     actual = get_possible_moves_by_piece(board, piecePos);
 
-    assert((int)cvector_size(actual) == 2);
+    assert((int) cvector_size(actual) == 2);
     assert(is_move_equal(expected[0], actual[0]) && is_move_equal(expected[1], actual[1]));
 }
 
-int main(int argc, char* argv[]) {
+int main(int argc, char *argv[]) {
     test_get_possible_moves_by_piece1();
 }

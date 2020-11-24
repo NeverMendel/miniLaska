@@ -2,7 +2,7 @@
 #include "../src/utility.h"
 
 void test_compute_state_initial_state() {
-    Piece* board = calloc(ROWS * COLUMNS, sizeof(Piece));
+    Piece *board = calloc(ROWS * COLUMNS, sizeof(Piece));
     GameState expected, actual;
     initialize_board(board);
     expected = PLAYING;
@@ -11,7 +11,7 @@ void test_compute_state_initial_state() {
 }
 
 void test_compute_state_black_win() {
-    Piece* board = calloc(ROWS * COLUMNS, sizeof(Piece));
+    Piece *board = calloc(ROWS * COLUMNS, sizeof(Piece));
     Pos piecePos;
     GameState expected, actual;
 
@@ -22,7 +22,7 @@ void test_compute_state_black_win() {
     assert(expected == actual);
 }
 
-int main(){
+int main() {
     test_compute_state_initial_state();
     test_compute_state_black_win();
 }

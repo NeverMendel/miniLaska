@@ -36,7 +36,7 @@ void test_is_pos_valid_not_used_cell2() {
     assert(expected == actual);
 }
 
-int main(){
+int main() {
     test_is_pos_valid_valid_pos1();
     test_is_pos_valid_valid_pos2();
     test_is_pos_valid_out_of_bound();

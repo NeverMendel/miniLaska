@@ -2,13 +2,13 @@
 #include "logic.h"
 #include <stdio.h>
 
-void display_board(Piece* board){
+void display_board(Piece *board) {
     int c, r;
     Piece piece;
-    for(r = ROWS - 1; r >= 0; r--){
-        for(c = 0; c < COLUMNS; c++){
+    for (r = ROWS - 1; r >= 0; r--) {
+        for (c = 0; c < COLUMNS; c++) {
             /*TODO Giulia*/
-            if(is_pos_valid(initialize_pos(c, r))){
+            if (is_pos_valid(initialize_pos(c, r))) {
                 piece = board[get_index_from_coordinates(c, r)];
                 switch (piece.color[0]) {
                     case WHITE:
@@ -29,19 +29,19 @@ void display_board(Piece* board){
     }
 }
 
-GameSettings read_game_settings(){
+GameSettings read_game_settings() {
     GameSettings settings;
     char input = 0;
 
     /* white */
-    while(input != 'h' && input != 'c'){
+    while (input != 'h' && input != 'c') {
         printf("Select the type of the white player (human or computer) by typing h or c\n");
         scanf(" %c", &input);
     }
-    if(input == 'h') settings.white = HUMAN;
+    if (input == 'h') settings.white = HUMAN;
     else {
         settings.white = COMPUTER;
-        while(input < '1' || input > '3'){
+        while (input < '1' || input > '3') {
             printf("Select the level of the computer playing with white \n  1 - Easy\n  2 - Medium\n  3 - Hard\n");
             scanf(" %c", &input);
         }
@@ -50,14 +50,14 @@ GameSettings read_game_settings(){
 
     input = 0;
     /* black */
-    while(input != 'h' && input != 'c'){
+    while (input != 'h' && input != 'c') {
         printf("Select the type of the black player (human or computer) by typing h or c\n");
         scanf(" %c", &input);
     }
-    if(input == 'h') settings.black = HUMAN;
+    if (input == 'h') settings.black = HUMAN;
     else {
         settings.black = COMPUTER;
-        while(input < '1' || input > '3'){
+        while (input < '1' || input > '3') {
             printf("Select the level of the computer playing with black \n  1 - Easy\n  2 - Medium\n  3 - Hard\n");
             scanf(" %c", &input);
         }
@@ -66,39 +66,40 @@ GameSettings read_game_settings(){
     return settings;
 }
 
-Move read_player_move(Piece* board, Color color){
-  /* Visualizza tutte le mosse che il giocatore può giocare e fa selezionare all'utente una di quelle
-       Es: 1 - a3-b4
-           2 - c3-b4
-           etc... */
+Move read_player_move(Piece *board, Color color) {
+    /* Visualizza tutte le mosse che il giocatore può giocare e fa selezionare all'utente una di quelle
+         Es: 1 - a3-b4
+             2 - c3-b4
+             etc... */
     int i, input = -1;
     cvector_vector_type(Move) possible_moves = get_possible_moves_by_color(board, color);
-    
-	if(color==BLACK){
+
+    if (color == BLACK) {
         printf("Black turn\n");
-	} else{
+    } else {
         printf("White turn\n");
-	}
-												
-	printf("Possible moves:\n");
-	
-	for(i=0; i<cvector_size(possible_moves); i++){				
-		printf("%d - %c%d-%c%d\n", i+1, possible_moves[i].from.c+'a', possible_moves[i].from.r + 1, possible_moves[i].to.c+'a', possible_moves[i].to.r + 1);
-	}
-    
-    while(input < 1 || input > cvector_size(possible_moves)){
-    	printf("Type the number of the selected move:\n");
-    	scanf(" %d", &input);
-	}
-  
+    }
+
+    printf("Possible moves:\n");
+
+    for (i = 0; i < cvector_size(possible_moves); i++) {
+        printf("%d - %c%d-%c%d\n", i + 1, possible_moves[i].from.c + 'a', possible_moves[i].from.r + 1,
+               possible_moves[i].to.c + 'a', possible_moves[i].to.r + 1);
+    }
+
+    while (input < 1 || input > cvector_size(possible_moves)) {
+        printf("Type the number of the selected move:\n");
+        scanf(" %d", &input);
+    }
+
     return possible_moves[input - 1];
 }
 
-void display_error_incorrect_move(Move move){
+void display_error_incorrect_move(Move move) {
     printf("The move {%d, %d} -> {%d, %d} is not valid", move.from.c, move.from.r, move.to.c, move.to.r);
 }
 
-void display_winner(GameState state){
+void display_winner(GameState state) {
     switch (state) {
         case DRAW:
             printf("Draw");

@@ -6,14 +6,14 @@
 #include "logic.h"
 
 int main() {
-    Piece* board = calloc(ROWS * COLUMNS, sizeof(Piece));
+    Piece *board = calloc(ROWS * COLUMNS, sizeof(Piece));
     GameState state;
     Color colorToMove;
     GameSettings settings;
     Move currentMove;
     PlayerType currentPlayer;
 
-    if(board == NULL){
+    if (board == NULL) {
         printf("Error allocating the board in the memory");
         exit(EXIT_FAILURE);
     }
@@ -24,13 +24,13 @@ int main() {
     colorToMove = WHITE;
     settings = read_game_settings();
 
-    while(state == PLAYING){
+    while (state == PLAYING) {
         display_board(board);
 
-        if(colorToMove == WHITE) currentPlayer = settings.white;
+        if (colorToMove == WHITE) currentPlayer = settings.white;
         else currentPlayer = settings.black;
 
-        if(currentPlayer == HUMAN) currentMove = read_player_move(board, colorToMove);
+        if (currentPlayer == HUMAN) currentMove = read_player_move(board, colorToMove);
         else currentMove = best_move_minimax(board, 4, colorToMove, settings);
 
         apply_move(board, colorToMove, currentMove);

@@ -8,7 +8,7 @@
  * Visualizza la scacchiera
  * @param board, scacchiera da venire visualizzata
  */
-void display_board(Piece* board);
+void display_board(Piece *board);
 
 /**
  * Chiede le impostazioni del gioco all'utente tramite terminale
@@ -22,7 +22,7 @@ GameSettings read_game_settings();
  * @param color, colore del giocatore che deve effettuare la mossa
  * @return Mossa inserita dall'utente
  */
-Move read_player_move(Piece* board, Color color);
+Move read_player_move(Piece *board, Color color);
 
 /**
  * Stampa un messaggio di errore per aver fatto una mossa non corretta sul terminale
