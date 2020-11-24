@@ -6,12 +6,12 @@ void display_board(Piece* board){
     int c;
     for(r = 0; r < ROWS; r++){
         for(c = 0; c < COLUMNS; c++){
-            // TODO Giulia
-//            if(board[r * COLUMNS + c] == WHITE){
-//
-//            } else {
-//
-//            }
+            /*TODO Giulia
+            if(board[r * COLUMNS + c] == WHITE){
+
+            } else {
+
+            }*/
         }
     }
 }
@@ -20,7 +20,7 @@ GameSettings read_game_settings(){
     GameSettings settings;
     char input = 0;
 
-    // white
+    /* white */
     while(input != 'h' && input != 'c'){
         printf("Select the type of the white player (human or computer) by typing h or c\n");
         scanf(" %c", &input);
@@ -36,7 +36,7 @@ GameSettings read_game_settings(){
     }
 
     input = 0;
-    // black
+    /* black */
     while(input != 'h' && input != 'c'){
         printf("Select the type of the black player (human or computer) by typing h or c\n");
         scanf(" %c", &input);
@@ -54,15 +54,18 @@ GameSettings read_game_settings(){
 }
 
 Move read_player_move(Piece* board, Color color){
-    Move move;
+  /* Visualizza tutte le mosse che il giocatore può giocare e fa selezionare all'utente una di quelle
+       Es: 1 - a3-b4
+           2 - c3-b4
+           etc... */
     int i, a;
     a=-1;
     Move* possible_moves = get_possible_moves_by_color(board, color);
     
 	if(color==BLACK){
-    	printf("Black turn");
+    printf("Black turn");
 	} else{
-		printf("White turn");
+    printf("White turn");
 	}
 												
 	printf("\nMosse possibili: ");
@@ -75,9 +78,8 @@ Move read_player_move(Piece* board, Color color){
     	printf("\nInserisci numero della mossa scelta: ");
     	scanf(" %d", &a);
 	}
-    
-    move = possible_moves[a-1];
-    return move;
+  
+    return possible_moves[a-1];
 }
 
 void display_error_incorrect_move(Move move){
