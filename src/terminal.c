@@ -1,18 +1,31 @@
 #include "terminal.h"
+#include "logic.h"
 #include <stdio.h>
 
 void display_board(Piece* board){
-    int r;
-    int c;
-    for(r = 0; r < ROWS; r++){
+    int c, r;
+    Piece piece;
+    for(r = ROWS - 1; r >= 0; r--){
         for(c = 0; c < COLUMNS; c++){
-            /*TODO Giulia
-            if(board[r * COLUMNS + c] == WHITE){
-
+            /*TODO Giulia*/
+            if(is_pos_valid(initialize_pos(c, r))){
+                piece = board[get_index_from_coordinates(c, r)];
+                switch (piece.color[0]) {
+                    case WHITE:
+                        printf("%c ", 'w' + (piece.promoted ? -32 : 0));
+                        break;
+                    case BLACK:
+                        printf("%c ", 'b' + (piece.promoted ? -32 : 0));
+                        break;
+                    case UNDEFINED:
+                        printf(" ");
+                        break;
+                }
             } else {
-
-            }*/
+                printf(" ");
+            }
         }
+        printf("\n");
     }
 }
 
@@ -58,28 +71,27 @@ Move read_player_move(Piece* board, Color color){
        Es: 1 - a3-b4
            2 - c3-b4
            etc... */
-    int i, a;
-    a=-1;
-    Move* possible_moves = get_possible_moves_by_color(board, color);
+    int i, input = -1;
+    cvector_vector_type(Move) possible_moves = get_possible_moves_by_color(board, color);
     
 	if(color==BLACK){
-    printf("Black turn");
+        printf("Black turn\n");
 	} else{
-    printf("White turn");
+        printf("White turn\n");
 	}
 												
-	printf("\nMosse possibili: ");
+	printf("Possible moves:\n");
 	
 	for(i=0; i<cvector_size(possible_moves); i++){				
-		printf("%d - %c%d-%c%d", i+1, possible_moves[i].from.c+'a', possible_moves[i].from.r, possible_moves[i].to.c+'a', possible_moves[i].to.r);
+		printf("%d - %c%d-%c%d\n", i+1, possible_moves[i].from.c+'a', possible_moves[i].from.r + 1, possible_moves[i].to.c+'a', possible_moves[i].to.r + 1);
 	}
     
-    while(a<1 || a>cvector_size(possible_moves)){
-    	printf("\nInserisci numero della mossa scelta: ");
-    	scanf(" %d", &a);
+    while(input < 1 || input > cvector_size(possible_moves)){
+    	printf("Type the number of the selected move:\n");
+    	scanf(" %d", &input);
 	}
   
-    return possible_moves[a-1];
+    return possible_moves[input - 1];
 }
 
 void display_error_incorrect_move(Move move){

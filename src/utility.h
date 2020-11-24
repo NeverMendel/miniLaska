@@ -120,4 +120,6 @@ Move initialize_move(Pos from, Pos to);
 
 Piece initialize_piece(Color color0, Color color1, Color color2, bool promoted, int height);
 
+Piece initialize_null_piece();
+
 #endif

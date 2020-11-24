@@ -30,7 +30,7 @@ int main() {
         if(colorToMove == WHITE) currentPlayer = settings.white;
         else currentPlayer = settings.black;
 
-        if(currentPlayer == HUMAN) currentMove = read_player_move();
+        if(currentPlayer == HUMAN) currentMove = read_player_move(board, colorToMove);
         else currentMove = best_move_minimax(board, 4, colorToMove, settings);
 
         apply_move(board, colorToMove, currentMove);
@@ -38,6 +38,8 @@ int main() {
         colorToMove = (colorToMove == WHITE ? BLACK : WHITE);
         state = compute_state(board, colorToMove);
     }
+
+    display_board(board);
 
     display_winner(state);
 

@@ -18,9 +18,11 @@ GameSettings read_game_settings();
 
 /**
  * Legge la mossa dell'utente da terminale
+ * @param board, scacchiera sulla quale deve venire effettuata la mossa
+ * @param color, colore del giocatore che deve effettuare la mossa
  * @return Mossa inserita dall'utente
  */
-Move read_player_move();
+Move read_player_move(Piece* board, Color color);
 
 /**
  * Stampa un messaggio di errore per aver fatto una mossa non corretta sul terminale

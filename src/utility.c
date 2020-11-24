@@ -47,3 +47,7 @@ Piece initialize_piece(Color color0, Color color1, Color color2, bool promoted, 
     piece.height = height;
     return piece;
 }
+
+Piece initialize_null_piece(){
+    return initialize_piece(UNDEFINED, UNDEFINED, UNDEFINED, false, 0);
+}
