@@ -6,12 +6,12 @@ void display_board(Piece* board){
     int c;
     for(r = 0; r < ROWS; r++){
         for(c = 0; c < COLUMNS; c++){
-            // TODO Giulia
-//            if(board[r * COLUMNS + c] == WHITE){
-//
-//            } else {
-//
-//            }
+            /*TODO Giulia
+            if(board[r * COLUMNS + c] == WHITE){
+
+            } else {
+
+            }*/
         }
     }
 }
@@ -20,7 +20,7 @@ GameSettings read_game_settings(){
     GameSettings settings;
     char input = 0;
 
-    // white
+    /* white */
     while(input != 'h' && input != 'c'){
         printf("Select the type of the white player (human or computer) by typing h or c\n");
         scanf(" %c", &input);
@@ -36,7 +36,7 @@ GameSettings read_game_settings(){
     }
 
     input = 0;
-    // black
+    /* black */
     while(input != 'h' && input != 'c'){
         printf("Select the type of the black player (human or computer) by typing h or c\n");
         scanf(" %c", &input);
@@ -55,12 +55,12 @@ GameSettings read_game_settings(){
 
 Move read_player_move(Piece* board, Color color){
     Move move;
-    // Visualizza tutte le mosse che il giocatore può giocare e fa selezionare all'utente una di quelle
-    // Es: 1 - a3-b4
-    //     2 - c3-b4
-    //     etc...
-    // get_possible_moves_by_color
-    // TODO Giulia
+    /* Visualizza tutte le mosse che il giocatore può giocare e fa selezionare all'utente una di quelle
+       Es: 1 - a3-b4
+           2 - c3-b4
+           etc...
+       get_possible_moves_by_color
+       TODO Giulia */
     return move;
 }
 

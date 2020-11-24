@@ -4,20 +4,22 @@
 
 MU_TEST(test_does_move_eat1) {
     Piece* board = calloc(ROWS * COLUMNS, sizeof(Piece));
-    initialize_board(board);
+    Pos piecePos1, piecePos2, piecePos3;
+    bool actual, expected;
+    Move move;
 
-    Pos piecePos1 = {1,1};
-    board[get_index_from_pos(piecePos1)] = (Piece) {{WHITE, UNDEFINED, UNDEFINED}, false, 1};
+    piecePos1 = initialize_pos(1,1);
+    board[get_index_from_pos(piecePos1)] = initialize_piece(WHITE, UNDEFINED, UNDEFINED, false, 1);
 
-    Pos piecePos2 = {2,2};
-    board[get_index_from_pos(piecePos2)] = (Piece) {{BLACK, UNDEFINED, UNDEFINED}, false, 1};
+    piecePos2 = initialize_pos(2,2);
+    board[get_index_from_pos(piecePos2)] = initialize_piece(BLACK, UNDEFINED, UNDEFINED, false, 1);
     
-    Pos pos3 = {3,3};
+    piecePos3 = initialize_pos(3,3);
 
-    Move move = {piecePos1, pos3};
+    move = initialize_move(piecePos1, piecePos3);
 
-    bool actual = does_move_eat(board, move);
-    bool expected = true;
+    actual = does_move_eat(board, move);
+    expected = true;
 
     mu_check(expected == actual);
 }
@@ -27,10 +29,10 @@ MU_TEST(test_does_move_eat2) {
     initialize_board(board);
 
     Pos piecePos1 = {1,1};
-    board[get_index_from_pos(piecePos1)] = (Piece) {{WHITE, UNDEFINED, UNDEFINED}, false, 1};
+    board[get_index_from_pos(piecePos1)] = initialize_piece(WHITE, UNDEFINED, UNDEFINED, false, 1);
 
     Pos piecePos2 = {3,3};
-    board[get_index_from_pos(piecePos2)] = (Piece) {{BLACK, UNDEFINED, UNDEFINED}, false, 1};
+    board[get_index_from_pos(piecePos2)] = initialize_piece(BLACK, UNDEFINED, UNDEFINED, false, 1);
     
     Pos pos3 = {2,2};
 

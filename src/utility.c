@@ -23,3 +23,27 @@ bool is_piece_equal(Piece a, Piece b) {
     }
     return a.promoted == b.promoted && a.height == b.height;
 }
+
+Pos initialize_pos(int c, int r){
+    Pos pos;
+    pos.c = c;
+    pos.r = r;
+    return pos;
+}
+
+Move initialize_move(Pos from, Pos to){
+    Move move;
+    move.from = from;
+    move.to = to;
+    return move;
+}
+
+Piece initialize_piece(Color color0, Color color1, Color color2, bool promoted, int height){
+    Piece piece;
+    piece.color[0] = color0;
+    piece.color[1] = color1;
+    piece.color[2] = color2;
+    piece.promoted = promoted;
+    piece.height = height;
+    return piece;
+}

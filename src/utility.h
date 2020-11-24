@@ -16,7 +16,7 @@ typedef enum {
  * Rappresenta un pezzo sulla scacchiera
  */
 typedef struct {
-    /* 0 - colore in cima, 1 - colore in mezzo, 2 - colore in fondo. UNDEFINED se non c'è nessuna pedina /*
+    /* 0 - colore in cima, 1 - colore in mezzo, 2 - colore in fondo. UNDEFINED se non c'è nessuna pedina */
     Color color[MAX_HEIGHT];
     bool promoted;
     int height;
@@ -113,5 +113,11 @@ bool is_opposite_color(Color a, Color b);
  * @return bool, vero se i due Piece sono uguali, falso altrimenti
  */
 bool is_piece_equal(Piece a, Piece b);
+
+Pos initialize_pos(int c, int r);
+
+Move initialize_move(Pos from, Pos to);
+
+Piece initialize_piece(Color color0, Color color1, Color color2, bool promoted, int height);
 
 #endif

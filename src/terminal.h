@@ -33,4 +33,4 @@ void display_error_incorrect_move(Move move);
  */
 void display_winner(GameState state);
 
-#endif //MINILASKA_TERMINAL_H
+#endif
