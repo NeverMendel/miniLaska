@@ -1,6 +1,7 @@
-#include "minunit.h"
 #include "../src/logic.h"
+
 #include "../src/utility.h"
+#include "minunit.h"
 
 MU_TEST(test_does_move_eat1) {
     Piece* board = calloc(ROWS * COLUMNS, sizeof(Piece));
@@ -8,14 +9,13 @@ MU_TEST(test_does_move_eat1) {
     bool actual, expected;
     Move move;
 
-    piecePos1 = initialize_pos(1,1);
+    piecePos1 = initialize_pos(1, 1);
     board[get_index_from_pos(piecePos1)] = initialize_piece(WHITE, UNDEFINED, UNDEFINED, false, 1);
 
-    piecePos2 = initialize_pos(2,2);
+    piecePos2 = initialize_pos(2, 2);
     board[get_index_from_pos(piecePos2)] = initialize_piece(BLACK, UNDEFINED, UNDEFINED, false, 1);
-    
-    piecePos3 = initialize_pos(3,3);
 
+    piecePos3 = initialize_pos(3, 3);
     move = initialize_move(piecePos1, piecePos3);
 
     actual = does_move_eat(board, move);
@@ -26,90 +26,100 @@ MU_TEST(test_does_move_eat1) {
 
 MU_TEST(test_does_move_eat2) {
     Piece* board = calloc(ROWS * COLUMNS, sizeof(Piece));
-    initialize_board(board);
+    Pos piecePos1, piecePos2, piecePos3;
+    Move move;
+    bool actual, expected;
 
-    Pos piecePos1 = {1,1};
+    piecePos1 = initialize_pos(1, 1);
     board[get_index_from_pos(piecePos1)] = initialize_piece(WHITE, UNDEFINED, UNDEFINED, false, 1);
 
-    Pos piecePos2 = {3,3};
+    piecePos2 = initialize_pos(3, 3);
     board[get_index_from_pos(piecePos2)] = initialize_piece(BLACK, UNDEFINED, UNDEFINED, false, 1);
-    
-    Pos pos3 = {2,2};
 
-    Move move = {piecePos1, pos3};
+    piecePos3 = initialize_pos(2, 2);
+    move = initialize_move(piecePos1, piecePos3);
 
-    bool actual = does_move_eat(board, move);
-    bool expected = false;
+    actual = does_move_eat(board, move);
+    expected = false;
 
     mu_check(expected == actual);
 }
 
 MU_TEST(test_does_move_eat3) {
     Piece* board = calloc(ROWS * COLUMNS, sizeof(Piece));
-    initialize_board(board);
+    Pos piecePos1, piecePos2, piecePos3;
+    Move move;
+    bool actual, expected;
 
-    Pos piecePos1 = {1,1};
-    board[get_index_from_pos(piecePos1)] = (Piece) {{WHITE, UNDEFINED, UNDEFINED}, false, 1};
+    piecePos1 = initialize_pos(1, 1);
+    board[get_index_from_pos(piecePos1)] = initialize_piece(WHITE, UNDEFINED, UNDEFINED, false, 1);
 
-    Pos piecePos2 = {3,3};
-    board[get_index_from_pos(piecePos2)] = (Piece) {{BLACK, UNDEFINED, UNDEFINED}, false, 1};
-    
-    Pos pos3 = {4,4};
+    piecePos2 = initialize_pos(3, 3);
+    board[get_index_from_pos(piecePos2)] = initialize_piece(BLACK, UNDEFINED, UNDEFINED, false, 1);
 
-    Move move = {piecePos1, pos3};
+    piecePos3 = initialize_pos(4, 4);
+    move = initialize_move(piecePos1, piecePos3);
 
-    bool actual = does_move_eat(board, move);
-    bool expected = false;
+    actual = does_move_eat(board, move);
+    expected = false;
 
     mu_check(expected == actual);
 }
 
 MU_TEST(test_compute_state_initial_state) {
     Piece* board = calloc(ROWS * COLUMNS, sizeof(Piece));
-    initialize_board(board);
     GameState expected = PLAYING;
     GameState actual = compute_state(board, WHITE);
+    initialize_board(board);
     mu_check(expected == actual);
 }
 
 MU_TEST(test_compute_state_black_win) {
     Piece* board = calloc(ROWS * COLUMNS, sizeof(Piece));
+    Pos piecePos;
+    GameState expected, actual;
 
-    Pos piecePos = {2,2};
-    board[get_index_from_pos(piecePos)] = (Piece) {{BLACK, WHITE, UNDEFINED}, false, 2};
-
-    GameState expected = BLACK_WIN;
-    GameState actual = compute_state(board, WHITE);
+    piecePos = initialize_pos(2, 2);
+    board[get_index_from_pos(piecePos)] = initialize_piece(BLACK, WHITE, UNDEFINED, false, 2);
+    expected = BLACK_WIN;
+    actual = compute_state(board, WHITE);
     mu_check(expected == actual);
 }
 
 MU_TEST(test_apply_move1) {
     Piece* board = calloc(ROWS * COLUMNS, sizeof(Piece));
-    
-    Pos piecePos1 = {3,1};
-    board[get_index_from_pos(piecePos1)] = (Piece) {{WHITE, BLACK, UNDEFINED}, false, 2};
-    
-    Pos piecePos2 = {3,3};
-    board[get_index_from_pos(piecePos2)] = (Piece) {{WHITE, UNDEFINED, UNDEFINED}, false, 1};
+    Pos piecePos1, piecePos2, piecePos3;
+    Pos newPos1, newPos2;
+    Move move1, move2;
+    Piece actualPiece, expectedPiece;
+    bool expected, actual;
 
-    Pos piecePos3 = {4,4};
-    board[get_index_from_pos(piecePos3)] = (Piece) {{BLACK, WHITE, UNDEFINED}, false, 2};
+    piecePos1 = initialize_pos(3, 1);
+    piecePos2 = initialize_pos(3, 3);
+    piecePos3 = initialize_pos(4, 4);
 
-    Pos newPos1 = {2,2};
-    Pos newPos2 = {1,3};
+    board[get_index_from_pos(piecePos1)] = initialize_piece(WHITE, UNDEFINED, UNDEFINED, false, 1);
+    board[get_index_from_pos(piecePos2)] = initialize_piece(WHITE, UNDEFINED, UNDEFINED, false, 1);
+    board[get_index_from_pos(piecePos3)] = initialize_piece(BLACK, WHITE, UNDEFINED, false, 2);
 
-    Move move1 = {piecePos3, newPos1};
-    bool expected = true;
-    bool actual = apply_move(board, BLACK, move1);
+    newPos1 = initialize_pos(2, 2);
+    newPos2 = initialize_pos(1, 3);
+
+    move1 = initialize_move(piecePos3, newPos1);
+
+    expected = true;
+    actual = apply_move(board, BLACK, move1);
+
     mu_check(expected == actual);
-    
-    Move move2 = {piecePos1, newPos2};
+
+    move2 = initialize_move(piecePos1, newPos2);
+
     expected = true;
     actual = apply_move(board, WHITE, move2);
     mu_check(expected == actual);
 
-    Piece actualPiece = board[get_index_from_pos(newPos2)];
-    Piece expectedPiece = {{WHITE, BLACK, WHITE}, false, 3};
+    actualPiece = board[get_index_from_pos(newPos2)];
+    expectedPiece = initialize_piece(WHITE, BLACK, WHITE, false, 3);
     mu_check(is_piece_equal(expectedPiece, actualPiece));
 }
 
@@ -128,21 +138,21 @@ MU_TEST(test_is_pos_valid_valid_pos2) {
 }
 
 MU_TEST(test_is_pos_valid_out_of_bound) {
-    Pos pos = {7,2};
+    Pos pos = {7, 2};
     bool expected = false;
     bool actual = is_pos_valid(pos);
     mu_check(expected == actual);
 }
 
 MU_TEST(test_is_pos_valid_not_used_cell1) {
-    Pos pos = {1,2};
+    Pos pos = {1, 2};
     bool expected = false;
     bool actual = is_pos_valid(pos);
     mu_check(expected == actual);
 }
 
 MU_TEST(test_is_pos_valid_not_used_cell2) {
-    Pos pos = {3,6};
+    Pos pos = {3, 6};
     bool expected = false;
     bool actual = is_pos_valid(pos);
     mu_check(expected == actual);
@@ -150,19 +160,26 @@ MU_TEST(test_is_pos_valid_not_used_cell2) {
 
 MU_TEST(test_get_possible_moves_by_piece1) {
     Piece* board = calloc(ROWS * COLUMNS, sizeof(Piece));
-    Pos piecePos = {1,1};
-    board[get_index_from_pos(piecePos)] = (Piece) {{WHITE, UNDEFINED, UNDEFINED}, false, 1};
+    Pos piecePos;
+    Move move1, move2;
     cvector_vector_type(Move) expected = NULL;
-    cvector_push_back(expected, ((Move){{1,1},{0,2}}));
-    cvector_push_back(expected, ((Move){{1,1},{2,2}}));
-    cvector_vector_type(Move) actual = get_possible_moves_by_piece(board, piecePos);
+    cvector_vector_type(Move) actual = NULL;
 
-    mu_check(cvector_size(actual) == 2);
-    mu_check( is_move_equal(expected[0], actual[0]) && is_move_equal(expected[1], actual[1]));
+    piecePos = initialize_pos(1, 1);
+    board[get_index_from_pos(piecePos)] = initialize_piece(WHITE, UNDEFINED, UNDEFINED, false, 1);
+    move1 = initialize_move(initialize_pos(1, 1), initialize_pos(0, 2));
+    move2 = initialize_move(initialize_pos(1, 1), initialize_pos(2, 2));
+
+    cvector_push_back(expected, move1);
+    cvector_push_back(expected, move2);
+    actual = get_possible_moves_by_piece(board, piecePos);
+
+    mu_check((int)cvector_size(actual) == 2);
+    mu_check(is_move_equal(expected[0], actual[0]) && is_move_equal(expected[1], actual[1]));
 }
 
 MU_TEST_SUITE(test_suite) {
-/*  MU_RUN_TEST(test_compute_state_initial_state); */
+    /*  MU_RUN_TEST(test_compute_state_initial_state); */
     MU_RUN_TEST(test_compute_state_black_win);
 
     MU_RUN_TEST(test_is_pos_valid_valid_pos1);
@@ -180,7 +197,7 @@ MU_TEST_SUITE(test_suite) {
     MU_RUN_TEST(test_apply_move1);
 }
 
-int main(int argc, char *argv[]) {
+int main(int argc, char* argv[]) {
     MU_RUN_SUITE(test_suite);
     MU_REPORT();
     return MU_EXIT_CODE;
