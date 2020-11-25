@@ -50,6 +50,7 @@ bool apply_move(Piece *board, Color colorToMove, Move move) {
     cvector_vector_type(Move) colorMoves = get_possible_moves_by_color(board, colorToMove);
     int i, flag = 0;
 
+    print_moves(colorMoves);
     for (i = 0; i < cvector_size(colorMoves) && !flag; i++) {
         if (is_move_equal(move, colorMoves[i])) {
             if (does_move_eat(board, move)) {
@@ -61,7 +62,7 @@ bool apply_move(Piece *board, Color colorToMove, Move move) {
                 /* Rimuovo il pezzo dalla board */
                 board[eatenIndex] = initialize_null_piece();
 
-                /* Aggiorno l'altezza, da controllare in caso sia >3 */
+                /* Aggiorno l'altezza */
                 fromPiece.height += eatenPiece.height;
 
                 if (fromPiece.height > MAX_HEIGHT) {
@@ -78,6 +79,10 @@ bool apply_move(Piece *board, Color colorToMove, Move move) {
             } else {
                 board[get_index_from_pos(move.to)] = board[get_index_from_pos(move.from)];
                 board[get_index_from_pos(move.from)] = initialize_null_piece();
+            }
+
+            if(move.to.r == ROWS-1 || !move.to.r) {
+                board[get_index_from_pos(move.from)].promoted = true;
             }
 
             flag = 1;
