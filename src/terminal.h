@@ -25,11 +25,6 @@ GameSettings read_game_settings();
 Move read_player_move(Piece *board, Color color);
 
 /**
- * Stampa un messaggio di errore per aver fatto una mossa non corretta sul terminale
- */
-void display_error_incorrect_move(Move move);
-
-/**
  * Stampa il vincitore sul terminale
  * @param state, stato della scacchiera
  */

@@ -48,50 +48,57 @@ bool apply_move(Piece *board, Color colorToMove, Move move) {
     /* Controlla se la mossa è valida, se è in quelle possibili per quel colore
        Sposta i pezzi e li modifica nel caso qualcuno abbia mangiato */
     cvector_vector_type(Move) colorMoves = get_possible_moves_by_color(board, colorToMove);
-    int i, flag = 0;
+    int i;
+    bool validMove = 0;
+    Piece piece, eatenPiece;
 
+    #ifdef DEBUG
     print_moves(colorMoves);
-    for (i = 0; i < cvector_size(colorMoves) && !flag; i++) {
+    #endif
+    for (i = 0; i < cvector_size(colorMoves) && !validMove; i++) {
         if (is_move_equal(move, colorMoves[i])) {
             if (does_move_eat(board, move)) {
                 int eatenIndex = get_index_from_coordinates((move.from.c + move.to.c) / 2,
                                                             (move.from.r + move.to.r) / 2);
-                Piece fromPiece = board[get_index_from_pos(move.from)];
-                Piece eatenPiece = board[eatenIndex];
+                piece = board[get_index_from_pos(move.from)];
+                eatenPiece = board[eatenIndex];
 
                 /* Rimuovo il pezzo dalla board */
                 board[eatenIndex] = initialize_null_piece();
 
                 /* Aggiorno l'altezza */
-                fromPiece.height += eatenPiece.height;
+                piece.height += eatenPiece.height;
 
-                if (fromPiece.height > MAX_HEIGHT) {
-                    fromPiece.height = MAX_HEIGHT;
+                if (piece.height > MAX_HEIGHT) {
+                    piece.height = MAX_HEIGHT;
                 }
 
-                if (fromPiece.color[MAX_HEIGHT - 1] == UNDEFINED) {
+                if (piece.color[MAX_HEIGHT - 1] == UNDEFINED) {
                     /* Aggiorno i colori */
-                    fromPiece.color[fromPiece.height - 1] = eatenPiece.color[0];
+                    piece.color[piece.height - 1] = eatenPiece.color[0];
                 }
 
                 /* Muovo il pezzo che mangia */
-                board[get_index_from_pos(move.to)] = fromPiece;
+                board[get_index_from_pos(move.to)] = piece;
             } else {
                 board[get_index_from_pos(move.to)] = board[get_index_from_pos(move.from)];
                 board[get_index_from_pos(move.from)] = initialize_null_piece();
             }
 
-            if(move.to.r == ROWS-1 || !move.to.r) {
-                board[get_index_from_pos(move.from)].promoted = true;
+            /* Promuove il pezzo se opportuno */
+            if(piece.color[0] == WHITE && move.to.r == ROWS - 1) {
+                piece.promoted = true;
+            } else if(piece.color[0] == BLACK && move.to.r == 0){
+                piece.promoted = true;
             }
 
-            flag = 1;
+            validMove = true;
         }
     }
 
     cvector_free(colorMoves);
 
-    return flag;
+    return validMove;
 }
 
 bool is_move_valid(Piece *board, Move move) {
@@ -116,10 +123,10 @@ bool does_move_eat(Piece *board, Move move) {
     Piece middlePiece = board[get_index_from_coordinates(
             (move.from.c + move.to.c) / 2, (move.from.r + move.to.r) / 2)];
 
-    int dx = abs(move.from.r - move.to.r);
-    int dy = abs(move.from.c - move.to.c);
+    int dx = abs(move.from.c - move.to.c);
+    int dy = abs(move.from.r - move.to.r);
 
-    if (dx == 1 && dy == 1) {
+    if (dx != 2 && dy != 2) {
         return false;
     }
 
@@ -136,36 +143,27 @@ bool does_move_eat(Piece *board, Move move) {
 
 cvector_vector_type(Move) get_possible_moves_by_color(Piece *board, Color color) {
     cvector_vector_type(Move) allMoves = NULL;
-    cvector_vector_type(Move) validMoves = NULL;
-    int r, c, pos, i;
-    bool mustEat = false;
-    for (r = 0; r < ROWS; r++) {
-        for (c = 0; c < COLUMNS; c++) {
-            pos = get_index_from_coordinates(c, r);
-            if (!is_piece_null(board[pos]) && *board[pos].color == color) {
-                Pos currentPos = initialize_pos(c, r);
-                cvector_vector_type(Move) pieceMoves = get_possible_moves_by_piece(board, currentPos);
-                cvector_copy(pieceMoves, allMoves);
-            }
-        }
+    cvector_vector_type(Move) eatMoves = NULL;
+    cvector_vector_type(Pos) piecesPos = NULL;
+    int i;
+    piecesPos = get_pieces_pos_by_color(board, color);
+    for (i = 0; i < cvector_size(piecesPos); i++) {
+        cvector_vector_type(Move) pieceMoves = get_possible_moves_by_piece(board, piecesPos[i]);
+        cvector_copy(pieceMoves, allMoves);
+        cvector_free(pieceMoves);
     }
+    cvector_free(piecesPos);
     /* Controlla se il colore che deve muovere è obbligato a mangiare */
     for (i = 0; i < cvector_size(allMoves); i++) {
         if (does_move_eat(board, allMoves[i])) {
-            mustEat = true;
-            break;
+            cvector_push_back(eatMoves, allMoves[i]);
         }
     }
-    if (!mustEat) return allMoves;
 
-    for (i = 0; i < cvector_size(allMoves); i++) {
-        if (does_move_eat(board, allMoves[i]))
-            cvector_push_back(validMoves, allMoves[i]);
-    }
+    if (cvector_empty(eatMoves)) return allMoves;
+    cvector_free(eatMoves);
 
-    cvector_free(allMoves);
-    /* TODO check this Davide */
-    return validMoves;
+    return eatMoves;
 }
 
 cvector_vector_type(Move) get_possible_moves_by_piece(Piece *board, Pos piecePos) {

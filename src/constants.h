@@ -7,6 +7,8 @@
 #define MAX_HEIGHT 3
 #define MAX_PIECES_PER_COLOR 11
 
+#define DEBUG
+
 #define bool int
 #define true 1
 #define false 0

@@ -95,10 +95,6 @@ Move read_player_move(Piece *board, Color color) {
     return possible_moves[input - 1];
 }
 
-void display_error_incorrect_move(Move move) {
-    printf("The move {%d, %d} -> {%d, %d} is not valid", move.from.c, move.from.r, move.to.c, move.to.r);
-}
-
 void display_winner(GameState state) {
     switch (state) {
         case DRAW:
