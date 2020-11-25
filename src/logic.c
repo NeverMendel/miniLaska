@@ -25,14 +25,14 @@ void initialize_board(Piece *board) {
 
 GameState compute_state(Piece *board, Color colorToMove) {
     /* Se il giocatore che deve muovere non ha nessuna mossa a disposizione ha perso */
-    if (cvector_size(get_possible_moves_by_color(board, colorToMove)) == 0) {
+    if (cvector_empty(get_possible_moves_by_color(board, colorToMove))) {
         if (colorToMove == WHITE) return BLACK_WIN;
         else return WHITE_WIN;
     }
     /* Se un giocatore finisce i pezzi ha perso */
-    if (cvector_size(get_pieces_pos_by_color(board, WHITE)) == 0)
+    if (cvector_empty(get_pieces_pos_by_color(board, WHITE)))
         return BLACK_WIN;
-    if (cvector_size(get_pieces_pos_by_color(board, BLACK)) == 0)
+    if (cvector_empty(get_pieces_pos_by_color(board, BLACK)))
         return WHITE_WIN;
     /* Altrimenti il gioco continua */
     return PLAYING;
@@ -77,18 +77,15 @@ bool apply_move(Piece *board, Color colorToMove, Move move) {
                     /* Aggiorno i colori */
                     piece.color[piece.height - 1] = eatenPiece.color[0];
                 }
-
-                /* Muovo il pezzo che mangia */
-                board[get_index_from_pos(move.to)] = piece;
-            } else {
-                board[get_index_from_pos(move.to)] = board[get_index_from_pos(move.from)];
-                board[get_index_from_pos(move.from)] = initialize_null_piece();
             }
+
+            board[get_index_from_pos(move.to)] = board[get_index_from_pos(move.from)];
+            board[get_index_from_pos(move.from)] = initialize_null_piece();
 
             /* Promuove il pezzo se opportuno */
             if(piece.color[0] == WHITE && move.to.r == ROWS - 1) {
                 piece.promoted = true;
-            } else if(piece.color[0] == BLACK && move.to.r == 0){
+            } else if(piece.color[0] == BLACK && move.to.r == 0) {
                 piece.promoted = true;
             }
 
@@ -161,7 +158,7 @@ cvector_vector_type(Move) get_possible_moves_by_color(Piece *board, Color color)
     }
 
     if (cvector_empty(eatMoves)) return allMoves;
-    cvector_free(eatMoves);
+    cvector_free(allMoves);
 
     return eatMoves;
 }
@@ -174,13 +171,12 @@ cvector_vector_type(Move) get_possible_moves_by_piece(Piece *board, Pos piecePos
     /* Controlla le celle in "alto" */
     if (piece.color[0] == WHITE || piece.promoted) {
         for (i = -1; i <= 1; i += 2) {
-            int posColumn = piecePos.c + i;
-            Pos newPos = initialize_pos(posColumn, piecePos.r + 1);
+            Pos newPos = initialize_pos(piecePos.c + i, piecePos.r + 1);
             if (is_pos_valid(newPos)) {
                 /* Se nella nuova cella c'è un avversario, controlla se lo può mangiare */
                 if (is_opposite_color(board[get_index_from_pos(piecePos)].color[0],
                                       board[get_index_from_pos(newPos)].color[0])) {
-                    newPos = initialize_pos(piecePos.c + i * 2, piecePos.r + 1 * 2);
+                    newPos = initialize_pos(piecePos.c + (i * 2), piecePos.r + 2);
                 }
                 move = initialize_move(piecePos, newPos);
                 if (is_move_valid(board, move)) {
@@ -196,7 +192,7 @@ cvector_vector_type(Move) get_possible_moves_by_piece(Piece *board, Pos piecePos
             if (is_pos_valid(newPos)) {
                 /* Se nella nuova cella c'è un avversario, controlla se lo può mangiare */
                 if (board[get_index_from_pos(piecePos)].color[0] != board[get_index_from_pos(newPos)].color[0]) {
-                    newPos = initialize_pos(piecePos.c + i * 2, piecePos.r - 1 * 2);
+                    newPos = initialize_pos(piecePos.c + (i * 2), piecePos.r - 2);
                 }
                 move = initialize_move(piecePos, newPos);
                 if (is_move_valid(board, move)) {
@@ -212,10 +208,12 @@ cvector_vector_type(Move) get_possible_moves_by_piece(Piece *board, Pos piecePos
 cvector_vector_type(Pos) get_pieces_pos_by_color(Piece *board, Color color) {
     cvector_vector_type(Pos) pieces = NULL;
     int r, c;
+    Pos pos;
     for (r = 0; r < ROWS; r++) {
         for (c = 0; c < COLUMNS; c++) {
-            if (board[r].color[0] == color)
-                cvector_push_back(pieces, initialize_pos(c, r));
+            pos = initialize_pos(c, r);
+            if (is_pos_valid(pos) && board[get_index_from_pos(pos)].color[0] == color)
+                cvector_push_back(pieces, pos);
         }
     }
     return pieces;

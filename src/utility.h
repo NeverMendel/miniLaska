@@ -123,6 +123,6 @@ Piece initialize_piece(Color color0, Color color1, Color color2, bool promoted, 
 
 Piece initialize_null_piece();
 
-void print_moves(cvector_vector_type(Move) allMoves);
+void print_moves(cvector_vector_type(Move) moves);
 
 #endif

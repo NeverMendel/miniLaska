@@ -6,8 +6,8 @@ void display_board(Piece *board) {
     int c, r;
     Piece piece;
     for (r = ROWS - 1; r >= 0; r--) {
+        printf("%d | ", r);
         for (c = 0; c < COLUMNS; c++) {
-            /*TODO Giulia*/
             if (is_pos_valid(initialize_pos(c, r))) {
                 piece = board[get_index_from_coordinates(c, r)];
                 switch (piece.color[0]) {
@@ -18,15 +18,17 @@ void display_board(Piece *board) {
                         printf("%c ", 'b' + (piece.promoted ? -32 : 0));
                         break;
                     case UNDEFINED:
-                        printf(" ");
+                        printf("  ");
                         break;
                 }
             } else {
-                printf(" ");
+                printf("  ");
             }
         }
         printf("\n");
     }
+    printf("    -------------\n");
+    printf("    a b c d e f g\n");
 }
 
 GameSettings read_game_settings() {

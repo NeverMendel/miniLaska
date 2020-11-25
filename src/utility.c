@@ -53,10 +53,10 @@ Piece initialize_null_piece() {
     return initialize_piece(UNDEFINED, UNDEFINED, UNDEFINED, false, 0);
 }
 
-void print_moves(cvector_vector_type(Move) allMoves) {
+void print_moves(cvector_vector_type(Move) moves) {
     int i;
-    printf("size: %d\n", (int)cvector_size(allMoves));
-    for (i = 0; i < cvector_size(allMoves); i++) {
-        printf("[%d] from: %d-%d, to %d-%d\n", i, allMoves[i].from.c, allMoves[i].from.r, allMoves[i].to.c, allMoves[i].to.r);
+    printf("size: %d\n", (int) cvector_size(moves));
+    for (i = 0; i < cvector_size(moves); i++) {
+        printf("[%d] from: %d-%d, to %d-%d\n", i, moves[i].from.c, moves[i].from.r, moves[i].to.c, moves[i].to.r);
     }
 }
