@@ -40,6 +40,7 @@ void test_apply_move1() {
 
     actualPiece = board[get_index_from_pos(newPos2)];
     expectedPiece = initialize_piece(WHITE, BLACK, UNDEFINED, false, 2);
+    
     assert(is_piece_equal(expectedPiece, actualPiece));
 }
 

@@ -52,19 +52,16 @@ bool apply_move(Piece *board, Color colorToMove, Move move) {
     bool validMove = 0;
     Piece piece, eatenPiece;
 
-    #ifdef DEBUG
+#ifdef DEBUG
     print_moves(colorMoves);
-    #endif
+#endif
+
     for (i = 0; i < cvector_size(colorMoves) && !validMove; i++) {
         if (is_move_equal(move, colorMoves[i])) {
             if (does_move_eat(board, move)) {
-                int eatenIndex = get_index_from_coordinates((move.from.c + move.to.c) / 2,
-                                                            (move.from.r + move.to.r) / 2);
+                int eatenIndex = get_index_from_coordinates((move.from.c + move.to.c) / 2, (move.from.r + move.to.r) / 2);
                 piece = board[get_index_from_pos(move.from)];
                 eatenPiece = board[eatenIndex];
-
-                /* Rimuovo il pezzo dalla board */
-                board[eatenIndex] = initialize_null_piece();
 
                 /* Aggiorno l'altezza */
                 piece.height += eatenPiece.height;
@@ -77,15 +74,24 @@ bool apply_move(Piece *board, Color colorToMove, Move move) {
                     /* Aggiorno i colori */
                     piece.color[piece.height - 1] = eatenPiece.color[0];
                 }
+
+                /* Modifico il pezzo nella board */
+                eatenPiece.height -= 1;
+                if (!eatenPiece.height) {
+                    board[eatenIndex] = initialize_null_piece();
+                } else {
+                    eatenPiece.color[eatenPiece.height] = UNDEFINED;
+                    board[eatenIndex] = eatenPiece;
+                }
+            } else {
+                board[get_index_from_pos(move.to)] = board[get_index_from_pos(move.from)];
+                board[get_index_from_pos(move.from)] = initialize_null_piece();
             }
 
-            board[get_index_from_pos(move.to)] = board[get_index_from_pos(move.from)];
-            board[get_index_from_pos(move.from)] = initialize_null_piece();
-
             /* Promuove il pezzo se opportuno */
-            if(piece.color[0] == WHITE && move.to.r == ROWS - 1) {
+            if (piece.color[0] == WHITE && move.to.r == ROWS - 1) {
                 piece.promoted = true;
-            } else if(piece.color[0] == BLACK && move.to.r == 0) {
+            } else if (piece.color[0] == BLACK && move.to.r == 0) {
                 piece.promoted = true;
             }
 
@@ -163,7 +169,7 @@ cvector_vector_type(Move) get_possible_moves_by_color(Piece *board, Color color)
     return eatMoves;
 }
 
-cvector_vector_type(Move) get_possible_moves_by_piece(Piece *board, Pos piecePos) {
+cvector_vector_type(Move) get_possible_moves_by_pieceD(Piece *board, Pos piecePos) {
     int i;
     Move move;
     cvector_vector_type(Move) moves = NULL;
@@ -203,6 +209,56 @@ cvector_vector_type(Move) get_possible_moves_by_piece(Piece *board, Pos piecePos
     }
     /* TODO add more tests Davide */
     return moves;
+}
+
+cvector_vector_type(Move) get_possible_moves_by_piece(Piece *board, Pos piecePos) {
+    int i;
+    cvector_vector_type(Move) allMoves = NULL;
+    Piece piece = board[get_index_from_pos(piecePos)];
+
+    if (*piece.color == BLACK || piece.promoted) {
+        for (i = -1; i < 2; i += 2) {
+            Pos newPos1 = initialize_pos(piecePos.c + i, piecePos.r - 1);
+            Piece newPiece1 = board[get_index_from_pos(newPos1)];
+
+            if (is_pos_valid(newPos1)) {
+                if (*newPiece1.color == UNDEFINED) {
+                    cvector_push_back(allMoves, initialize_move(piecePos, newPos1));
+                } else if (is_opposite_color(*piece.color, *newPiece1.color)) {
+                    newPos1.c += i;
+                    newPos1.r -= 1;
+                    if (board[get_index_from_pos(newPos1)].color[0] == UNDEFINED) {
+                        cvector_push_back(allMoves, initialize_move(piecePos, newPos1));
+                    }
+                }
+            }
+        }
+    }
+
+    if (*piece.color == WHITE || piece.promoted) {
+        for (i = -1; i < 2; i += 2) {
+            Pos newPos1 = initialize_pos(piecePos.c + i, piecePos.r + 1);
+            Piece newPiece1 = board[get_index_from_pos(newPos1)];
+
+            if (is_pos_valid(newPos1)) {
+                if (*newPiece1.color == UNDEFINED) {
+                    cvector_push_back(allMoves, initialize_move(piecePos, newPos1));
+                } else if (is_opposite_color(*piece.color, *newPiece1.color)) {
+                    newPos1.c += i;
+                    newPos1.r += 1;
+                    if (board[get_index_from_pos(newPos1)].color[0] == UNDEFINED) {
+                        cvector_push_back(allMoves, initialize_move(piecePos, newPos1));
+                    }
+                }
+            }
+        }
+    }
+
+#ifdef DEBUG
+    print_moves(allMoves);
+#endif
+
+    return allMoves;
 }
 
 cvector_vector_type(Pos) get_pieces_pos_by_color(Piece *board, Color color) {
