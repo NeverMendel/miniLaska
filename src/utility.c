@@ -22,7 +22,7 @@ bool is_piece_equal(Piece a, Piece b) {
     for (i = 0; i < MAX_HEIGHT; i++) {
         if (a.color[i] != b.color[i]) return false;
     }
-    return a.promoted == b.promoted && a.height == b.height;
+    return (a.promoted == b.promoted) && (a.height == b.height);
 }
 
 Pos initialize_pos(int c, int r) {

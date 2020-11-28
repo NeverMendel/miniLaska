@@ -45,7 +45,7 @@ Move best_move_minimax(Piece *board, int depth, Color colorToMove, GameSettings 
 bool apply_move(Piece *board, Color colorToMove, Move move) {
     /* Controlla se la mossa è valida, se è in quelle possibili per quel colore
        Sposta i pezzi e li modifica nel caso qualcuno abbia mangiato */
-    cvector_vector_type(Move)colorMoves = get_possible_moves_by_color(board, colorToMove);
+    cvector_vector_type(Move) colorMoves = get_possible_moves_by_color(board, colorToMove);
     int i;
     bool validMove = 0;
     Piece piece, eatenPiece;
@@ -57,13 +57,14 @@ bool apply_move(Piece *board, Color colorToMove, Move move) {
     for (i = 0; i < cvector_size(colorMoves) && !validMove; i++) {
         if (is_move_equal(move, colorMoves[i])) {
             if (does_move_eat(board, move)) {
-                int eatenIndex = get_index_from_coordinates((move.from.c + move.to.c) / 2,
-                                                            (move.from.r + move.to.r) / 2);
-                piece = board[get_index_from_pos(move.from)];
+                int eatenIndex = get_index_from_coordinates((move.from.c + move.to.c) / 2, (move.from.r + move.to.r) / 2);
+                int pieceIndex = get_index_from_pos(move.from);
+
+                piece = board[pieceIndex];
                 eatenPiece = board[eatenIndex];
 
                 /* Aggiorno l'altezza */
-                piece.height += eatenPiece.height;
+                piece.height += 1;
 
                 if (piece.height > MAX_HEIGHT) {
                     piece.height = MAX_HEIGHT;
@@ -82,10 +83,13 @@ bool apply_move(Piece *board, Color colorToMove, Move move) {
                     eatenPiece.color[eatenPiece.height] = UNDEFINED;
                     board[eatenIndex] = eatenPiece;
                 }
+
+                board[get_index_from_pos(move.to)] = piece;
             } else {
                 board[get_index_from_pos(move.to)] = board[get_index_from_pos(move.from)];
-                board[get_index_from_pos(move.from)] = initialize_null_piece();
             }
+
+            board[get_index_from_pos(move.from)] = initialize_null_piece();
 
             /* Promuove il pezzo se opportuno */
             if (piece.color[0] == WHITE && move.to.r == ROWS - 1) {

@@ -7,21 +7,22 @@ void test_apply_move_eat() {
     Piece expectedPiece, actualPiece;
     bool expected, actual;
 
-    piecePos1 = initialize_pos(2,2);
-    piecePos2 = initialize_pos(3,3);
+    piecePos1 = initialize_pos(2, 2);
+    piecePos2 = initialize_pos(3, 3);
 
     board[get_index_from_pos(piecePos1)] = initialize_piece(WHITE, UNDEFINED, UNDEFINED, false, 1);
     board[get_index_from_pos(piecePos2)] = initialize_piece(BLACK, UNDEFINED, UNDEFINED, false, 1);
 
-    newPos1 = initialize_pos(4,4);
+    newPos1 = initialize_pos(4, 4);
     move = initialize_move(piecePos1, newPos1);
 
     expected = true;
     actual = apply_move(board, WHITE, move);
     assert(actual == expected);
 
-    expectedPiece = initialize_piece(WHITE, BLACK, UNDEFINED, false, 1);
+    expectedPiece = initialize_piece(WHITE, BLACK, UNDEFINED, false, 2);
     actualPiece = board[get_index_from_pos(newPos1)];
+
     assert(is_piece_equal(expectedPiece, actualPiece));
 
     assert(is_piece_null(board[get_index_from_pos(piecePos1)]) == true);
@@ -67,7 +68,7 @@ void test_apply_move_liberate_prisoner() {
 
     actualPiece = board[get_index_from_pos(newPos1)];
     expectedPiece = initialize_piece(WHITE, BLACK, UNDEFINED, false, 2);
-    
+
     assert(is_piece_equal(expectedPiece, actualPiece));
 }
 
