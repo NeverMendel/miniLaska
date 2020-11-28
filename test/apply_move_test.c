@@ -1,4 +1,5 @@
 #include "../src/logic.h"
+#include "../src/terminal.h"
 
 void test_apply_move_eat() {
     Piece *board = calloc(BOARD_SIZE, sizeof(Piece));
@@ -66,9 +67,8 @@ void test_apply_move_liberate_prisoner() {
 
     assert(expected == actual);
 
-    actualPiece = board[get_index_from_pos(newPos1)];
-    expectedPiece = initialize_piece(WHITE, BLACK, UNDEFINED, false, 2);
-
+    actualPiece = board[get_index_from_pos(newPos3)];
+    expectedPiece = initialize_piece(WHITE, WHITE, UNDEFINED, false, 2);
     assert(is_piece_equal(expectedPiece, actualPiece));
 }
 

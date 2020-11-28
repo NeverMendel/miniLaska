@@ -46,7 +46,7 @@ bool apply_move(Piece *board, Color colorToMove, Move move) {
     /* Controlla se la mossa è valida, se è in quelle possibili per quel colore
        Sposta i pezzi e li modifica nel caso qualcuno abbia mangiato */
     cvector_vector_type(Move) colorMoves = get_possible_moves_by_color(board, colorToMove);
-    int i;
+    int i, j;
     bool validMove = 0;
     Piece piece, eatenPiece;
 
@@ -80,6 +80,9 @@ bool apply_move(Piece *board, Color colorToMove, Move move) {
                 if (!eatenPiece.height) {
                     board[eatenIndex] = initialize_null_piece();
                 } else {
+                    for (j = 0; j < eatenPiece.height - 1; j++) {
+                        eatenPiece.color[j] = eatenPiece.color[j + 1];
+                    }
                     eatenPiece.color[eatenPiece.height] = UNDEFINED;
                     board[eatenIndex] = eatenPiece;
                 }
