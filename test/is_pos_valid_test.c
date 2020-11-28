@@ -42,4 +42,6 @@ int main() {
     test_is_pos_valid_out_of_bound();
     test_is_pos_valid_not_used_cell1();
     test_is_pos_valid_not_used_cell2();
+
+    return 0;
 }

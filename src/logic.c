@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 int get_index_from_coordinates(int c, int r) {
-    return r * COLUMNS + c;
+    return (r * 4 - r / 2) + c / 2;
 }
 
 int get_index_from_pos(Pos pos) {
@@ -16,8 +16,6 @@ void initialize_board(Piece *board) {
             if (is_pos_valid(initialize_pos(c, r)) && (r <= 2 || r >= 4)) {
                 board[get_index_from_coordinates(c, r)] = initialize_piece(r <= 2 ? WHITE : BLACK, UNDEFINED, UNDEFINED,
                                                                            false, 1);
-            } else {
-                board[get_index_from_coordinates(c, r)] = initialize_null_piece();
             }
         }
     }

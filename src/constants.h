@@ -3,7 +3,7 @@
 
 #define ROWS 7
 #define COLUMNS 7
-#define BOARD_SIZE ROWS*COLUMNS
+#define BOARD_SIZE 25
 #define MAX_HEIGHT 3
 #define MAX_PIECES_PER_COLOR 11
 

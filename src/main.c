@@ -6,7 +6,7 @@
 #include "logic.h"
 
 int main() {
-    Piece *board = calloc(ROWS * COLUMNS, sizeof(Piece));
+    Piece *board = calloc(BOARD_SIZE, sizeof(Piece));
     GameState state;
     Color colorToMove;
     GameSettings settings;
