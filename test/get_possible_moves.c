@@ -35,7 +35,7 @@ void test_get_possible_moves_by_piece2() {
     piecePos2 = initialize_pos(1, 1);
     board[get_index_from_pos(piecePos2)] = initialize_piece(BLACK, UNDEFINED, UNDEFINED, false, 1);
 
-    move1 = initialize_move(initialize_pos(0, 0), initialize_pos(2, 2));
+    move1 = initialize_move(piecePos1, initialize_pos(2, 2));
 
     cvector_push_back(expected, move1);
     actual = get_possible_moves_by_piece(board, piecePos1);

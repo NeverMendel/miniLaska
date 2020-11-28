@@ -90,7 +90,7 @@ cvector_vector_type(Move) get_possible_moves_by_color(Piece *board, Color color)
  * @param piecePos, posizione del pezzo di cui calcolare le mosse possibili
  * @return Move*, array di mosse che il pezzo può eseguire
  */
-cvector_vector_type(Move) get_possible_moves_by_pieceD(Piece *board, Pos piecePos);
+cvector_vector_type(Move) get_possible_moves_by_piece(Piece *board, Pos piecePos);
 
 /**
  * Restituisce un array con tutte le posizioni delle pedine di un determinato colore
@@ -100,5 +100,4 @@ cvector_vector_type(Move) get_possible_moves_by_pieceD(Piece *board, Pos piecePo
  */
 cvector_vector_type(Pos) get_pieces_pos_by_color(Piece *board, Color color);
 
-cvector_vector_type(Move) get_possible_moves_by_piece(Piece *board, Pos piecePos);
 #endif
