@@ -25,6 +25,9 @@ int main() {
     settings = read_game_settings();
 
     while (state == PLAYING) {
+#ifndef DEBUG
+        system("cls");
+#endif
         display_board(board);
 
         if (colorToMove == WHITE) currentPlayer = settings.white;

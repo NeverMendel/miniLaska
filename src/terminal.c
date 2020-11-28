@@ -3,32 +3,47 @@
 #include <stdio.h>
 
 void display_board(Piece *board) {
-    int c, r;
+    int c, r, i, height, currentChar;
     Piece piece;
     for (r = ROWS - 1; r >= 0; r--) {
-        printf("%d | ", r);
-        for (c = 0; c < COLUMNS; c++) {
+        for(height = 2; height >= 0; height--){
+            if (height == 1)
+                printf("%d | ", r + 1);
+            else
+                printf("  | ");
+        for (c = 0; c < COLUMNS ; c++) {
             if (is_pos_valid(initialize_pos(c, r))) {
                 piece = board[get_index_from_coordinates(c, r)];
-                switch (piece.color[0]) {
-                    case WHITE:
-                        printf("%c ", 'w' + (piece.promoted ? -32 : 0));
-                        break;
-                    case BLACK:
-                        printf("%c ", 'b' + (piece.promoted ? -32 : 0));
-                        break;
-                    case UNDEFINED:
-                        printf("  ");
-                        break;
+                for (i = 0; i < 3; i++) {
+                    switch (piece.color[height]) {
+                        case WHITE:
+                            printf("%c", 'w' + (piece.promoted ? -32 : 0));
+                            break;
+                        case BLACK:
+                            printf("%c", 'b' + (piece.promoted ? -32 : 0));
+                            break;
+                        case UNDEFINED:
+                            printf(" ");
+                            break;
+                    }
                 }
             } else {
-                printf("  ");
+                for (i = 0; i < 3; i++)
+                    printf("*");
             }
+            printf(" ");
         }
-        printf("\n");
+            printf("\n");
+        }
     }
-    printf("    -------------\n");
-    printf("    a b c d e f g\n");
+    printf("   ");
+    for(i = 0; i < 28; i++)
+        printf("-");
+    printf("\n");
+    printf("  ");
+    for(currentChar = 'a'; currentChar <= 'g'; currentChar++)
+        printf("   %c", currentChar);
+    printf("\n");
 }
 
 GameSettings read_game_settings() {
