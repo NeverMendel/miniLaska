@@ -15,17 +15,13 @@ void display_board(Piece *board) {
             if (is_pos_valid(initialize_pos(c, r))) {
                 piece = board[get_index_from_coordinates(c, r)];
                 for (i = 0; i < 3; i++) {
-                    switch (piece.color[height]) {
-                        case WHITE:
-                            printf("%c", 'w' + (piece.promoted ? -32 : 0));
-                            break;
-                        case BLACK:
-                            printf("%c", 'b' + (piece.promoted ? -32 : 0));
-                            break;
-                        case UNDEFINED:
-                            printf(" ");
-                            break;
-                    }
+                    int diff = piece.height - height - 1;
+                    if(diff < 0)
+                        printf(" ");
+                    else if(piece.color[diff] == WHITE)
+                        printf("%c", 'w' + (piece.promoted ? -32 : 0));
+                    else
+                        printf("%c", 'b' + (piece.promoted ? -32 : 0));
                 }
             } else {
                 for (i = 0; i < 3; i++)
