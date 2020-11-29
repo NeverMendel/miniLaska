@@ -7,7 +7,7 @@
 #define MAX_HEIGHT 3
 #define MAX_PIECES_PER_COLOR 11
 
-#define DEBUG
+/* #define DEBUG */
 
 #if defined(__linux__) || defined(__unix__) || defined(__APPLE__)
 #define clearConsole() system("clear");

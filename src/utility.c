@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 #include "utility.h"
 
 bool is_piece_null(Piece piece) {
@@ -51,6 +52,20 @@ Piece initialize_piece(Color color0, Color color1, Color color2, bool promoted, 
 
 Piece initialize_null_piece() {
     return initialize_piece(UNDEFINED, UNDEFINED, UNDEFINED, false, 0);
+}
+
+Color get_opposite_color(Color color) {
+    return color == WHITE ? BLACK : WHITE;
+}
+
+Piece *clone_board(Piece *board) {
+    Piece *newBoard = malloc(BOARD_SIZE * sizeof(Piece));
+    if (newBoard == NULL) {
+        printf("Error allocating the board in the memory");
+        exit(EXIT_FAILURE);
+    }
+    memcpy(newBoard, board, BOARD_SIZE * sizeof(Piece));
+    return newBoard;
 }
 
 void print_moves(cvector_vector_type(Move) moves) {

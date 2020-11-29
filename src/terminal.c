@@ -6,38 +6,38 @@ void display_board(Piece *board) {
     int c, r, i, height, currentChar;
     Piece piece;
     for (r = ROWS - 1; r >= 0; r--) {
-        for(height = 2; height >= 0; height--){
+        for (height = 2; height >= 0; height--) {
             if (height == 1)
                 printf("%d | ", r + 1);
             else
                 printf("  | ");
-        for (c = 0; c < COLUMNS ; c++) {
-            if (is_pos_valid(initialize_pos(c, r))) {
-                piece = board[get_index_from_coordinates(c, r)];
-                for (i = 0; i < 3; i++) {
-                    int diff = piece.height - height - 1;
-                    if(diff < 0)
-                        printf(" ");
-                    else if(piece.color[diff] == WHITE)
-                        printf("%c", 'w' + (piece.promoted ? -32 : 0));
-                    else
-                        printf("%c", 'b' + (piece.promoted ? -32 : 0));
+            for (c = 0; c < COLUMNS; c++) {
+                if (is_pos_valid(initialize_pos(c, r))) {
+                    piece = board[get_index_from_coordinates(c, r)];
+                    for (i = 0; i < 3; i++) {
+                        int diff = piece.height - height - 1;
+                        if (diff < 0)
+                            printf(" ");
+                        else if (piece.color[diff] == WHITE)
+                            printf("%c", 'w' + (piece.promoted ? -32 : 0));
+                        else
+                            printf("%c", 'b' + (piece.promoted ? -32 : 0));
+                    }
+                } else {
+                    for (i = 0; i < 3; i++)
+                        printf("*");
                 }
-            } else {
-                for (i = 0; i < 3; i++)
-                    printf("*");
+                printf(" ");
             }
-            printf(" ");
-        }
             printf("\n");
         }
     }
     printf("   ");
-    for(i = 0; i < 28; i++)
+    for (i = 0; i < 28; i++)
         printf("-");
     printf("\n");
     printf("  ");
-    for(currentChar = 'a'; currentChar <= 'g'; currentChar++)
+    for (currentChar = 'a'; currentChar <= 'g'; currentChar++)
         printf("   %c", currentChar);
     printf("\n");
 }
@@ -49,32 +49,32 @@ GameSettings read_game_settings() {
     /* white */
     while (input != 'h' && input != 'c') {
         printf("Select the type of the white player (human or computer) by typing h or c\n");
-        if(scanf(" %c", &input) != 1) printf("scanf error while reading character");
+        if (scanf(" %c", &input) != 1) printf("scanf error while reading character");
     }
-    if (input == 'h') settings.white = HUMAN;
+    if (input == 'h') settings.white.type = HUMAN;
     else {
-        settings.white = COMPUTER;
+        settings.white.type = COMPUTER;
         while (input < '1' || input > '3') {
             printf("Select the level of the computer playing with white \n  1 - Easy\n  2 - Medium\n  3 - Hard\n");
-            if(scanf(" %c", &input) != 1) printf("scanf error while reading character");
+            if (scanf(" %c", &input) != 1) printf("scanf error while reading character");
         }
-        settings.whiteLevel = input - '1';
+        settings.white.level = input - '1';
     }
 
     input = 0;
     /* black */
     while (input != 'h' && input != 'c') {
         printf("Select the type of the black player (human or computer) by typing h or c\n");
-        if(scanf(" %c", &input) != 1) printf("scanf error while reading character");
+        if (scanf(" %c", &input) != 1) printf("scanf error while reading character");
     }
-    if (input == 'h') settings.black = HUMAN;
+    if (input == 'h') settings.black.type = HUMAN;
     else {
-        settings.black = COMPUTER;
+        settings.black.type = COMPUTER;
         while (input < '1' || input > '3') {
             printf("Select the level of the computer playing with black \n  1 - Easy\n  2 - Medium\n  3 - Hard\n");
-            if(scanf(" %c", &input) != 1) printf("scanf error while reading character");
+            if (scanf(" %c", &input) != 1) printf("scanf error while reading character");
         }
-        settings.blackLevel = input - '1';
+        settings.black.level = input - '1';
     }
     return settings;
 }
@@ -102,7 +102,7 @@ Move read_player_move(Piece *board, Color color) {
 
     while (input < 1 || input > cvector_size(possible_moves)) {
         printf("Type the number of the selected move:\n");
-        if(scanf(" %d", &input) != 1) printf("scanf error while reading digit");
+        if (scanf(" %d", &input) != 1) printf("scanf error while reading digit");
     }
 
     return possible_moves[input - 1];

@@ -57,13 +57,19 @@ typedef enum {
 } ComputerLevel;
 
 /**
+ * Rappresenta un giocatore
+ */
+typedef struct {
+    PlayerType type;
+    ComputerLevel level;
+} Player;
+
+/**
  * Impostazioni del gioco, determina chi gioca
  */
 typedef struct {
-    PlayerType white;
-    ComputerLevel whiteLevel;
-    PlayerType black;
-    ComputerLevel blackLevel;
+    Player white;
+    Player black;
 } GameSettings;
 
 /**
@@ -122,6 +128,10 @@ Move initialize_move(Pos from, Pos to);
 Piece initialize_piece(Color color0, Color color1, Color color2, bool promoted, int height);
 
 Piece initialize_null_piece();
+
+Color get_opposite_color(Color color);
+
+Piece *clone_board(Piece *board);
 
 void print_moves(cvector_vector_type(Move) moves);
 

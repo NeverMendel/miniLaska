@@ -37,12 +37,11 @@ GameState compute_state(Piece *board, Color colorToMove);
 /**
  * Calcola la mossa migliore utilizzando l'algoritmo mini-max
  * @param board, scacchiara su cui calcolare la mossa
- * @param depth, profondità del calcolo della mossa
  * @param colorToMove, colore del giocatore che deve muovere
- * @param settings, impostazioni del gioco con la difficoltà del computer
+ * @param depth, profondità del calcolo della mossa
  * @return Move, mossa migliore che può venire giocata
  */
-Move best_move_minimax(Piece *board, int depth, Color colorToMove, GameSettings settings);
+Move best_move_minimax(Piece *board, Color colorToMove, int depth);
 
 /**
  * Applica la mossa sulla scacchiera se la mossa è valida

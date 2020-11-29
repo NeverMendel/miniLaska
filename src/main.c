@@ -11,7 +11,7 @@ int main() {
     Color colorToMove;
     GameSettings settings;
     Move currentMove;
-    PlayerType currentPlayer;
+    Player currentPlayer;
 
     if (board == NULL) {
         printf("Error allocating the board in the memory");
@@ -33,12 +33,19 @@ int main() {
         if (colorToMove == WHITE) currentPlayer = settings.white;
         else currentPlayer = settings.black;
 
-        if (currentPlayer == HUMAN) currentMove = read_player_move(board, colorToMove);
-        else currentMove = best_move_minimax(board, 4, colorToMove, settings);
+        if (currentPlayer.type == HUMAN) currentMove = read_player_move(board, colorToMove);
+        else {
+            int depth;
+            if (currentPlayer.level == EASY) depth = 2;
+            else if (currentPlayer.level == MEDIUM) depth = 5;
+            else depth = 7;
+
+            currentMove = best_move_minimax(board, colorToMove, depth);
+        }
 
         apply_move(board, colorToMove, currentMove);
 
-        colorToMove = (colorToMove == WHITE ? BLACK : WHITE);
+        colorToMove = get_opposite_color(colorToMove);
         state = compute_state(board, colorToMove);
     }
 
