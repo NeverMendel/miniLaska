@@ -86,6 +86,7 @@ Move read_player_move(Piece *board, Color color) {
              etc... */
     int i, input = -1;
     cvector_vector_type(Move) possible_moves = get_possible_moves_by_color(board, color);
+    Move move;
 
     if (color == BLACK) {
         printf("Black turn\n");
@@ -105,7 +106,9 @@ Move read_player_move(Piece *board, Color color) {
         if (scanf(" %d", &input) != 1) printf("scanf error while reading digit");
     }
 
-    return possible_moves[input - 1];
+    move = possible_moves[input - 1];
+    cvector_free(possible_moves);
+    return move;
 }
 
 void display_winner(GameState state) {

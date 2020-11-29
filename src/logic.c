@@ -29,18 +29,27 @@ void initialize_board(Piece *board) {
 }
 
 GameState compute_state(Piece *board, Color colorToMove) {
+    cvector_vector_type(Move) moves = get_possible_moves_by_color(board, colorToMove);
+    cvector_vector_type(Pos) whitePiecesPos;
+    cvector_vector_type(Pos) blackPiecesPos;
+    GameState state = PLAYING;
     /* Se il giocatore che deve muovere non ha nessuna mossa a disposizione ha perso */
-    if (cvector_empty(get_possible_moves_by_color(board, colorToMove))) {
-        if (colorToMove == WHITE) return BLACK_WIN;
-        else return WHITE_WIN;
+    if (cvector_empty(moves)) {
+        if (colorToMove == WHITE) state = BLACK_WIN;
+        else state = WHITE_WIN;
+        cvector_free(moves);
+        return state;
     }
     /* Se un giocatore finisce i pezzi ha perso */
-    if (cvector_empty(get_pieces_pos_by_color(board, WHITE)))
-        return BLACK_WIN;
-    if (cvector_empty(get_pieces_pos_by_color(board, BLACK)))
-        return WHITE_WIN;
-    /* Altrimenti il gioco continua */
-    return PLAYING;
+    whitePiecesPos = get_pieces_pos_by_color(board, WHITE);
+    if (cvector_empty(whitePiecesPos))
+        state = BLACK_WIN;
+    cvector_free(whitePiecesPos);
+    blackPiecesPos = get_pieces_pos_by_color(board, BLACK);
+    if (cvector_empty(blackPiecesPos))
+        state = WHITE_WIN;
+    cvector_free(blackPiecesPos);
+    return state;
 }
 
 /* For internal use only */
