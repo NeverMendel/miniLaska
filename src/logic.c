@@ -216,7 +216,8 @@ cvector_vector_type(Move)get_possible_moves_by_piece(Piece *board, Pos piecePos)
             Pos newPos = initialize_pos(piecePos.c + i, piecePos.r - 1);
             if (is_pos_valid(newPos)) {
                 /* Se nella nuova cella c'è un avversario, controlla se lo può mangiare */
-                if (board[get_index_from_pos(piecePos)].color[0] != board[get_index_from_pos(newPos)].color[0]) {
+                if (is_opposite_color(board[get_index_from_pos(piecePos)].color[0],
+                                      board[get_index_from_pos(newPos)].color[0])) {
                     newPos = initialize_pos(piecePos.c + (i * 2), piecePos.r - 2);
                 }
                 move = initialize_move(piecePos, newPos);
@@ -226,7 +227,6 @@ cvector_vector_type(Move)get_possible_moves_by_piece(Piece *board, Pos piecePos)
             }
         }
     }
-    /* TODO add more tests Davide */
     return moves;
 }
 

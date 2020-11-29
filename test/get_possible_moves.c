@@ -86,6 +86,24 @@ void test_get_possible_moves_by_piece4() {
     assert(is_move_equal(expected[0], actual[0]));
 }
 
+void test_get_possible_moves_by_piece_black_move() {
+    Piece *board = calloc(BOARD_SIZE, sizeof(Piece));
+    Pos piecePos;
+    cvector_vector_type(Move) expected = NULL;
+    cvector_vector_type(Move) actual = NULL;
+
+    piecePos = initialize_pos(4, 4);
+    board[get_index_from_pos(piecePos)] = initialize_piece(BLACK, UNDEFINED, UNDEFINED, false, 1);
+
+    cvector_push_back(expected, initialize_move(piecePos, initialize_pos(3, 3)));
+    cvector_push_back(expected, initialize_move(piecePos, initialize_pos(5, 3)));
+    actual = get_possible_moves_by_piece(board, piecePos);
+
+    assert((int) cvector_size(actual) == 2);
+    assert(is_move_equal(expected[0], actual[0]));
+    assert(is_move_equal(expected[1], actual[1]));
+}
+
 void test_get_possible_moves_by_color1() {
     /* http://www.lasca.org/pictures/nx/2i.gif */
     Piece *board = calloc(BOARD_SIZE, sizeof(Piece));
@@ -114,6 +132,7 @@ int main(int argc, char *argv[]) {
     test_get_possible_moves_by_piece2();
     test_get_possible_moves_by_piece3();
     test_get_possible_moves_by_piece4();
+    test_get_possible_moves_by_piece_black_move();
     test_get_possible_moves_by_color1();
 
     return 0;
