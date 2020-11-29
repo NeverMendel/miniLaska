@@ -53,14 +53,14 @@ GameSettings read_game_settings() {
     /* white */
     while (input != 'h' && input != 'c') {
         printf("Select the type of the white player (human or computer) by typing h or c\n");
-        scanf(" %c", &input);
+        if(scanf(" %c", &input) != 1) printf("scanf error while reading character");
     }
     if (input == 'h') settings.white = HUMAN;
     else {
         settings.white = COMPUTER;
         while (input < '1' || input > '3') {
             printf("Select the level of the computer playing with white \n  1 - Easy\n  2 - Medium\n  3 - Hard\n");
-            scanf(" %c", &input);
+            if(scanf(" %c", &input) != 1) printf("scanf error while reading character");
         }
         settings.whiteLevel = input - '1';
     }
@@ -69,14 +69,14 @@ GameSettings read_game_settings() {
     /* black */
     while (input != 'h' && input != 'c') {
         printf("Select the type of the black player (human or computer) by typing h or c\n");
-        scanf(" %c", &input);
+        if(scanf(" %c", &input) != 1) printf("scanf error while reading character");
     }
     if (input == 'h') settings.black = HUMAN;
     else {
         settings.black = COMPUTER;
         while (input < '1' || input > '3') {
             printf("Select the level of the computer playing with black \n  1 - Easy\n  2 - Medium\n  3 - Hard\n");
-            scanf(" %c", &input);
+            if(scanf(" %c", &input) != 1) printf("scanf error while reading character");
         }
         settings.blackLevel = input - '1';
     }
@@ -106,7 +106,7 @@ Move read_player_move(Piece *board, Color color) {
 
     while (input < 1 || input > cvector_size(possible_moves)) {
         printf("Type the number of the selected move:\n");
-        scanf(" %d", &input);
+        if(scanf(" %d", &input) != 1) printf("scanf error while reading digit");
     }
 
     return possible_moves[input - 1];
