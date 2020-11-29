@@ -174,7 +174,7 @@ bool apply_move(Piece *board, Color colorToMove, Move move) {
         if (eatenPiece.height == 0) {
             board[eatenIndex] = initialize_null_piece();
         } else {
-            for (i = 0; i < eatenPiece.height - 1; i++) {
+            for (i = 0; i < eatenPiece.height; i++) {
                 eatenPiece.color[i] = eatenPiece.color[i + 1];
             }
             eatenPiece.color[eatenPiece.height] = UNDEFINED;
