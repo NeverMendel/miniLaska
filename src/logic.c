@@ -138,8 +138,8 @@ bool does_move_eat(Piece *board, Move move) {
     int dx = abs(move.from.c - move.to.c);
     int dy = abs(move.from.r - move.to.r);
 
-    int movedPieceOwnLevels = 1;
-    int middlePieceOwnLevels = 1;
+    int movedPieceOwnColors = 1;
+    int middlePieceOwnColors = 1;
 
     int i;
 
@@ -150,17 +150,17 @@ bool does_move_eat(Piece *board, Move move) {
 
     for (i = 1; i < 3; i++) {
         if (movedPiece.color[0] == movedPiece.color[i]) {
-            movedPieceOwnLevels++;
+            movedPieceOwnColors++;
         }
     }
 
     for (i = 1; i < 3; i++) {
         if (middlePiece.color[0] == middlePiece.color[i]) {
-            middlePieceOwnLevels++;
+            middlePieceOwnColors++;
         }
     }
 
-    return movedPieceOwnLevels >= middlePieceOwnLevels;
+    return movedPieceOwnColors >= middlePieceOwnColors;
 }
 
 cvector_vector_type(Move)get_possible_moves_by_color(Piece *board, Color color) {
