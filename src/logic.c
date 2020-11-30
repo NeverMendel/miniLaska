@@ -34,10 +34,11 @@ GameState compute_state(Piece *board, Color colorToMove) {
     cvector_vector_type(Pos) blackPiecesPos;
     GameState state = PLAYING;
     /* Se il giocatore che deve muovere non ha nessuna mossa a disposizione ha perso */
-    if (cvector_empty(moves)) {
+    bool noValidMove = cvector_empty(moves);
+    cvector_free(moves);
+    if (noValidMove) {
         if (colorToMove == WHITE) state = BLACK_WIN;
         else state = WHITE_WIN;
-        cvector_free(moves);
         return state;
     }
     /* Se un giocatore finisce i pezzi ha perso */
