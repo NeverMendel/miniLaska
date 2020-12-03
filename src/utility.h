@@ -8,10 +8,18 @@
  * Rappresenta il colore di un giocatore
  */
 typedef enum {
-    UNDEFINED,
-    WHITE,
-    BLACK
+    UNDEFINED = 0,
+    WHITE = 1,
+    BLACK = 2
 } Color;
+
+/**
+ * Rappresenta il tipo di giocatore, umano o computer
+ */
+typedef enum {
+    HUMAN = 0,
+    COMPUTER = 1
+} PlayerType;
 
 /**
  * Rappresenta un pezzo sulla scacchiera
@@ -22,6 +30,25 @@ typedef struct {
     bool promoted;
     int height;
 } Piece;
+
+/**
+ * Stato del gioco
+ */
+typedef enum {
+    PLAYING = 0,
+    DRAW = 1,
+    WHITE_WIN = 2,
+    BLACK_WIN = 3
+} GameState;
+
+/**
+ * Difficoltà del giocatore Computer
+ */
+typedef enum {
+    EASY = 0,
+    MEDIUM = 1,
+    HARD = 2
+} ComputerLevel;
 
 /**
  * Rappresenta una posizione nella scacchiera
@@ -40,23 +67,6 @@ typedef struct {
 } Move;
 
 /**
- * Rappresenta il tipo di giocatore, umano o computer
- */
-typedef enum {
-    HUMAN,
-    COMPUTER
-} PlayerType;
-
-/**
- * Difficoltà del giocatore Computer
- */
-typedef enum {
-    EASY,
-    MEDIUM,
-    HARD
-} ComputerLevel;
-
-/**
  * Rappresenta un giocatore
  */
 typedef struct {
@@ -70,17 +80,8 @@ typedef struct {
 typedef struct {
     Player white;
     Player black;
+    bool helpAllowed;
 } GameSettings;
-
-/**
- * Stato del gioco
- */
-typedef enum {
-    PLAYING,
-    DRAW,
-    WHITE_WIN,
-    BLACK_WIN
-} GameState;
 
 /**
  * Controlla se un pezzo è nullo, ovvero se non c'è nessun pezzo
@@ -121,16 +122,36 @@ bool is_opposite_color(Color a, Color b);
  */
 bool is_piece_equal(Piece a, Piece b);
 
+/**
+ * Inizializza una struct Pos con la colonna e riga
+ * @param c, colonna
+ * @param r, riga
+ * @return Pos, struct Pos inizializzata
+ */
 Pos initialize_pos(int c, int r);
 
 Move initialize_move(Pos from, Pos to);
 
 Piece initialize_piece(Color color0, Color color1, Color color2, bool promoted, int height);
 
+/**
+ * Inizializza un Piece vuoto
+ * @return Piece,
+ */
 Piece initialize_null_piece();
 
+/**
+ * Dato un colore di un giocatore restituisce l'opposto
+ * @param color, colore del quale si vuole l'opposto
+ * @return Color, colore opposto
+ */
 Color get_opposite_color(Color color);
 
+/**
+ * Esegue una deep-copy della scacchiera
+ * @param board, scacchiera da copiare
+ * @return Piece*, copia della scacchiera
+ */
 Piece *clone_board(Piece *board);
 
 void print_moves(cvector_vector_type(Move) moves);
