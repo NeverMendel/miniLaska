@@ -22,10 +22,11 @@ void display_board(Piece *board) {
                             printf("%c", 'w' + (piece.promoted ? -32 : 0));
                         else
                             printf("%c", 'b' + (piece.promoted ? -32 : 0));
+                        if(i != 2) printf(" ");
                     }
                 } else {
-                    for (i = 0; i < 3; i++)
-                        printf("*");
+                    for (i = 0; i < 5; i++)
+                        printf("#");
                 }
                 printf(" ");
             }
@@ -33,12 +34,12 @@ void display_board(Piece *board) {
         }
     }
     printf("   ");
-    for (i = 0; i < 28; i++)
+    for (i = 0; i < 42; i++)
         printf("-");
     printf("\n");
-    printf("  ");
+    printf(" ");
     for (currentChar = 'a'; currentChar <= 'g'; currentChar++)
-        printf("   %c", currentChar);
+        printf("     %c", currentChar);
     printf("\n");
 }
 
@@ -48,8 +49,8 @@ GameSettings read_game_settings() {
 
     /* white */
     while (input != 'h' && input != 'c') {
-        printf("Select the type of the white player (human or computer) by typing h or c\n");
-        if (scanf(" %c", &input) != 1) printf("scanf error while reading character");
+        printf("Select the type of the white player (human or computer) by typing h or c: ");
+        if (scanf("%c", &input) != 1) printf("scanf error while reading character");
     }
     if (input == 'h') settings.white.type = HUMAN;
     else {
@@ -64,7 +65,7 @@ GameSettings read_game_settings() {
     input = 0;
     /* black */
     while (input != 'h' && input != 'c') {
-        printf("Select the type of the black player (human or computer) by typing h or c\n");
+        printf("Select the type of the black player (human or computer) by typing h or c: ");
         if (scanf(" %c", &input) != 1) printf("scanf error while reading character");
     }
     if (input == 'h') settings.black.type = HUMAN;
@@ -102,7 +103,7 @@ Move read_player_move(Piece *board, Color color) {
     }
 
     while (input < 1 || input > cvector_size(possible_moves)) {
-        printf("Type the number of the selected move:\n");
+        printf("Type the number of the selected move: ");
         if (scanf(" %d", &input) != 1) printf("scanf error while reading digit");
     }
 
