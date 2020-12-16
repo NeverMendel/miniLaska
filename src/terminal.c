@@ -22,7 +22,7 @@ void display_board(Piece *board) {
                             printf("%c", 'w' + (piece.promoted ? -32 : 0));
                         else
                             printf("%c", 'b' + (piece.promoted ? -32 : 0));
-                        if(i != 2) printf(" ");
+                        if (i != 2) printf(" ");
                     }
                 } else {
                     for (i = 0; i < 5; i++)
@@ -50,7 +50,7 @@ GameSettings read_game_settings() {
     /* white */
     while (input != 'h' && input != 'c') {
         printf("Select the type of the white player (human or computer) by typing h or c: ");
-        if (scanf("%c", &input) != 1) printf("scanf error while reading character");
+        if (scanf(" %c", &input) != 1) printf("scanf error while reading character");
     }
     if (input == 'h') settings.white.type = HUMAN;
     else {
@@ -77,10 +77,22 @@ GameSettings read_game_settings() {
         }
         settings.black.level = input - '1';
     }
+
+    /* Chiede all'utente se abilitare gli aiuti */
+    settings.helpAllowed = false;
+    if (settings.white.type == HUMAN || settings.black.type == HUMAN) {
+        while (input != 'Y' && input != 'y' && input != 'N' && input != 'n') {
+            printf("Allow hints [Y/N]: ");
+            if (scanf(" %c", &input) != 1) printf("scanf error while reading character");
+        }
+        if (input == 'Y' || input == 'y')
+            settings.helpAllowed = true;
+    }
+
     return settings;
 }
 
-Move read_player_move(Piece *board, Color color) {
+Move read_player_move(Piece *board, Color color, GameSettings settings) {
     /* Visualizza tutte le mosse che il giocatore può giocare e fa selezionare all'utente una di quelle
          Es: 1 - a3-b4
              2 - c3-b4
@@ -97,6 +109,10 @@ Move read_player_move(Piece *board, Color color) {
 
     printf("Possible moves:\n");
 
+    if (settings.helpAllowed) {
+        printf("0 - Hint\n");
+    }
+
     for (i = 0; i < cvector_size(possible_moves); i++) {
         printf("%d - %c%d-%c%d\n", i + 1, possible_moves[i].from.c + 'a', possible_moves[i].from.r + 1,
                possible_moves[i].to.c + 'a', possible_moves[i].to.r + 1);
@@ -105,6 +121,11 @@ Move read_player_move(Piece *board, Color color) {
     while (input < 1 || input > cvector_size(possible_moves)) {
         printf("Type the number of the selected move: ");
         if (scanf(" %d", &input) != 1) printf("scanf error while reading digit");
+        if (input == 0) {
+            Move bestMove = best_move_minimax(board, color, 8);
+            printf("Best move: %c%d-%c%d\n", bestMove.from.c + 'a', bestMove.from.r + 1, bestMove.to.c + 'a',
+                   bestMove.to.r + 1);
+        }
     }
 
     move = possible_moves[input - 1];
@@ -127,4 +148,12 @@ void display_winner(GameState state) {
             printf("Invalid state");
             break;
     };
+    printf("\n");
+}
+
+bool does_user_want_new_game() {
+    char input;
+    printf("The game has ended. Do you want to play another match? [y/N]");
+    if (scanf(" %c", &input) != 1) printf("scanf error while reading character");
+    return input == 'y' || input == 'Y';
 }

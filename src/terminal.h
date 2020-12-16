@@ -20,14 +20,21 @@ GameSettings read_game_settings();
  * Legge la mossa dell'utente da terminale
  * @param board, scacchiera sulla quale deve venire effettuata la mossa
  * @param color, colore del giocatore che deve effettuare la mossa
+ * @param settings, impostazioni del gioco
  * @return Mossa inserita dall'utente
  */
-Move read_player_move(Piece *board, Color color);
+Move read_player_move(Piece *board, Color color, GameSettings settings);
 
 /**
  * Stampa il vincitore sul terminale
  * @param state, stato della scacchiera
  */
 void display_winner(GameState state);
+
+/**
+ * Chiede all'utente se vuole giocare una nuova partita
+ * @return bool, true se l'utente vuole giocare una nuova partita, falso altrimenti
+ */
+bool does_user_want_new_game();
 
 #endif

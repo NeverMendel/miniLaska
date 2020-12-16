@@ -130,13 +130,28 @@ bool is_piece_equal(Piece a, Piece b);
  */
 Pos initialize_pos(int c, int r);
 
+/**
+ * Inizializza una struct Move
+ * @param from, posizione di inizio della mossa
+ * @param to, posizione di fine della mossa
+ * @return Move, struct Move inizializzata
+ */
 Move initialize_move(Pos from, Pos to);
 
+/**
+ * Inizializza una struct Piece
+ * @param color0, colore del pezzo in cima alla pedina
+ * @param color1, colore del pezzo in mezzo alla pedina
+ * @param color2, colore del pezzo alla base della pedina
+ * @param promoted, vero se la pedina è promossa, falso altrimenti
+ * @param height, altezza della pedina
+ * @return Piece, struct Piece inizializzato
+ */
 Piece initialize_piece(Color color0, Color color1, Color color2, bool promoted, int height);
 
 /**
  * Inizializza un Piece vuoto
- * @return Piece,
+ * @return Piece, struct Piece vuota
  */
 Piece initialize_null_piece();
 

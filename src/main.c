@@ -18,38 +18,41 @@ int main() {
         exit(EXIT_FAILURE);
     }
 
-    initialize_board(board);
+    do {
+        initialize_board(board);
 
-    state = PLAYING;
-    colorToMove = WHITE;
-    settings = read_game_settings();
+        state = PLAYING;
+        colorToMove = WHITE;
+        settings = read_game_settings();
 
-    while (state == PLAYING) {
-        /* system("cls"); */
-        display_board(board);
+        while (state == PLAYING) {
+            /* clearConsole(); */
+            display_board(board);
 
-        if (colorToMove == WHITE) currentPlayer = settings.white;
-        else currentPlayer = settings.black;
+            if (colorToMove == WHITE) currentPlayer = settings.white;
+            else currentPlayer = settings.black;
 
-        if (currentPlayer.type == HUMAN) currentMove = read_player_move(board, colorToMove);
-        else {
-            int depth;
-            if (currentPlayer.level == EASY) depth = 2;
-            else if (currentPlayer.level == MEDIUM) depth = 5;
-            else depth = 7;
+            if (currentPlayer.type == HUMAN) currentMove = read_player_move(board, colorToMove, settings);
+            else {
+                int depth;
+                if (currentPlayer.level == EASY) depth = EASY_DEPTH;
+                else if (currentPlayer.level == MEDIUM) depth = MEDIUM_DEPTH;
+                else depth = HARD_DEPTH;
 
-            currentMove = best_move_minimax(board, colorToMove, depth);
+                currentMove = best_move_minimax(board, colorToMove, depth);
+            }
+
+            apply_move(board, colorToMove, currentMove);
+
+            colorToMove = get_opposite_color(colorToMove);
+            state = compute_state(board, colorToMove);
+
+            if (state != PLAYING) {
+                display_board(board);
+                display_winner(state);
+            }
         }
-
-        apply_move(board, colorToMove, currentMove);
-
-        colorToMove = get_opposite_color(colorToMove);
-        state = compute_state(board, colorToMove);
-    }
-
-    display_board(board);
-
-    display_winner(state);
+    } while (does_user_want_new_game());
 
     free(board);
 

@@ -6,6 +6,10 @@
 #define BOARD_SIZE 25
 #define MAX_HEIGHT 3
 
+#define EASY_DEPTH 3
+#define MEDIUM_DEPTH 5
+#define HARD_DEPTH 8
+
 /* #define DEBUG */
 
 #if defined(__linux__) || defined(__unix__) || defined(__APPLE__)
