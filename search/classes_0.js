@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['gamesettings_95',['GameSettings',['../structGameSettings.html',1,'']]]
+  ['gamesettings',['GameSettings',['../structGameSettings.html',1,'']]]
 ];
