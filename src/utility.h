@@ -85,87 +85,87 @@ typedef struct {
 
 /**
  * Controlla se un pezzo è nullo, ovvero se non c'è nessun pezzo
- * @param piece, pezzo da controllare
- * @return bool, vero se il pezzo è nullo, falso altrimenti
+ * @param piece - pezzo da controllare
+ * @return bool - vero se il pezzo è nullo, falso altrimenti
  */
 bool is_piece_null(Piece piece);
 
 /**
  * Compara due Move e restituisce vero se sono uguali
- * @param a, prima Move
- * @param b, seconda Move
- * @return bool, vero se le due Move sono uguali, falso altrimenti
+ * @param a - prima Move
+ * @param b - seconda Move
+ * @return bool - vero se le due Move sono uguali, falso altrimenti
  */
 bool is_move_equal(Move a, Move b);
 
 /**
  * Compara due Pos e restituisce vero se sono uguali
- * @param a, prima Pos
- * @param b, seconda Pos
- * @return bool, vero se le due Pos sono uguali, falso altrimenti
+ * @param a - prima Pos
+ * @param b - seconda Pos
+ * @return bool - vero se le due Pos sono uguali, falso altrimenti
  */
 bool is_pos_equal(Pos a, Pos b);
 
 /**
  * Compara due Color e restituisce vero se sono opposti, es. Bianco e Nero
- * @param a, primo Color
- * @param b, secondo Color
- * @return bool, vero se i due Color sono opposti, falso altrimenti
+ * @param a - primo Color
+ * @param b - secondo Color
+ * @return bool - vero se i due Color sono opposti, falso altrimenti
  */
 bool is_opposite_color(Color a, Color b);
 
 /**
  * Compara due Piece e resituisce vero se sono uguali
- * @param a, primo Piece
- * @param b, secondo Piece
- * @return bool, vero se i due Piece sono uguali, falso altrimenti
+ * @param a - primo Piece
+ * @param b - secondo Piece
+ * @return bool - vero se i due Piece sono uguali, falso altrimenti
  */
 bool is_piece_equal(Piece a, Piece b);
 
 /**
  * Inizializza una struct Pos con la colonna e riga
- * @param c, colonna
- * @param r, riga
- * @return Pos, struct Pos inizializzata
+ * @param c - colonna
+ * @param r - riga
+ * @return Pos - struct Pos inizializzata
  */
 Pos initialize_pos(int c, int r);
 
 /**
  * Inizializza una struct Move
- * @param from, posizione di inizio della mossa
- * @param to, posizione di fine della mossa
- * @return Move, struct Move inizializzata
+ * @param from - posizione di inizio della mossa
+ * @param to - posizione di fine della mossa
+ * @return Move - struct Move inizializzata
  */
 Move initialize_move(Pos from, Pos to);
 
 /**
  * Inizializza una struct Piece
- * @param color0, colore del pezzo in cima alla pedina
- * @param color1, colore del pezzo in mezzo alla pedina
- * @param color2, colore del pezzo alla base della pedina
- * @param promoted, vero se la pedina è promossa, falso altrimenti
- * @param height, altezza della pedina
- * @return Piece, struct Piece inizializzato
+ * @param color0 - colore del pezzo in cima alla pedina
+ * @param color1 - colore del pezzo in mezzo alla pedina
+ * @param color2 - colore del pezzo alla base della pedina
+ * @param promoted - vero se la pedina è promossa, falso altrimenti
+ * @param height - altezza della pedina
+ * @return Piece - struct Piece inizializzato
  */
 Piece initialize_piece(Color color0, Color color1, Color color2, bool promoted, int height);
 
 /**
  * Inizializza un Piece vuoto
- * @return Piece, struct Piece vuota
+ * @return Piece - struct Piece vuota
  */
 Piece initialize_null_piece();
 
 /**
  * Dato un colore di un giocatore restituisce l'opposto
- * @param color, colore del quale si vuole l'opposto
- * @return Color, colore opposto
+ * @param color - colore del quale si vuole l'opposto
+ * @return Color - colore opposto
  */
 Color get_opposite_color(Color color);
 
 /**
  * Esegue una deep-copy della scacchiera
- * @param board, scacchiera da copiare
- * @return Piece*, copia della scacchiera
+ * @param board - scacchiera da copiare
+ * @return Piece* - copia della scacchiera
  */
 Piece *clone_board(Piece *board);
 

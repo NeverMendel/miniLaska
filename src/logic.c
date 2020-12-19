@@ -116,17 +116,21 @@ Move best_move_minimax(Piece *board, Color colorToMove, int depth) {
     Move bestMove;
     cvector_vector_type(Move) moves = get_possible_moves_by_color(board, colorToMove);
     int i;
-    for (i = 0; i < cvector_size(moves); i++) {
-        int score = 0;
-        Piece *tempBoard = clone_board(board);
-        if (does_move_eat(tempBoard, moves[i])) score -= 10;
-        apply_move(tempBoard, colorToMove, moves[i]);
-        score -= minimize(tempBoard, get_opposite_color(colorToMove), depth - 1);
-        if (score > bestScore) {
-            bestScore = score;
-            bestMove = moves[i];
+    if(cvector_size(moves) == 1) {
+        bestMove = moves[0];
+    } else {
+        for (i = 0; i < cvector_size(moves); i++) {
+            int score = 0;
+            Piece *tempBoard = clone_board(board);
+            if (does_move_eat(tempBoard, moves[i])) score -= 10;
+            apply_move(tempBoard, colorToMove, moves[i]);
+            score -= minimize(tempBoard, get_opposite_color(colorToMove), depth - 1);
+            if (score > bestScore) {
+                bestScore = score;
+                bestMove = moves[i];
+            }
+            free(tempBoard);
         }
-        free(tempBoard);
     }
     cvector_free(moves);
 

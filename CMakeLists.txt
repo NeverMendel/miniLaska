@@ -3,6 +3,8 @@ project(miniLaska C)
 
 set(CMAKE_C_STANDARD 90)
 
+set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS} -O3")
+
 set(miniLaskaSources "src/constants.h" "src/terminal.c" "src/terminal.h" "src/logic.c" "src/logic.h" "src/utility.c" "src/utility.h")
 
 add_executable(miniLaska ${miniLaskaSources} src/main.c)

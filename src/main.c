@@ -32,6 +32,8 @@ int main() {
             if (colorToMove == WHITE) currentPlayer = settings.white;
             else currentPlayer = settings.black;
 
+            display_player_to_move(colorToMove);
+
             if (currentPlayer.type == HUMAN) currentMove = read_player_move(board, colorToMove, settings);
             else {
                 int depth;

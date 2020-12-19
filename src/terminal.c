@@ -43,6 +43,14 @@ void display_board(Piece *board) {
     printf("\n");
 }
 
+void display_player_to_move(Color playerToMove){
+    if (playerToMove == WHITE) {
+        printf("White turn\n");
+    } else {
+        printf("Black turn\n");
+    }
+}
+
 GameSettings read_game_settings() {
     GameSettings settings;
     char input = 0;
@@ -100,12 +108,6 @@ Move read_player_move(Piece *board, Color color, GameSettings settings) {
     int i, input = -1;
     cvector_vector_type(Move) possible_moves = get_possible_moves_by_color(board, color);
     Move move;
-
-    if (color == BLACK) {
-        printf("Black turn\n");
-    } else {
-        printf("White turn\n");
-    }
 
     printf("Possible moves:\n");
 
