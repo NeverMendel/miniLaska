@@ -70,6 +70,9 @@ $(function() {
 <div class="title">Riferimenti per il file utility.h</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Dichiarazione enum, struts e funzioni di supporto.  
+<a href="#details">Continua...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="constants_8h_source.html">constants.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="cvector_8h_source.html">cvector.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
@@ -77,7 +80,7 @@ Grafo delle dipendenze di inclusione per utility.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="utility_8h__incl.png" border="0" usemap="#src_2utility_8h" alt=""/></div>
 <map name="src_2utility_8h" id="src_2utility_8h">
-<area shape="rect" id="node2" href="constants_8h.html" title="constants.h" alt="" coords="5,80,96,107"/>
+<area shape="rect" id="node2" href="constants_8h.html" title="Dichiarazione delle costanti utilizzate nel gioco. " alt="" coords="5,80,96,107"/>
 <area shape="rect" id="node3" href="cvector_8h.html" title="cvector.h" alt="" coords="121,80,197,107"/>
 </map>
 </div>
@@ -86,9 +89,9 @@ Questo grafo mostra quali altri file includono direttamente o indirettamente que
 <div class="dyncontent">
 <div class="center"><img src="utility_8h__dep__incl.png" border="0" usemap="#src_2utility_8hdep" alt=""/></div>
 <map name="src_2utility_8hdep" id="src_2utility_8hdep">
-<area shape="rect" id="node2" href="logic_8h.html" title="src/logic.h" alt="" coords="77,80,160,107"/>
-<area shape="rect" id="node4" href="main_8c.html" title="src/main.c" alt="" coords="237,155,320,181"/>
-<area shape="rect" id="node6" href="terminal_8h.html" title="src/terminal.h" alt="" coords="184,80,285,107"/>
+<area shape="rect" id="node2" href="logic_8h.html" title="Gestione della logica del gioco miniLaska. " alt="" coords="77,80,160,107"/>
+<area shape="rect" id="node4" href="main_8c.html" title="Gioco miniLaska. " alt="" coords="237,155,320,181"/>
+<area shape="rect" id="node6" href="terminal_8h.html" title="Gestione dell&#39;interfaccia grafica del gioco miniLaska attraversio il terminale. " alt="" coords="184,80,285,107"/>
 <area shape="rect" id="node7" href="utility_8c.html" title="src/utility.c" alt="" coords="361,80,447,107"/>
 <area shape="rect" id="node3" href="logic_8c.html" title="src/logic.c" alt="" coords="5,155,88,181"/>
 <area shape="rect" id="node5" href="terminal_8c.html" title="src/terminal.c" alt="" coords="112,155,213,181"/>
@@ -99,14 +102,14 @@ Questo grafo mostra quali altri file includono direttamente o indirettamente que
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Composti</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structPiece.html">Piece</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rappresenta un pezzo sulla scacchiera.  <a href="structPiece.html#details">Continua...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structPos.html">Pos</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rappresenta una posizione nella scacchiera.  <a href="structPos.html#details">Continua...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMove.html">Move</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rappresenta una mossa.  <a href="structMove.html#details">Continua...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structPiece.html">Piece</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rappresenta un pezzo sulla scacchiera.  <a href="structPiece.html#details">Continua...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structPlayer.html">Player</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rappresenta un giocatore.  <a href="structPlayer.html#details">Continua...</a><br /></td></tr>
@@ -180,7 +183,9 @@ Funzioni</h2></td></tr>
 <tr class="memitem:ad6c7d1f53fd988ae8dc3c473288757b6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utility_8h.html#ad6c7d1f53fd988ae8dc3c473288757b6">print_moves</a> (<a class="el" href="logic_8h.html#a93927fa23bcda98db4b5f15936c8cc50">cvector_vector_type</a>(<a class="el" href="structMove.html">Move</a>) moves)</td></tr>
 <tr class="separator:ad6c7d1f53fd988ae8dc3c473288757b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Documentazione dei tipi enumerati</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Descrizione dettagliata</h2>
+<div class="textblock"><p>Dichiarazione enum, struts e funzioni di supporto. </p>
+</div><h2 class="groupheader">Documentazione dei tipi enumerati</h2>
 <a id="ab87bacfdad76e61b9412d7124be44c1c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab87bacfdad76e61b9412d7124be44c1c">&#9670;&nbsp;</a></span>Color</h2>
 
@@ -285,7 +290,7 @@ Funzioni</h2></td></tr>
 <p>Esegue una deep-copy della scacchiera. </p>
 <dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
-    <tr><td class="paramname">board</td><td>- scacchiera da copiare </td></tr>
+    <tr><td class="paramname">board</td><td>scacchiera da copiare </td></tr>
   </table>
   </dd>
 </dl>
@@ -312,11 +317,11 @@ Funzioni</h2></td></tr>
 <p>Dato un colore di un giocatore restituisce l'opposto. </p>
 <dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
-    <tr><td class="paramname">color</td><td>- colore del quale si vuole l'opposto </td></tr>
+    <tr><td class="paramname">color</td><td>colore del quale si vuole l'opposto </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Restituisce</dt><dd>Color - colore opposto </dd></dl>
+<dl class="section return"><dt>Restituisce</dt><dd>Color colore opposto </dd></dl>
 
 </div>
 </div>
@@ -349,12 +354,12 @@ Funzioni</h2></td></tr>
 <p>Inizializza una struct <a class="el" href="structMove.html" title="Rappresenta una mossa. ">Move</a>. </p>
 <dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
-    <tr><td class="paramname">from</td><td>- posizione di inizio della mossa </td></tr>
-    <tr><td class="paramname">to</td><td>- posizione di fine della mossa </td></tr>
+    <tr><td class="paramname">from</td><td>posizione di inizio della mossa </td></tr>
+    <tr><td class="paramname">to</td><td>posizione di fine della mossa </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Restituisce</dt><dd><a class="el" href="structMove.html" title="Rappresenta una mossa. ">Move</a> - struct <a class="el" href="structMove.html" title="Rappresenta una mossa. ">Move</a> inizializzata </dd></dl>
+<dl class="section return"><dt>Restituisce</dt><dd><a class="el" href="structMove.html" title="Rappresenta una mossa. ">Move</a> struct <a class="el" href="structMove.html" title="Rappresenta una mossa. ">Move</a> inizializzata </dd></dl>
 
 </div>
 </div>
@@ -374,7 +379,7 @@ Funzioni</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Inizializza un <a class="el" href="structPiece.html" title="Rappresenta un pezzo sulla scacchiera. ">Piece</a> vuoto. </p>
-<dl class="section return"><dt>Restituisce</dt><dd><a class="el" href="structPiece.html" title="Rappresenta un pezzo sulla scacchiera. ">Piece</a> - struct <a class="el" href="structPiece.html" title="Rappresenta un pezzo sulla scacchiera. ">Piece</a> vuota </dd></dl>
+<dl class="section return"><dt>Restituisce</dt><dd><a class="el" href="structPiece.html" title="Rappresenta un pezzo sulla scacchiera. ">Piece</a> struct <a class="el" href="structPiece.html" title="Rappresenta un pezzo sulla scacchiera. ">Piece</a> vuota </dd></dl>
 
 </div>
 </div>
@@ -425,15 +430,15 @@ Funzioni</h2></td></tr>
 <p>Inizializza una struct <a class="el" href="structPiece.html" title="Rappresenta un pezzo sulla scacchiera. ">Piece</a>. </p>
 <dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
-    <tr><td class="paramname">color0</td><td>- colore del pezzo in cima alla pedina </td></tr>
-    <tr><td class="paramname">color1</td><td>- colore del pezzo in mezzo alla pedina </td></tr>
-    <tr><td class="paramname">color2</td><td>- colore del pezzo alla base della pedina </td></tr>
-    <tr><td class="paramname">promoted</td><td>- vero se la pedina è promossa, falso altrimenti </td></tr>
-    <tr><td class="paramname">height</td><td>- altezza della pedina </td></tr>
+    <tr><td class="paramname">color0</td><td>colore del pezzo in cima alla pedina </td></tr>
+    <tr><td class="paramname">color1</td><td>colore del pezzo in mezzo alla pedina </td></tr>
+    <tr><td class="paramname">color2</td><td>colore del pezzo alla base della pedina </td></tr>
+    <tr><td class="paramname">promoted</td><td>vero se la pedina è promossa, falso altrimenti </td></tr>
+    <tr><td class="paramname">height</td><td>altezza della pedina </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Restituisce</dt><dd><a class="el" href="structPiece.html" title="Rappresenta un pezzo sulla scacchiera. ">Piece</a> - struct <a class="el" href="structPiece.html" title="Rappresenta un pezzo sulla scacchiera. ">Piece</a> inizializzato </dd></dl>
+<dl class="section return"><dt>Restituisce</dt><dd><a class="el" href="structPiece.html" title="Rappresenta un pezzo sulla scacchiera. ">Piece</a> struct <a class="el" href="structPiece.html" title="Rappresenta un pezzo sulla scacchiera. ">Piece</a> inizializzato </dd></dl>
 
 </div>
 </div>
@@ -466,12 +471,12 @@ Funzioni</h2></td></tr>
 <p>Inizializza una struct <a class="el" href="structPos.html" title="Rappresenta una posizione nella scacchiera. ">Pos</a> con la colonna e riga. </p>
 <dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
-    <tr><td class="paramname">c</td><td>- colonna </td></tr>
-    <tr><td class="paramname">r</td><td>- riga </td></tr>
+    <tr><td class="paramname">c</td><td>colonna </td></tr>
+    <tr><td class="paramname">r</td><td>riga </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Restituisce</dt><dd><a class="el" href="structPos.html" title="Rappresenta una posizione nella scacchiera. ">Pos</a> - struct <a class="el" href="structPos.html" title="Rappresenta una posizione nella scacchiera. ">Pos</a> inizializzata </dd></dl>
+<dl class="section return"><dt>Restituisce</dt><dd><a class="el" href="structPos.html" title="Rappresenta una posizione nella scacchiera. ">Pos</a> struct <a class="el" href="structPos.html" title="Rappresenta una posizione nella scacchiera. ">Pos</a> inizializzata </dd></dl>
 
 </div>
 </div>
@@ -504,12 +509,12 @@ Funzioni</h2></td></tr>
 <p>Compara due <a class="el" href="structMove.html" title="Rappresenta una mossa. ">Move</a> e restituisce vero se sono uguali. </p>
 <dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
-    <tr><td class="paramname">a</td><td>- prima <a class="el" href="structMove.html" title="Rappresenta una mossa. ">Move</a> </td></tr>
-    <tr><td class="paramname">b</td><td>- seconda <a class="el" href="structMove.html" title="Rappresenta una mossa. ">Move</a> </td></tr>
+    <tr><td class="paramname">a</td><td>prima <a class="el" href="structMove.html" title="Rappresenta una mossa. ">Move</a> </td></tr>
+    <tr><td class="paramname">b</td><td>seconda <a class="el" href="structMove.html" title="Rappresenta una mossa. ">Move</a> </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Restituisce</dt><dd>bool - vero se le due <a class="el" href="structMove.html" title="Rappresenta una mossa. ">Move</a> sono uguali, falso altrimenti </dd></dl>
+<dl class="section return"><dt>Restituisce</dt><dd>bool vero se le due <a class="el" href="structMove.html" title="Rappresenta una mossa. ">Move</a> sono uguali, falso altrimenti </dd></dl>
 
 </div>
 </div>
@@ -542,12 +547,12 @@ Funzioni</h2></td></tr>
 <p>Compara due Color e restituisce vero se sono opposti, es. </p>
 <p>Bianco e Nero </p><dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
-    <tr><td class="paramname">a</td><td>- primo Color </td></tr>
-    <tr><td class="paramname">b</td><td>- secondo Color </td></tr>
+    <tr><td class="paramname">a</td><td>primo Color </td></tr>
+    <tr><td class="paramname">b</td><td>secondo Color </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Restituisce</dt><dd>bool - vero se i due Color sono opposti, falso altrimenti </dd></dl>
+<dl class="section return"><dt>Restituisce</dt><dd>bool vero se i due Color sono opposti, falso altrimenti </dd></dl>
 
 </div>
 </div>
@@ -580,12 +585,12 @@ Funzioni</h2></td></tr>
 <p>Compara due <a class="el" href="structPiece.html" title="Rappresenta un pezzo sulla scacchiera. ">Piece</a> e resituisce vero se sono uguali. </p>
 <dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
-    <tr><td class="paramname">a</td><td>- primo <a class="el" href="structPiece.html" title="Rappresenta un pezzo sulla scacchiera. ">Piece</a> </td></tr>
-    <tr><td class="paramname">b</td><td>- secondo <a class="el" href="structPiece.html" title="Rappresenta un pezzo sulla scacchiera. ">Piece</a> </td></tr>
+    <tr><td class="paramname">a</td><td>primo <a class="el" href="structPiece.html" title="Rappresenta un pezzo sulla scacchiera. ">Piece</a> </td></tr>
+    <tr><td class="paramname">b</td><td>secondo <a class="el" href="structPiece.html" title="Rappresenta un pezzo sulla scacchiera. ">Piece</a> </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Restituisce</dt><dd>bool - vero se i due <a class="el" href="structPiece.html" title="Rappresenta un pezzo sulla scacchiera. ">Piece</a> sono uguali, falso altrimenti </dd></dl>
+<dl class="section return"><dt>Restituisce</dt><dd>bool vero se i due <a class="el" href="structPiece.html" title="Rappresenta un pezzo sulla scacchiera. ">Piece</a> sono uguali, falso altrimenti </dd></dl>
 
 </div>
 </div>
@@ -608,11 +613,11 @@ Funzioni</h2></td></tr>
 <p>Controlla se un pezzo è nullo, ovvero se non c'è nessun pezzo. </p>
 <dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
-    <tr><td class="paramname">piece</td><td>- pezzo da controllare </td></tr>
+    <tr><td class="paramname">piece</td><td>pezzo da controllare </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Restituisce</dt><dd>bool - vero se il pezzo è nullo, falso altrimenti </dd></dl>
+<dl class="section return"><dt>Restituisce</dt><dd>bool vero se il pezzo è nullo, falso altrimenti </dd></dl>
 
 </div>
 </div>
@@ -645,12 +650,12 @@ Funzioni</h2></td></tr>
 <p>Compara due <a class="el" href="structPos.html" title="Rappresenta una posizione nella scacchiera. ">Pos</a> e restituisce vero se sono uguali. </p>
 <dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
-    <tr><td class="paramname">a</td><td>- prima <a class="el" href="structPos.html" title="Rappresenta una posizione nella scacchiera. ">Pos</a> </td></tr>
-    <tr><td class="paramname">b</td><td>- seconda <a class="el" href="structPos.html" title="Rappresenta una posizione nella scacchiera. ">Pos</a> </td></tr>
+    <tr><td class="paramname">a</td><td>prima <a class="el" href="structPos.html" title="Rappresenta una posizione nella scacchiera. ">Pos</a> </td></tr>
+    <tr><td class="paramname">b</td><td>seconda <a class="el" href="structPos.html" title="Rappresenta una posizione nella scacchiera. ">Pos</a> </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Restituisce</dt><dd>bool - vero se le due <a class="el" href="structPos.html" title="Rappresenta una posizione nella scacchiera. ">Pos</a> sono uguali, falso altrimenti </dd></dl>
+<dl class="section return"><dt>Restituisce</dt><dd>bool vero se le due <a class="el" href="structPos.html" title="Rappresenta una posizione nella scacchiera. ">Pos</a> sono uguali, falso altrimenti </dd></dl>
 
 </div>
 </div>

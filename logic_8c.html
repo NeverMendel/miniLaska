@@ -76,10 +76,10 @@ Grafo delle dipendenze di inclusione per logic.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="logic_8c__incl.png" border="0" usemap="#src_2logic_8c" alt=""/></div>
 <map name="src_2logic_8c" id="src_2logic_8c">
-<area shape="rect" id="node2" href="logic_8h.html" title="logic.h" alt="" coords="115,80,175,107"/>
-<area shape="rect" id="node3" href="constants_8h.html" title="constants.h" alt="" coords="5,229,96,256"/>
+<area shape="rect" id="node2" href="logic_8h.html" title="Gestione della logica del gioco miniLaska. " alt="" coords="115,80,175,107"/>
+<area shape="rect" id="node3" href="constants_8h.html" title="Dichiarazione delle costanti utilizzate nel gioco. " alt="" coords="5,229,96,256"/>
 <area shape="rect" id="node4" href="cvector_8h.html" title="cvector.h" alt="" coords="123,229,199,256"/>
-<area shape="rect" id="node7" href="utility_8h.html" title="utility.h" alt="" coords="87,155,151,181"/>
+<area shape="rect" id="node7" href="utility_8h.html" title="Dichiarazione enum, struts e funzioni di supporto. " alt="" coords="87,155,151,181"/>
 </map>
 </div>
 </div><table class="memberdecls">
@@ -160,13 +160,13 @@ Funzioni</h2></td></tr>
 <p>Applica la mossa sulla scacchiera se la mossa è valida. </p>
 <dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
-    <tr><td class="paramname">board</td><td>- scacchiera sulla quale applicare la mossa </td></tr>
-    <tr><td class="paramname">colorToMove</td><td>- colore del giocatore che deve muovere </td></tr>
-    <tr><td class="paramname">move</td><td>- mossa da applicare </td></tr>
+    <tr><td class="paramname">board</td><td>scacchiera sulla quale applicare la mossa </td></tr>
+    <tr><td class="paramname">colorToMove</td><td>colore del giocatore che deve muovere </td></tr>
+    <tr><td class="paramname">move</td><td>mossa da applicare </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Restituisce</dt><dd>bool - vero se la mossa è valida, falsa altrimenti </dd></dl>
+<dl class="section return"><dt>Restituisce</dt><dd>bool vero se la mossa è valida, falso altrimenti </dd></dl>
 
 </div>
 </div>
@@ -205,13 +205,13 @@ Funzioni</h2></td></tr>
 <p>Calcola la mossa migliore utilizzando l'algoritmo mini-max. </p>
 <dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
-    <tr><td class="paramname">board</td><td>- scacchiara su cui calcolare la mossa </td></tr>
-    <tr><td class="paramname">colorToMove</td><td>- colore del giocatore che deve muovere </td></tr>
-    <tr><td class="paramname">depth</td><td>- profondità del calcolo della mossa </td></tr>
+    <tr><td class="paramname">board</td><td>scacchiara su cui calcolare la mossa </td></tr>
+    <tr><td class="paramname">colorToMove</td><td>colore del giocatore che deve muovere </td></tr>
+    <tr><td class="paramname">depth</td><td>profondità del calcolo della mossa </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Restituisce</dt><dd><a class="el" href="structMove.html" title="Rappresenta una mossa. ">Move</a> - mossa migliore che può venire giocata </dd></dl>
+<dl class="section return"><dt>Restituisce</dt><dd><a class="el" href="structMove.html" title="Rappresenta una mossa. ">Move</a> mossa migliore che può venire giocata </dd></dl>
 
 </div>
 </div>
@@ -272,12 +272,12 @@ Funzioni</h2></td></tr>
 <p>Calcola lo stato della scacchiera. </p>
 <dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
-    <tr><td class="paramname">board</td><td>- scacchiera di cui calcolare lo stato </td></tr>
-    <tr><td class="paramname">colorToMove</td><td>- colore del giocatore che deve muovere </td></tr>
+    <tr><td class="paramname">board</td><td>scacchiera di cui calcolare lo stato </td></tr>
+    <tr><td class="paramname">colorToMove</td><td>colore del giocatore che deve muovere </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Restituisce</dt><dd>GameState - stato della scacchiera </dd></dl>
+<dl class="section return"><dt>Restituisce</dt><dd>GameState stato della scacchiera </dd></dl>
 
 </div>
 </div>
@@ -300,8 +300,8 @@ Funzioni</h2></td></tr>
 <p>Restituisce un array con tutte le mosse che un determinato pezzo può effettuare. </p>
 <dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
-    <tr><td class="paramname">board</td><td>- scacchiera sulla quale applicare la mossa </td></tr>
-    <tr><td class="paramname">piecePos</td><td>- posizione del pezzo di cui calcolare le mosse possibili </td></tr>
+    <tr><td class="paramname">board</td><td>scacchiera sulla quale applicare la mossa </td></tr>
+    <tr><td class="paramname">piecePos</td><td>posizione del pezzo di cui calcolare le mosse possibili </td></tr>
   </table>
   </dd>
 </dl>
@@ -356,12 +356,12 @@ Funzioni</h2></td></tr>
 <p>Controlla se una mossa prevede di mangiare una pedina dell'avversario. </p>
 <dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
-    <tr><td class="paramname">board</td><td>- scacchiera sulla quale applicare la mossa </td></tr>
-    <tr><td class="paramname">move</td><td>- mossa da controllare </td></tr>
+    <tr><td class="paramname">board</td><td>scacchiera sulla quale applicare la mossa </td></tr>
+    <tr><td class="paramname">move</td><td>mossa da controllare </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Restituisce</dt><dd>bool - vero se la mossa prevede di mangiare una pedina dell'avversario, falso altrimenti </dd></dl>
+<dl class="section return"><dt>Restituisce</dt><dd>bool vero se la mossa prevede di mangiare una pedina dell'avversario, falso altrimenti </dd></dl>
 
 </div>
 </div>
@@ -394,12 +394,12 @@ Funzioni</h2></td></tr>
 <p>Calcola la posizione di una cella all'interno della matrice. </p>
 <dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
-    <tr><td class="paramname">c</td><td>- indice della colonna </td></tr>
-    <tr><td class="paramname">r</td><td>- indice della riga </td></tr>
+    <tr><td class="paramname">c</td><td>indice della colonna </td></tr>
+    <tr><td class="paramname">r</td><td>indice della riga </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Restituisce</dt><dd>int - indice della matrice </dd></dl>
+<dl class="section return"><dt>Restituisce</dt><dd>int indice della matrice </dd></dl>
 
 </div>
 </div>
@@ -422,11 +422,11 @@ Funzioni</h2></td></tr>
 <p>Calcola la posizione di una cella all'interno della matrice. </p>
 <dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pos</td><td>- posizione della scacchiera </td></tr>
+    <tr><td class="paramname">pos</td><td>posizione della scacchiera </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Restituisce</dt><dd>int - indice della matrice </dd></dl>
+<dl class="section return"><dt>Restituisce</dt><dd>int indice della matrice </dd></dl>
 
 </div>
 </div>
@@ -449,7 +449,7 @@ Funzioni</h2></td></tr>
 <p>Inizializza la schacchiera allo stato di inizio gioco. </p>
 <dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
-    <tr><td class="paramname">board</td><td>- schacchiera da inizializzare </td></tr>
+    <tr><td class="paramname">board</td><td>schacchiera da inizializzare </td></tr>
   </table>
   </dd>
 </dl>
@@ -485,12 +485,12 @@ Funzioni</h2></td></tr>
 <p>Controlla se una mossa è valida. </p>
 <dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
-    <tr><td class="paramname">board</td><td>- scacchiera sulla quale applicare la mossa </td></tr>
-    <tr><td class="paramname">move</td><td>- mossa da controllare </td></tr>
+    <tr><td class="paramname">board</td><td>scacchiera sulla quale applicare la mossa </td></tr>
+    <tr><td class="paramname">move</td><td>mossa da controllare </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Restituisce</dt><dd>bool - vero se la mossa è valida, falso altrimenti </dd></dl>
+<dl class="section return"><dt>Restituisce</dt><dd>bool vero se la mossa è valida, falso altrimenti </dd></dl>
 
 </div>
 </div>
@@ -513,11 +513,11 @@ Funzioni</h2></td></tr>
 <p>Controlla se una posizione è valida, se è all'interno della scacchiera ed è una cella utilizzata nel gioco Lasca. </p>
 <dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
-    <tr><td class="paramname">pos</td><td>- posizione dellla cella </td></tr>
+    <tr><td class="paramname">pos</td><td>posizione dellla cella </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Restituisce</dt><dd>bool - vero se la cella è valida, falso altrimenti </dd></dl>
+<dl class="section return"><dt>Restituisce</dt><dd>bool vero se la cella è valida, falso altrimenti </dd></dl>
 
 </div>
 </div>

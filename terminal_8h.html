@@ -68,6 +68,9 @@ $(function() {
 <div class="title">Riferimenti per il file terminal.h</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Gestione dell'interfaccia grafica del gioco miniLaska attraversio il terminale.  
+<a href="#details">Continua...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="constants_8h_source.html">constants.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="utility_8h_source.html">utility.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
@@ -75,8 +78,8 @@ Grafo delle dipendenze di inclusione per terminal.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="terminal_8h__incl.png" border="0" usemap="#src_2terminal_8h" alt=""/></div>
 <map name="src_2terminal_8h" id="src_2terminal_8h">
-<area shape="rect" id="node2" href="constants_8h.html" title="constants.h" alt="" coords="5,155,96,181"/>
-<area shape="rect" id="node3" href="utility_8h.html" title="utility.h" alt="" coords="88,80,152,107"/>
+<area shape="rect" id="node2" href="constants_8h.html" title="Dichiarazione delle costanti utilizzate nel gioco. " alt="" coords="5,155,96,181"/>
+<area shape="rect" id="node3" href="utility_8h.html" title="Dichiarazione enum, struts e funzioni di supporto. " alt="" coords="88,80,152,107"/>
 <area shape="rect" id="node4" href="cvector_8h.html" title="cvector.h" alt="" coords="121,155,197,181"/>
 </map>
 </div>
@@ -85,7 +88,7 @@ Questo grafo mostra quali altri file includono direttamente o indirettamente que
 <div class="dyncontent">
 <div class="center"><img src="terminal_8h__dep__incl.png" border="0" usemap="#src_2terminal_8hdep" alt=""/></div>
 <map name="src_2terminal_8hdep" id="src_2terminal_8hdep">
-<area shape="rect" id="node2" href="main_8c.html" title="src/main.c" alt="" coords="5,80,88,107"/>
+<area shape="rect" id="node2" href="main_8c.html" title="Gioco miniLaska. " alt="" coords="5,80,88,107"/>
 <area shape="rect" id="node3" href="terminal_8c.html" title="src/terminal.c" alt="" coords="112,80,213,107"/>
 </map>
 </div>
@@ -113,7 +116,9 @@ Funzioni</h2></td></tr>
 <tr class="memdesc:a963f471b62116286660dd08821f573d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Chiede all'utente se vuole giocare una nuova partita.  <a href="#a963f471b62116286660dd08821f573d9">Continua...</a><br /></td></tr>
 <tr class="separator:a963f471b62116286660dd08821f573d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Documentazione delle funzioni</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Descrizione dettagliata</h2>
+<div class="textblock"><p>Gestione dell'interfaccia grafica del gioco miniLaska attraversio il terminale. </p>
+</div><h2 class="groupheader">Documentazione delle funzioni</h2>
 <a id="afc269100e6fa0993dc0f4bf7441a5750"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afc269100e6fa0993dc0f4bf7441a5750">&#9670;&nbsp;</a></span>display_board()</h2>
 
@@ -133,7 +138,7 @@ Funzioni</h2></td></tr>
 <p>Stampa la scacchiera sul terminale. </p>
 <dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
-    <tr><td class="paramname">board</td><td>- scacchiera da venire visualizzata </td></tr>
+    <tr><td class="paramname">board</td><td>scacchiera da venire visualizzata </td></tr>
   </table>
   </dd>
 </dl>
@@ -159,7 +164,7 @@ Funzioni</h2></td></tr>
 <p>Stampa il colore del giocatore di cui è il turno sul terminale. </p>
 <dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
-    <tr><td class="paramname">playerToMove</td><td>- turno del giocatore </td></tr>
+    <tr><td class="paramname">playerToMove</td><td>turno del giocatore </td></tr>
   </table>
   </dd>
 </dl>
@@ -185,7 +190,7 @@ Funzioni</h2></td></tr>
 <p>Stampa il vincitore sul terminale. </p>
 <dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
-    <tr><td class="paramname">state</td><td>- stato della scacchiera </td></tr>
+    <tr><td class="paramname">state</td><td>stato della scacchiera </td></tr>
   </table>
   </dd>
 </dl>
@@ -208,7 +213,7 @@ Funzioni</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Chiede all'utente se vuole giocare una nuova partita. </p>
-<dl class="section return"><dt>Restituisce</dt><dd>bool - true se l'utente vuole giocare una nuova partita, falso altrimenti </dd></dl>
+<dl class="section return"><dt>Restituisce</dt><dd>bool true se l'utente vuole giocare una nuova partita, falso altrimenti </dd></dl>
 
 </div>
 </div>
@@ -228,7 +233,7 @@ Funzioni</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Chiede le impostazioni del gioco all'utente tramite terminale. </p>
-<dl class="section return"><dt>Restituisce</dt><dd><a class="el" href="structGameSettings.html" title="Impostazioni del gioco, determina chi gioca. ">GameSettings</a> - impostazioni </dd></dl>
+<dl class="section return"><dt>Restituisce</dt><dd><a class="el" href="structGameSettings.html" title="Impostazioni del gioco, determina chi gioca. ">GameSettings</a> impostazioni </dd></dl>
 
 </div>
 </div>
@@ -267,13 +272,13 @@ Funzioni</h2></td></tr>
 <p>Legge la mossa dell'utente da terminale. </p>
 <dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
-    <tr><td class="paramname">board</td><td>- scacchiera sulla quale deve venire effettuata la mossa </td></tr>
-    <tr><td class="paramname">color</td><td>- colore del giocatore che deve effettuare la mossa </td></tr>
-    <tr><td class="paramname">settings</td><td>- impostazioni del gioco </td></tr>
+    <tr><td class="paramname">board</td><td>scacchiera sulla quale deve venire effettuata la mossa </td></tr>
+    <tr><td class="paramname">color</td><td>colore del giocatore che deve effettuare la mossa </td></tr>
+    <tr><td class="paramname">settings</td><td>impostazioni del gioco </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Restituisce</dt><dd><a class="el" href="structMove.html" title="Rappresenta una mossa. ">Move</a> - Mossa inserita dall'utente </dd></dl>
+<dl class="section return"><dt>Restituisce</dt><dd><a class="el" href="structMove.html" title="Rappresenta una mossa. ">Move</a> Mossa inserita dall'utente </dd></dl>
 
 </div>
 </div>

@@ -7,7 +7,8 @@ var indexSectionsWithContent =
   4: "bcfhlprtw",
   5: "cgp",
   6: "bcdehmpuw",
-  7: "bcefhmrt"
+  7: "bcefhmrt",
+  8: "g"
 };
 
 var indexSectionNames =
@@ -19,7 +20,8 @@ var indexSectionNames =
   4: "variables",
   5: "enums",
   6: "enumvalues",
-  7: "defines"
+  7: "defines",
+  8: "pages"
 };
 
 var indexSectionLabels =
@@ -31,6 +33,7 @@ var indexSectionLabels =
   4: "Variabili",
   5: "Tipi enumerati (enum)",
   6: "Valori del tipo enumerato",
-  7: "Definizioni"
+  7: "Definizioni",
+  8: "Pagine"
 };
 
