@@ -1,3 +1,15 @@
+/**
+ * @file main.c
+ * @brief Gioco miniLaska
+ * @mainpage Gioco miniLaska
+ * @section intro_sec Introduzione
+ * Progetto di Introduzione alla Programmazione 2020/2021, gioco miniLaska
+ * @section description Descrizione del gioco
+ * Gioco miniLaska con le regole definite nel sito http://www.lasca.org/ e le seguenti variazioni:
+ * 1. Limite di una pedina mangiata per mossa
+ * 2. L'altezza massima delle torri è di 3, nel caso in cui ci siano pedine in eccesso verranno rimosse a partire dal basso
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "constants.h"

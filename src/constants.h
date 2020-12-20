@@ -1,3 +1,8 @@
+/**
+ * @file constants.h
+ * @brief Dichiarazione delle costanti utilizzate nel gioco
+ */
+
 #ifndef MINILASKA_CONSTANTS_H
 #define MINILASKA_CONSTANTS_H
 
