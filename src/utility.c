@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "utility.h"
+#include "logic.h"
 
 bool is_piece_null(Piece piece) {
     return piece.color[0] == UNDEFINED;
@@ -68,10 +69,25 @@ Piece *clone_board(Piece *board) {
     return newBoard;
 }
 
-void print_moves(cvector_vector_type(Move) moves) {
-    int i;
-    printf("size: %d\n", (int) cvector_size(moves));
-    for (i = 0; i < cvector_size(moves); i++) {
-        printf("[%d] from: %d-%d, to %d-%d\n", i, moves[i].from.c, moves[i].from.r, moves[i].to.c, moves[i].to.r);
+cvector_vector_type(Pos) get_pieces_pos_by_color(Piece *board, Color color) {
+    cvector_vector_type(Pos) pieces = NULL;
+    int r, c;
+    Pos pos;
+    for (r = 0; r < ROWS; r++) {
+        for (c = 0; c < COLUMNS; c++) {
+            pos = initialize_pos(c, r);
+            if (is_pos_valid(pos) && board[get_index_from_pos(pos)].color[0] == color)
+                cvector_push_back(pieces, pos);
+        }
     }
+    return pieces;
+}
+
+int count_pieces(Piece *board, Color color){
+    int count = 0, i;
+    for(i = 0; i < BOARD_SIZE; i++){
+        if(board[i].color[0] == color)
+            count++;
+    }
+    return count;
 }

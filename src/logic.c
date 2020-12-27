@@ -58,26 +58,25 @@ int compute_score(Piece *board, Color colorToMove) {
     GameState state = compute_state(board, colorToMove);
     if (state == WHITE_WIN) return 100 * (colorToMove == WHITE ? 1 : -1);
     if (state == BLACK_WIN) return 100 * (colorToMove == BLACK ? 1 : -1);
-    return 0;
+    return 3 * (count_pieces(board, WHITE) - count_pieces(board, BLACK)) * (colorToMove == WHITE ? 1 : -1);
 }
 
 /* For internal use only */
 int maximize(Piece *board, Color colorToMove, int depth) {
-    int bestScore = INT_MAX, i;
+    int bestScore = INT_MIN, i, score;
     cvector_vector_type(Move) moves;
 
-    int currentScore = compute_score(board, colorToMove);
-    if (currentScore != 0) return currentScore;
-    if (depth == 0) return 0;
+    if (depth == 0) return compute_score(board, colorToMove);
 
     moves = get_possible_moves_by_color(board, colorToMove);
+    if(cvector_empty(moves))
+        return compute_score(board, colorToMove);
+
     for (i = 0; i < cvector_size(moves); i++) {
-        int score = 0;
         Piece *tempBoard = clone_board(board);
-        if (does_move_eat(tempBoard, moves[i])) score += 10;
         apply_move(tempBoard, colorToMove, moves[i]);
-        score += minimize(board, get_opposite_color(colorToMove), depth - 1);
-        if (score < bestScore)
+        score = minimize(board, get_opposite_color(colorToMove), depth - 1);
+        if (score > bestScore)
             bestScore = score;
         free(tempBoard);
     }
@@ -88,20 +87,19 @@ int maximize(Piece *board, Color colorToMove, int depth) {
 
 /* For internal use only */
 int minimize(Piece *board, Color colorToMove, int depth) {
-    int worstScore = INT_MAX, i;
+    int worstScore = INT_MAX, i, score;
     cvector_vector_type(Move) moves;
 
-    int currentScore = compute_score(board, colorToMove);
-    if (currentScore != 0) return currentScore;
-    if (depth == 0) return 0;
+    if (depth == 0) return compute_score(board, colorToMove);
 
     moves = get_possible_moves_by_color(board, colorToMove);
+    if(cvector_empty(moves))
+        return compute_score(board, colorToMove);
+
     for (i = 0; i < cvector_size(moves); i++) {
-        int score = 0;
         Piece *tempBoard = clone_board(board);
-        if (does_move_eat(tempBoard, moves[i])) score -= 10;
         apply_move(tempBoard, colorToMove, moves[i]);
-        score -= maximize(board, get_opposite_color(colorToMove), depth - 1);
+        score = maximize(board, get_opposite_color(colorToMove), depth - 1);
         if (score < worstScore)
             worstScore = score;
         free(tempBoard);
@@ -115,16 +113,14 @@ Move best_move_minimax(Piece *board, Color colorToMove, int depth) {
     int bestScore = INT_MIN;
     Move bestMove;
     cvector_vector_type(Move) moves = get_possible_moves_by_color(board, colorToMove);
-    int i;
+    int i, score;
     if(cvector_size(moves) == 1) {
         bestMove = moves[0];
     } else {
         for (i = 0; i < cvector_size(moves); i++) {
-            int score = 0;
             Piece *tempBoard = clone_board(board);
-            if (does_move_eat(tempBoard, moves[i])) score -= 10;
             apply_move(tempBoard, colorToMove, moves[i]);
-            score -= minimize(tempBoard, get_opposite_color(colorToMove), depth - 1);
+            score = minimize(tempBoard, get_opposite_color(colorToMove), depth - 1);
             if (score > bestScore) {
                 bestScore = score;
                 bestMove = moves[i];
@@ -319,18 +315,4 @@ cvector_vector_type(Move) get_possible_moves_by_piece(Piece *board, Pos piecePos
         }
     }
     return moves;
-}
-
-cvector_vector_type(Pos) get_pieces_pos_by_color(Piece *board, Color color) {
-    cvector_vector_type(Pos) pieces = NULL;
-    int r, c;
-    Pos pos;
-    for (r = 0; r < ROWS; r++) {
-        for (c = 0; c < COLUMNS; c++) {
-            pos = initialize_pos(c, r);
-            if (is_pos_valid(pos) && board[get_index_from_pos(pos)].color[0] == color)
-                cvector_push_back(pieces, pos);
-        }
-    }
-    return pieces;
 }

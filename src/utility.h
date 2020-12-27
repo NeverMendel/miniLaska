@@ -181,6 +181,20 @@ Color get_opposite_color(Color color);
  */
 Piece *clone_board(Piece *board);
 
-void print_moves(cvector_vector_type(Move) moves);
+/**
+ * Restituisce un array con tutte le posizioni delle pedine di un determinato colore
+ * @param board scacchiera sulla quale cercare le pedine
+ * @param color colore del giocatore di cui cercare le pedine
+ * @return Pos*, array di posizioni
+ */
+cvector_vector_type(Pos) get_pieces_pos_by_color(Piece *board, Color color);
+
+/**
+ * Conta i pezzi che ci sono nella scacchiera di un determinato colore
+ * @param board scacchiera sulla quale contare i pezzi
+ * @param color colore dei pezzi da contare
+ * @return int, numero di pezzi del colore dato
+ */
+int count_pieces(Piece *board, Color color);
 
 #endif

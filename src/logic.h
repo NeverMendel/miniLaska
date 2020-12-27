@@ -96,12 +96,4 @@ cvector_vector_type(Move) get_possible_moves_by_color(Piece *board, Color color)
  */
 cvector_vector_type(Move) get_possible_moves_by_piece(Piece *board, Pos piecePos);
 
-/**
- * Restituisce un array con tutte le posizioni delle pedine di un determinato colore
- * @param board scacchiera sulla quale cercare le pedine
- * @param color colore del giocatore di cui cercare le pedine
- * @return Pos*, array di posizioni
- */
-cvector_vector_type(Pos) get_pieces_pos_by_color(Piece *board, Color color);
-
 #endif
