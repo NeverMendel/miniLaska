@@ -24,6 +24,7 @@ int main() {
     GameSettings settings;
     Move currentMove;
     Player currentPlayer;
+    int turn;
 
     if (board == NULL) {
         printf("Error allocating the board in the memory");
@@ -36,15 +37,18 @@ int main() {
         state = PLAYING;
         colorToMove = WHITE;
         settings = read_game_settings();
+        turn = 0;
 
         while (state == PLAYING) {
-            /* clearConsole(); */
+            turn++;
+            if (settings.clearConsole) clearConsole();
             display_board(board);
 
             if (colorToMove == WHITE) currentPlayer = settings.white;
             else currentPlayer = settings.black;
 
-            display_player_to_move(colorToMove);
+            display_player_to_move(turn, colorToMove);
+            if(turn > 1) display_last_move(currentMove);
 
             if (currentPlayer.type == HUMAN) currentMove = read_player_move(board, colorToMove, settings);
             else {
@@ -62,6 +66,7 @@ int main() {
             state = compute_state(board, colorToMove);
 
             if (state != PLAYING) {
+                if (settings.clearConsole) clearConsole();
                 display_board(board);
                 display_winner(state);
             }

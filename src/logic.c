@@ -18,11 +18,13 @@ int get_index_from_pos(Pos pos) {
 
 void initialize_board(Piece *board) {
     int r, c;
+    Color firstColor;
     for (r = 0; r < ROWS; r++) {
         for (c = 0; c < COLUMNS; c++) {
-            if (is_pos_valid(initialize_pos(c, r)) && (r <= 2 || r >= 4)) {
-                board[get_index_from_coordinates(c, r)] = initialize_piece(r <= 2 ? WHITE : BLACK, UNDEFINED, UNDEFINED,
-                                                                           false, 1);
+            if (is_pos_valid(initialize_pos(c, r))) {
+                firstColor = r <= 2 ? WHITE : (r >= 4 ? BLACK : UNDEFINED);
+                board[get_index_from_coordinates(c, r)] = initialize_piece(firstColor, UNDEFINED, UNDEFINED,
+                                                                           false, firstColor == UNDEFINED ? 0 : 1);
             }
         }
     }

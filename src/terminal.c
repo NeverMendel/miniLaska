@@ -43,12 +43,12 @@ void display_board(Piece *board) {
     printf("\n");
 }
 
-void display_player_to_move(Color playerToMove){
-    if (playerToMove == WHITE) {
-        printf("White turn\n");
-    } else {
-        printf("Black turn\n");
-    }
+void display_last_move(Move move){
+    printf("Last move: %c%d-%c%d\n", move.from.c + 'a', move.from.r + 1, move.to.c + 'a', move.to.r + 1);
+}
+
+void display_player_to_move(int turn, Color playerToMove){
+    printf("Turn %d - %s to move\n", turn, (playerToMove == WHITE ? "White" : "Black"));
 }
 
 GameSettings read_game_settings() {
@@ -96,6 +96,16 @@ GameSettings read_game_settings() {
         if (input == 'Y' || input == 'y')
             settings.helpAllowed = true;
     }
+
+    input = ' ';
+    settings.clearConsole = false;
+    /* Chiede all'utente se vuole che il terminale venga pulito ad ogni turno */
+    while (input != 'Y' && input != 'y' && input != 'N' && input != 'n') {
+        printf("Clear console after every move [Y/N]: ");
+        if (scanf(" %c", &input) != 1) printf("scanf error while reading character");
+    }
+    if (input == 'Y' || input == 'y')
+        settings.clearConsole = true;
 
     return settings;
 }

@@ -11,17 +11,15 @@
 #define BOARD_SIZE 25
 #define MAX_HEIGHT 3
 
-#define EASY_DEPTH 3
-#define MEDIUM_DEPTH 5
-#define HARD_DEPTH 8
-
-/* #define DEBUG */
+#define EASY_DEPTH 2
+#define MEDIUM_DEPTH 4
+#define HARD_DEPTH 7
 
 #if defined(__linux__) || defined(__unix__) || defined(__APPLE__)
-#define clearConsole() system("clear");
+#define clearConsole() system("clear")
 #endif
 #if defined(_WIN32) || defined(_WIN64)
-#define clearConsole() system("cls");
+#define clearConsole() system("cls")
 #endif
 
 #define bool int

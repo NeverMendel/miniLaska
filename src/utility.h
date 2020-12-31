@@ -93,6 +93,8 @@ typedef struct {
     Player black;
     /** Vero se gli aiuti sono ammessi, falso altrimenti */
     bool helpAllowed;
+    /** Vero se l'utente vuole che il terminale venga pulito dopo ogni mossa */
+    bool clearConsole;
 } GameSettings;
 
 /**

@@ -16,10 +16,17 @@
 void display_board(Piece *board);
 
 /**
- * Stampa il colore del giocatore di cui è il turno sul terminale
- * @param playerToMove turno del giocatore
+ * Stampa l'ultima mossa effettuata sul terminale
+ * @param move mossa da stampare
  */
-void display_player_to_move(Color playerToMove);
+void display_last_move(Move move);
+
+/**
+ * Stampa il numero del turno e il colore del giocatore che deve giocare sul terminale
+ * @param turn numero del turno
+ * @param playerToMove colore del giocatore
+ */
+void display_player_to_move(int turn, Color playerToMove);
 
 /**
  * Chiede le impostazioni del gioco all'utente tramite terminale
