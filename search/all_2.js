@@ -1,14 +1,16 @@
 var searchData=
 [
   ['c',['c',['../structPos.html#ab61bdf5507254af9d4c3f9f09901138f',1,'Pos']]],
-  ['clone_5fboard',['clone_board',['../utility_8c.html#a10319fb425e78822b6f22b07d75a32a5',1,'clone_board(Piece *board):&#160;utility.c'],['../utility_8h.html#a10319fb425e78822b6f22b07d75a32a5',1,'clone_board(Piece *board):&#160;utility.c']]],
-  ['color',['color',['../structPiece.html#aac377feab710a1e3eef543fc212231eb',1,'Piece::color()'],['../utility_8h.html#ab87bacfdad76e61b9412d7124be44c1c',1,'Color():&#160;utility.h'],['../logic_8h.html#aa5f4d1eda21c196bd8401ff73f105073',1,'color():&#160;logic.h']]],
+  ['clearconsole',['clearConsole',['../structGameSettings.html#a25fd1306390ad011761e821f3454a5d2',1,'GameSettings']]],
+  ['clone_5fboard',['clone_board',['../utility_8c.html#ad7d2ac083e7e236adc1a123319bda28e',1,'clone_board(Board board):&#160;utility.c'],['../utility_8h.html#ad7d2ac083e7e236adc1a123319bda28e',1,'clone_board(Board board):&#160;utility.c']]],
+  ['color',['color',['../structPiece.html#aac377feab710a1e3eef543fc212231eb',1,'Piece::color()'],['../logic_8h.html#aa5f4d1eda21c196bd8401ff73f105073',1,'color():&#160;logic.h'],['../utility_8h.html#aa5f4d1eda21c196bd8401ff73f105073',1,'color():&#160;utility.h'],['../utility_8h.html#ab87bacfdad76e61b9412d7124be44c1c',1,'Color():&#160;utility.h']]],
   ['columns',['COLUMNS',['../constants_8h.html#a06c6c391fc11d106e9909f0401b255b1',1,'constants.h']]],
-  ['compute_5fscore',['compute_score',['../logic_8c.html#aedb8ad34bf213d8713be2f0b991c890e',1,'logic.c']]],
-  ['compute_5fstate',['compute_state',['../logic_8c.html#add5fc04b9d3158a3f7dd8af17f377dfb',1,'compute_state(Piece *board, Color colorToMove):&#160;logic.c'],['../logic_8h.html#add5fc04b9d3158a3f7dd8af17f377dfb',1,'compute_state(Piece *board, Color colorToMove):&#160;logic.c']]],
+  ['compute_5fscore',['compute_score',['../logic_8c.html#adea8a9a70bf97f9b8f3fe3ed72db360d',1,'logic.c']]],
+  ['compute_5fstate',['compute_state',['../logic_8c.html#a98804c3de1a0cee60a108fd4f57724cd',1,'compute_state(Board board, Color colorToMove):&#160;logic.c'],['../logic_8h.html#a98804c3de1a0cee60a108fd4f57724cd',1,'compute_state(Board board, Color colorToMove):&#160;logic.c']]],
   ['computer',['COMPUTER',['../utility_8h.html#abe590f3c9109f404f003d5d7e4f0fccfa8c0233581a5ff4bcf1b857308f4387c2',1,'utility.h']]],
   ['computerlevel',['ComputerLevel',['../utility_8h.html#a314ea9224d1b5424f1979c3996caabe3',1,'utility.h']]],
   ['constants_2eh',['constants.h',['../constants_8h.html',1,'']]],
+  ['count_5fpieces',['count_pieces',['../utility_8c.html#a07cc7c42aab16c42fd17d8bc5c81be87',1,'count_pieces(Board board, Color color):&#160;utility.c'],['../utility_8h.html#a07cc7c42aab16c42fd17d8bc5c81be87',1,'count_pieces(Board board, Color color):&#160;utility.c']]],
   ['cvector_2eh',['cvector.h',['../cvector_8h.html',1,'']]],
   ['cvector_5fbegin',['cvector_begin',['../cvector_8h.html#a30eec18d65f78194b3c72217b83f4334',1,'cvector.h']]],
   ['cvector_5fcapacity',['cvector_capacity',['../cvector_8h.html#a37ab2921b0dab37bd7c2d8a06d1a49d0',1,'cvector.h']]],
@@ -23,5 +25,5 @@ var searchData=
   ['cvector_5fset_5fcapacity',['cvector_set_capacity',['../cvector_8h.html#abd51ef4560362650e1b258d19d518bbf',1,'cvector.h']]],
   ['cvector_5fset_5fsize',['cvector_set_size',['../cvector_8h.html#a26b662056cbf2105c9419713a31be809',1,'cvector.h']]],
   ['cvector_5fsize',['cvector_size',['../cvector_8h.html#a0e1016ecc53bdd49b5f31266778ba813',1,'cvector.h']]],
-  ['cvector_5fvector_5ftype',['cvector_vector_type',['../cvector_8h.html#a9acc6bd0ef16d9575440cce7f49281b2',1,'cvector_vector_type():&#160;cvector.h'],['../logic_8c.html#a80c45e0c0e0fe4cd1a6b02425d06654e',1,'cvector_vector_type(Move):&#160;logic.c'],['../logic_8c.html#a4a793e207b8ebf0b0420f014752ec4b4',1,'cvector_vector_type(Pos):&#160;logic.c'],['../logic_8h.html#ac1983c71b62c4201c5f8d94766532a9e',1,'cvector_vector_type(Move) get_possible_moves_by_color(Piece *board:&#160;logic.h'],['../logic_8h.html#a93927fa23bcda98db4b5f15936c8cc50',1,'cvector_vector_type(Pos) get_pieces_pos_by_color(Piece *board:&#160;logic.h']]]
+  ['cvector_5fvector_5ftype',['cvector_vector_type',['../cvector_8h.html#a9acc6bd0ef16d9575440cce7f49281b2',1,'cvector_vector_type():&#160;cvector.h'],['../logic_8c.html#a80c45e0c0e0fe4cd1a6b02425d06654e',1,'cvector_vector_type(Move):&#160;logic.c'],['../logic_8h.html#a20db30a524761033774b8663fa123773',1,'cvector_vector_type(Move) get_possible_moves_by_color(Board board:&#160;logic.h'],['../utility_8c.html#a4a793e207b8ebf0b0420f014752ec4b4',1,'cvector_vector_type(Pos):&#160;utility.c'],['../utility_8h.html#a2a440dc7b245b79f90c0af48162c5b50',1,'cvector_vector_type(Pos) get_pieces_pos_by_color(Board board:&#160;utility.h']]]
 ];

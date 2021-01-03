@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['easy',['EASY',['../utility_8h.html#a314ea9224d1b5424f1979c3996caabe3a26d394b5caf2853dbcef5884f0f068dd',1,'utility.h']]]
+  ['hard',['HARD',['../utility_8h.html#a314ea9224d1b5424f1979c3996caabe3a712b8eb9268f114b4afc567f24bc536f',1,'utility.h']]],
+  ['human',['HUMAN',['../utility_8h.html#abe590f3c9109f404f003d5d7e4f0fccfa940986bc09be03368f47c617cadb96bf',1,'utility.h']]]
 ];

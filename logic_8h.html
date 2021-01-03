@@ -93,6 +93,7 @@ Questo grafo mostra quali altri file includono direttamente o indirettamente que
 <area shape="rect" id="node2" href="logic_8c.html" title="src/logic.c" alt="" coords="5,80,88,107"/>
 <area shape="rect" id="node3" href="main_8c.html" title="Gioco miniLaska. " alt="" coords="112,80,195,107"/>
 <area shape="rect" id="node4" href="terminal_8c.html" title="src/terminal.c" alt="" coords="219,80,320,107"/>
+<area shape="rect" id="node5" href="utility_8c.html" title="src/utility.c" alt="" coords="345,80,431,107"/>
 </map>
 </div>
 </div>
@@ -106,33 +107,30 @@ Funzioni</h2></td></tr>
 <tr class="memitem:a976802179e1ea19f8320e281612da287"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logic_8h.html#a976802179e1ea19f8320e281612da287">get_index_from_pos</a> (<a class="el" href="structPos.html">Pos</a> pos)</td></tr>
 <tr class="memdesc:a976802179e1ea19f8320e281612da287"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcola la posizione di una cella all'interno della matrice.  <a href="#a976802179e1ea19f8320e281612da287">Continua...</a><br /></td></tr>
 <tr class="separator:a976802179e1ea19f8320e281612da287"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:affefd1b882776383f8aecdac20b2f5b6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logic_8h.html#affefd1b882776383f8aecdac20b2f5b6">initialize_board</a> (<a class="el" href="structPiece.html">Piece</a> *board)</td></tr>
-<tr class="memdesc:affefd1b882776383f8aecdac20b2f5b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inizializza la schacchiera allo stato di inizio gioco.  <a href="#affefd1b882776383f8aecdac20b2f5b6">Continua...</a><br /></td></tr>
-<tr class="separator:affefd1b882776383f8aecdac20b2f5b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add5fc04b9d3158a3f7dd8af17f377dfb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="utility_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285">GameState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logic_8h.html#add5fc04b9d3158a3f7dd8af17f377dfb">compute_state</a> (<a class="el" href="structPiece.html">Piece</a> *board, <a class="el" href="utility_8h.html#ab87bacfdad76e61b9412d7124be44c1c">Color</a> colorToMove)</td></tr>
-<tr class="memdesc:add5fc04b9d3158a3f7dd8af17f377dfb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcola lo stato della scacchiera.  <a href="#add5fc04b9d3158a3f7dd8af17f377dfb">Continua...</a><br /></td></tr>
-<tr class="separator:add5fc04b9d3158a3f7dd8af17f377dfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae901931fe19832a6cc17066d1985bc45"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structMove.html">Move</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logic_8h.html#ae901931fe19832a6cc17066d1985bc45">best_move_minimax</a> (<a class="el" href="structPiece.html">Piece</a> *board, <a class="el" href="utility_8h.html#ab87bacfdad76e61b9412d7124be44c1c">Color</a> colorToMove, int depth)</td></tr>
-<tr class="memdesc:ae901931fe19832a6cc17066d1985bc45"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcola la mossa migliore utilizzando l'algoritmo mini-max.  <a href="#ae901931fe19832a6cc17066d1985bc45">Continua...</a><br /></td></tr>
-<tr class="separator:ae901931fe19832a6cc17066d1985bc45"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adfac550c2ffb78bb86d9e62b9f63a47e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="constants_8h.html#abb452686968e48b67397da5f97445f5b">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logic_8h.html#adfac550c2ffb78bb86d9e62b9f63a47e">apply_move</a> (<a class="el" href="structPiece.html">Piece</a> *board, <a class="el" href="utility_8h.html#ab87bacfdad76e61b9412d7124be44c1c">Color</a> colorToMove, <a class="el" href="structMove.html">Move</a> move)</td></tr>
-<tr class="memdesc:adfac550c2ffb78bb86d9e62b9f63a47e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applica la mossa sulla scacchiera se la mossa è valida.  <a href="#adfac550c2ffb78bb86d9e62b9f63a47e">Continua...</a><br /></td></tr>
-<tr class="separator:adfac550c2ffb78bb86d9e62b9f63a47e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad85e56a56381bbf72b1c45766e078bc7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="constants_8h.html#abb452686968e48b67397da5f97445f5b">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logic_8h.html#ad85e56a56381bbf72b1c45766e078bc7">is_move_valid</a> (<a class="el" href="structPiece.html">Piece</a> *board, <a class="el" href="structMove.html">Move</a> move)</td></tr>
-<tr class="memdesc:ad85e56a56381bbf72b1c45766e078bc7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Controlla se una mossa è valida.  <a href="#ad85e56a56381bbf72b1c45766e078bc7">Continua...</a><br /></td></tr>
-<tr class="separator:ad85e56a56381bbf72b1c45766e078bc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa079e06c24cdf2949bbe925f405f5693"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logic_8h.html#aa079e06c24cdf2949bbe925f405f5693">initialize_board</a> (<a class="el" href="utility_8h.html#a374d65e23e5bc88d7056b1e42bd5a1ab">Board</a> board)</td></tr>
+<tr class="memdesc:aa079e06c24cdf2949bbe925f405f5693"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inizializza la schacchiera allo stato di inizio gioco.  <a href="#aa079e06c24cdf2949bbe925f405f5693">Continua...</a><br /></td></tr>
+<tr class="separator:aa079e06c24cdf2949bbe925f405f5693"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98804c3de1a0cee60a108fd4f57724cd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="utility_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285">GameState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logic_8h.html#a98804c3de1a0cee60a108fd4f57724cd">compute_state</a> (<a class="el" href="utility_8h.html#a374d65e23e5bc88d7056b1e42bd5a1ab">Board</a> board, <a class="el" href="utility_8h.html#ab87bacfdad76e61b9412d7124be44c1c">Color</a> colorToMove)</td></tr>
+<tr class="memdesc:a98804c3de1a0cee60a108fd4f57724cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcola lo stato della scacchiera.  <a href="#a98804c3de1a0cee60a108fd4f57724cd">Continua...</a><br /></td></tr>
+<tr class="separator:a98804c3de1a0cee60a108fd4f57724cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad12520e05efda364115509ed102c1b4a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structMove.html">Move</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logic_8h.html#ad12520e05efda364115509ed102c1b4a">best_move_minimax</a> (<a class="el" href="utility_8h.html#a374d65e23e5bc88d7056b1e42bd5a1ab">Board</a> board, <a class="el" href="utility_8h.html#ab87bacfdad76e61b9412d7124be44c1c">Color</a> colorToMove, int depth)</td></tr>
+<tr class="memdesc:ad12520e05efda364115509ed102c1b4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcola la mossa migliore utilizzando l'algoritmo mini-max.  <a href="#ad12520e05efda364115509ed102c1b4a">Continua...</a><br /></td></tr>
+<tr class="separator:ad12520e05efda364115509ed102c1b4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a9fddeb32bbdf2db504a5e0feaf1a60"><td class="memItemLeft" align="right" valign="top"><a class="el" href="constants_8h.html#abb452686968e48b67397da5f97445f5b">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logic_8h.html#a5a9fddeb32bbdf2db504a5e0feaf1a60">apply_move</a> (<a class="el" href="utility_8h.html#a374d65e23e5bc88d7056b1e42bd5a1ab">Board</a> board, <a class="el" href="utility_8h.html#ab87bacfdad76e61b9412d7124be44c1c">Color</a> colorToMove, <a class="el" href="structMove.html">Move</a> move)</td></tr>
+<tr class="memdesc:a5a9fddeb32bbdf2db504a5e0feaf1a60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applica la mossa sulla scacchiera se la mossa è valida.  <a href="#a5a9fddeb32bbdf2db504a5e0feaf1a60">Continua...</a><br /></td></tr>
+<tr class="separator:a5a9fddeb32bbdf2db504a5e0feaf1a60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0959de905f74b20ced7b7e0acbb5c95c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="constants_8h.html#abb452686968e48b67397da5f97445f5b">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logic_8h.html#a0959de905f74b20ced7b7e0acbb5c95c">is_move_valid</a> (<a class="el" href="utility_8h.html#a374d65e23e5bc88d7056b1e42bd5a1ab">Board</a> board, <a class="el" href="structMove.html">Move</a> move)</td></tr>
+<tr class="memdesc:a0959de905f74b20ced7b7e0acbb5c95c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Controlla se una mossa è valida.  <a href="#a0959de905f74b20ced7b7e0acbb5c95c">Continua...</a><br /></td></tr>
+<tr class="separator:a0959de905f74b20ced7b7e0acbb5c95c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab3907f200a29367860f2654e2b18677b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="constants_8h.html#abb452686968e48b67397da5f97445f5b">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logic_8h.html#ab3907f200a29367860f2654e2b18677b">is_pos_valid</a> (<a class="el" href="structPos.html">Pos</a> pos)</td></tr>
 <tr class="memdesc:ab3907f200a29367860f2654e2b18677b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Controlla se una posizione è valida, se è all'interno della scacchiera ed è una cella utilizzata nel gioco Lasca.  <a href="#ab3907f200a29367860f2654e2b18677b">Continua...</a><br /></td></tr>
 <tr class="separator:ab3907f200a29367860f2654e2b18677b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d3eae84b4fe95058235de22550c3435"><td class="memItemLeft" align="right" valign="top"><a class="el" href="constants_8h.html#abb452686968e48b67397da5f97445f5b">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logic_8h.html#a6d3eae84b4fe95058235de22550c3435">does_move_eat</a> (<a class="el" href="structPiece.html">Piece</a> *board, <a class="el" href="structMove.html">Move</a> move)</td></tr>
-<tr class="memdesc:a6d3eae84b4fe95058235de22550c3435"><td class="mdescLeft">&#160;</td><td class="mdescRight">Controlla se una mossa prevede di mangiare una pedina dell'avversario.  <a href="#a6d3eae84b4fe95058235de22550c3435">Continua...</a><br /></td></tr>
-<tr class="separator:a6d3eae84b4fe95058235de22550c3435"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac1983c71b62c4201c5f8d94766532a9e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logic_8h.html#ac1983c71b62c4201c5f8d94766532a9e">cvector_vector_type</a> (<a class="el" href="structMove.html">Move</a>) get_possible_moves_by_color(<a class="el" href="structPiece.html">Piece</a> *board</td></tr>
-<tr class="memdesc:ac1983c71b62c4201c5f8d94766532a9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restituisce un array con tutte le mosse che un determinato colore può effettuare.  <a href="#ac1983c71b62c4201c5f8d94766532a9e">Continua...</a><br /></td></tr>
-<tr class="separator:ac1983c71b62c4201c5f8d94766532a9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a93927fa23bcda98db4b5f15936c8cc50"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logic_8h.html#a93927fa23bcda98db4b5f15936c8cc50">cvector_vector_type</a> (<a class="el" href="structPos.html">Pos</a>) get_pieces_pos_by_color(<a class="el" href="structPiece.html">Piece</a> *board</td></tr>
-<tr class="memdesc:a93927fa23bcda98db4b5f15936c8cc50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restituisce un array con tutte le posizioni delle pedine di un determinato colore.  <a href="#a93927fa23bcda98db4b5f15936c8cc50">Continua...</a><br /></td></tr>
-<tr class="separator:a93927fa23bcda98db4b5f15936c8cc50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11e49f947c866558e1ed274d2fd02a61"><td class="memItemLeft" align="right" valign="top"><a class="el" href="constants_8h.html#abb452686968e48b67397da5f97445f5b">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logic_8h.html#a11e49f947c866558e1ed274d2fd02a61">does_move_eat</a> (<a class="el" href="utility_8h.html#a374d65e23e5bc88d7056b1e42bd5a1ab">Board</a> board, <a class="el" href="structMove.html">Move</a> move)</td></tr>
+<tr class="memdesc:a11e49f947c866558e1ed274d2fd02a61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Controlla se una mossa prevede di mangiare una pedina dell'avversario.  <a href="#a11e49f947c866558e1ed274d2fd02a61">Continua...</a><br /></td></tr>
+<tr class="separator:a11e49f947c866558e1ed274d2fd02a61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a20db30a524761033774b8663fa123773"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logic_8h.html#a20db30a524761033774b8663fa123773">cvector_vector_type</a> (<a class="el" href="structMove.html">Move</a>) get_possible_moves_by_color(<a class="el" href="utility_8h.html#a374d65e23e5bc88d7056b1e42bd5a1ab">Board</a> board</td></tr>
+<tr class="memdesc:a20db30a524761033774b8663fa123773"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restituisce un array con tutte le mosse che un determinato colore può effettuare.  <a href="#a20db30a524761033774b8663fa123773">Continua...</a><br /></td></tr>
+<tr class="separator:a20db30a524761033774b8663fa123773"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variabili</h2></td></tr>
@@ -144,8 +142,8 @@ Variabili</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Descrizione dettagliata</h2>
 <div class="textblock"><p>Gestione della logica del gioco miniLaska. </p>
 </div><h2 class="groupheader">Documentazione delle funzioni</h2>
-<a id="adfac550c2ffb78bb86d9e62b9f63a47e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adfac550c2ffb78bb86d9e62b9f63a47e">&#9670;&nbsp;</a></span>apply_move()</h2>
+<a id="a5a9fddeb32bbdf2db504a5e0feaf1a60"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a9fddeb32bbdf2db504a5e0feaf1a60">&#9670;&nbsp;</a></span>apply_move()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -153,7 +151,7 @@ Variabili</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="constants_8h.html#abb452686968e48b67397da5f97445f5b">bool</a> apply_move </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structPiece.html">Piece</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="utility_8h.html#a374d65e23e5bc88d7056b1e42bd5a1ab">Board</a>&#160;</td>
           <td class="paramname"><em>board</em>, </td>
         </tr>
         <tr>
@@ -189,8 +187,8 @@ Variabili</h2></td></tr>
 
 </div>
 </div>
-<a id="ae901931fe19832a6cc17066d1985bc45"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae901931fe19832a6cc17066d1985bc45">&#9670;&nbsp;</a></span>best_move_minimax()</h2>
+<a id="ad12520e05efda364115509ed102c1b4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad12520e05efda364115509ed102c1b4a">&#9670;&nbsp;</a></span>best_move_minimax()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -198,7 +196,7 @@ Variabili</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="structMove.html">Move</a> best_move_minimax </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structPiece.html">Piece</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="utility_8h.html#a374d65e23e5bc88d7056b1e42bd5a1ab">Board</a>&#160;</td>
           <td class="paramname"><em>board</em>, </td>
         </tr>
         <tr>
@@ -234,8 +232,8 @@ Variabili</h2></td></tr>
 
 </div>
 </div>
-<a id="add5fc04b9d3158a3f7dd8af17f377dfb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#add5fc04b9d3158a3f7dd8af17f377dfb">&#9670;&nbsp;</a></span>compute_state()</h2>
+<a id="a98804c3de1a0cee60a108fd4f57724cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a98804c3de1a0cee60a108fd4f57724cd">&#9670;&nbsp;</a></span>compute_state()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -243,7 +241,7 @@ Variabili</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="utility_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285">GameState</a> compute_state </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structPiece.html">Piece</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="utility_8h.html#a374d65e23e5bc88d7056b1e42bd5a1ab">Board</a>&#160;</td>
           <td class="paramname"><em>board</em>, </td>
         </tr>
         <tr>
@@ -272,8 +270,8 @@ Variabili</h2></td></tr>
 
 </div>
 </div>
-<a id="ac1983c71b62c4201c5f8d94766532a9e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac1983c71b62c4201c5f8d94766532a9e">&#9670;&nbsp;</a></span>cvector_vector_type() <span class="overload">[1/2]</span></h2>
+<a id="a20db30a524761033774b8663fa123773"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20db30a524761033774b8663fa123773">&#9670;&nbsp;</a></span>cvector_vector_type()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -309,36 +307,8 @@ Variabili</h2></td></tr>
 
 </div>
 </div>
-<a id="a93927fa23bcda98db4b5f15936c8cc50"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a93927fa23bcda98db4b5f15936c8cc50">&#9670;&nbsp;</a></span>cvector_vector_type() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">cvector_vector_type </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structPos.html">Pos</a>&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Restituisce un array con tutte le posizioni delle pedine di un determinato colore. </p>
-<dl class="params"><dt>Parametri</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">board</td><td>scacchiera sulla quale cercare le pedine </td></tr>
-    <tr><td class="paramname">color</td><td>colore del giocatore di cui cercare le pedine </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Restituisce</dt><dd>Pos*, array di posizioni </dd></dl>
-
-</div>
-</div>
-<a id="a6d3eae84b4fe95058235de22550c3435"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6d3eae84b4fe95058235de22550c3435">&#9670;&nbsp;</a></span>does_move_eat()</h2>
+<a id="a11e49f947c866558e1ed274d2fd02a61"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11e49f947c866558e1ed274d2fd02a61">&#9670;&nbsp;</a></span>does_move_eat()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -346,7 +316,7 @@ Variabili</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="constants_8h.html#abb452686968e48b67397da5f97445f5b">bool</a> does_move_eat </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structPiece.html">Piece</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="utility_8h.html#a374d65e23e5bc88d7056b1e42bd5a1ab">Board</a>&#160;</td>
           <td class="paramname"><em>board</em>, </td>
         </tr>
         <tr>
@@ -440,8 +410,8 @@ Variabili</h2></td></tr>
 
 </div>
 </div>
-<a id="affefd1b882776383f8aecdac20b2f5b6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#affefd1b882776383f8aecdac20b2f5b6">&#9670;&nbsp;</a></span>initialize_board()</h2>
+<a id="aa079e06c24cdf2949bbe925f405f5693"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa079e06c24cdf2949bbe925f405f5693">&#9670;&nbsp;</a></span>initialize_board()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -449,7 +419,7 @@ Variabili</h2></td></tr>
         <tr>
           <td class="memname">void initialize_board </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structPiece.html">Piece</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="utility_8h.html#a374d65e23e5bc88d7056b1e42bd5a1ab">Board</a>&#160;</td>
           <td class="paramname"><em>board</em></td><td>)</td>
           <td></td>
         </tr>
@@ -466,8 +436,8 @@ Variabili</h2></td></tr>
 
 </div>
 </div>
-<a id="ad85e56a56381bbf72b1c45766e078bc7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad85e56a56381bbf72b1c45766e078bc7">&#9670;&nbsp;</a></span>is_move_valid()</h2>
+<a id="a0959de905f74b20ced7b7e0acbb5c95c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0959de905f74b20ced7b7e0acbb5c95c">&#9670;&nbsp;</a></span>is_move_valid()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -475,7 +445,7 @@ Variabili</h2></td></tr>
         <tr>
           <td class="memname"><a class="el" href="constants_8h.html#abb452686968e48b67397da5f97445f5b">bool</a> is_move_valid </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structPiece.html">Piece</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="utility_8h.html#a374d65e23e5bc88d7056b1e42bd5a1ab">Board</a>&#160;</td>
           <td class="paramname"><em>board</em>, </td>
         </tr>
         <tr>

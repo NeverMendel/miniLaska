@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['draw',['DRAW',['../utility_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285a61f3c57b6943c85413975507aede78cd',1,'utility.h']]]
+  ['easy',['EASY',['../utility_8h.html#a314ea9224d1b5424f1979c3996caabe3a26d394b5caf2853dbcef5884f0f068dd',1,'utility.h']]]
 ];

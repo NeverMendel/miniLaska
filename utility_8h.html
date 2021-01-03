@@ -64,8 +64,10 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Composti</a> &#124;
+<a href="#define-members">Definizioni</a> &#124;
 <a href="#enum-members">Tipi enumerati (enum)</a> &#124;
-<a href="#func-members">Funzioni</a>  </div>
+<a href="#func-members">Funzioni</a> &#124;
+<a href="#var-members">Variabili</a>  </div>
   <div class="headertitle">
 <div class="title">Riferimenti per il file utility.h</div>  </div>
 </div><!--header-->
@@ -89,11 +91,11 @@ Questo grafo mostra quali altri file includono direttamente o indirettamente que
 <div class="dyncontent">
 <div class="center"><img src="utility_8h__dep__incl.png" border="0" usemap="#src_2utility_8hdep" alt=""/></div>
 <map name="src_2utility_8hdep" id="src_2utility_8hdep">
-<area shape="rect" id="node2" href="logic_8h.html" title="Gestione della logica del gioco miniLaska. " alt="" coords="77,80,160,107"/>
-<area shape="rect" id="node4" href="main_8c.html" title="Gioco miniLaska. " alt="" coords="237,155,320,181"/>
-<area shape="rect" id="node6" href="terminal_8h.html" title="Gestione dell&#39;interfaccia grafica del gioco miniLaska attraversio il terminale. " alt="" coords="184,80,285,107"/>
-<area shape="rect" id="node7" href="utility_8c.html" title="src/utility.c" alt="" coords="361,80,447,107"/>
-<area shape="rect" id="node3" href="logic_8c.html" title="src/logic.c" alt="" coords="5,155,88,181"/>
+<area shape="rect" id="node2" href="logic_8h.html" title="Gestione della logica del gioco miniLaska. " alt="" coords="229,80,312,107"/>
+<area shape="rect" id="node4" href="main_8c.html" title="Gioco miniLaska. " alt="" coords="5,155,88,181"/>
+<area shape="rect" id="node6" href="utility_8c.html" title="src/utility.c" alt="" coords="345,155,431,181"/>
+<area shape="rect" id="node7" href="terminal_8h.html" title="Gestione dell&#39;interfaccia grafica del gioco miniLaska attraversio il terminale. " alt="" coords="104,80,205,107"/>
+<area shape="rect" id="node3" href="logic_8c.html" title="src/logic.c" alt="" coords="237,155,320,181"/>
 <area shape="rect" id="node5" href="terminal_8c.html" title="src/terminal.c" alt="" coords="112,155,213,181"/>
 </map>
 </div>
@@ -118,6 +120,11 @@ Composti</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Impostazioni del gioco, determina chi gioca.  <a href="structGameSettings.html#details">Continua...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Definizioni</h2></td></tr>
+<tr class="memitem:a374d65e23e5bc88d7056b1e42bd5a1ab"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utility_8h.html#a374d65e23e5bc88d7056b1e42bd5a1ab">Board</a>&#160;&#160;&#160;<a class="el" href="structPiece.html">Piece</a>*</td></tr>
+<tr class="separator:a374d65e23e5bc88d7056b1e42bd5a1ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Tipi enumerati (enum)</h2></td></tr>
 <tr class="memitem:ab87bacfdad76e61b9412d7124be44c1c"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utility_8h.html#ab87bacfdad76e61b9412d7124be44c1c">Color</a> { <a class="el" href="utility_8h.html#ab87bacfdad76e61b9412d7124be44c1ca605159e8a4c32319fd69b5d151369d93">UNDEFINED</a> = 0, 
@@ -132,9 +139,8 @@ Tipi enumerati (enum)</h2></td></tr>
 </td></tr>
 <tr class="separator:abe590f3c9109f404f003d5d7e4f0fccf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7899b65f1ea0f655e4bbf8d2a5714285"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utility_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285">GameState</a> { <a class="el" href="utility_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285af095245f5cebc27a97a124345269fed8">PLAYING</a> = 0, 
-<a class="el" href="utility_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285a61f3c57b6943c85413975507aede78cd">DRAW</a> = 1, 
-<a class="el" href="utility_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285ad1c89ec0662e3b1583f95f7130e143ec">WHITE_WIN</a> = 2, 
-<a class="el" href="utility_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285acd2b0231ac757428be6e992529ccb126">BLACK_WIN</a> = 3
+<a class="el" href="utility_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285ad1c89ec0662e3b1583f95f7130e143ec">WHITE_WIN</a> = 1, 
+<a class="el" href="utility_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285acd2b0231ac757428be6e992529ccb126">BLACK_WIN</a> = 2
  }<tr class="memdesc:a7899b65f1ea0f655e4bbf8d2a5714285"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stato del gioco.  <a href="utility_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285">Continua...</a><br /></td></tr>
 </td></tr>
 <tr class="separator:a7899b65f1ea0f655e4bbf8d2a5714285"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -174,18 +180,42 @@ Funzioni</h2></td></tr>
 <tr class="memitem:a9904dde9256fef5c6206dc91c6a36607"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structPiece.html">Piece</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utility_8h.html#a9904dde9256fef5c6206dc91c6a36607">initialize_null_piece</a> ()</td></tr>
 <tr class="memdesc:a9904dde9256fef5c6206dc91c6a36607"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inizializza un <a class="el" href="structPiece.html" title="Rappresenta un pezzo sulla scacchiera. ">Piece</a> vuoto.  <a href="#a9904dde9256fef5c6206dc91c6a36607">Continua...</a><br /></td></tr>
 <tr class="separator:a9904dde9256fef5c6206dc91c6a36607"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a720fc2e770edbfd43e8fb6209a6020cc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="utility_8h.html#ab87bacfdad76e61b9412d7124be44c1c">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utility_8h.html#a720fc2e770edbfd43e8fb6209a6020cc">get_opposite_color</a> (<a class="el" href="utility_8h.html#ab87bacfdad76e61b9412d7124be44c1c">Color</a> <a class="el" href="logic_8h.html#aa5f4d1eda21c196bd8401ff73f105073">color</a>)</td></tr>
+<tr class="memitem:a720fc2e770edbfd43e8fb6209a6020cc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="utility_8h.html#ab87bacfdad76e61b9412d7124be44c1c">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utility_8h.html#a720fc2e770edbfd43e8fb6209a6020cc">get_opposite_color</a> (<a class="el" href="utility_8h.html#ab87bacfdad76e61b9412d7124be44c1c">Color</a> <a class="el" href="utility_8h.html#aa5f4d1eda21c196bd8401ff73f105073">color</a>)</td></tr>
 <tr class="memdesc:a720fc2e770edbfd43e8fb6209a6020cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dato un colore di un giocatore restituisce l'opposto.  <a href="#a720fc2e770edbfd43e8fb6209a6020cc">Continua...</a><br /></td></tr>
 <tr class="separator:a720fc2e770edbfd43e8fb6209a6020cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a10319fb425e78822b6f22b07d75a32a5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structPiece.html">Piece</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utility_8h.html#a10319fb425e78822b6f22b07d75a32a5">clone_board</a> (<a class="el" href="structPiece.html">Piece</a> *board)</td></tr>
-<tr class="memdesc:a10319fb425e78822b6f22b07d75a32a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Esegue una deep-copy della scacchiera.  <a href="#a10319fb425e78822b6f22b07d75a32a5">Continua...</a><br /></td></tr>
-<tr class="separator:a10319fb425e78822b6f22b07d75a32a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad6c7d1f53fd988ae8dc3c473288757b6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utility_8h.html#ad6c7d1f53fd988ae8dc3c473288757b6">print_moves</a> (<a class="el" href="logic_8h.html#a93927fa23bcda98db4b5f15936c8cc50">cvector_vector_type</a>(<a class="el" href="structMove.html">Move</a>) moves)</td></tr>
-<tr class="separator:ad6c7d1f53fd988ae8dc3c473288757b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7d2ac083e7e236adc1a123319bda28e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="utility_8h.html#a374d65e23e5bc88d7056b1e42bd5a1ab">Board</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utility_8h.html#ad7d2ac083e7e236adc1a123319bda28e">clone_board</a> (<a class="el" href="utility_8h.html#a374d65e23e5bc88d7056b1e42bd5a1ab">Board</a> board)</td></tr>
+<tr class="memdesc:ad7d2ac083e7e236adc1a123319bda28e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Esegue una deep-copy della scacchiera.  <a href="#ad7d2ac083e7e236adc1a123319bda28e">Continua...</a><br /></td></tr>
+<tr class="separator:ad7d2ac083e7e236adc1a123319bda28e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a440dc7b245b79f90c0af48162c5b50"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utility_8h.html#a2a440dc7b245b79f90c0af48162c5b50">cvector_vector_type</a> (<a class="el" href="structPos.html">Pos</a>) get_pieces_pos_by_color(<a class="el" href="utility_8h.html#a374d65e23e5bc88d7056b1e42bd5a1ab">Board</a> board</td></tr>
+<tr class="memdesc:a2a440dc7b245b79f90c0af48162c5b50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Restituisce un array con tutte le posizioni delle pedine di un determinato colore.  <a href="#a2a440dc7b245b79f90c0af48162c5b50">Continua...</a><br /></td></tr>
+<tr class="separator:a2a440dc7b245b79f90c0af48162c5b50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07cc7c42aab16c42fd17d8bc5c81be87"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utility_8h.html#a07cc7c42aab16c42fd17d8bc5c81be87">count_pieces</a> (<a class="el" href="utility_8h.html#a374d65e23e5bc88d7056b1e42bd5a1ab">Board</a> board, <a class="el" href="utility_8h.html#ab87bacfdad76e61b9412d7124be44c1c">Color</a> <a class="el" href="utility_8h.html#aa5f4d1eda21c196bd8401ff73f105073">color</a>)</td></tr>
+<tr class="memdesc:a07cc7c42aab16c42fd17d8bc5c81be87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Conta i pezzi che ci sono nella scacchiera di un determinato colore.  <a href="#a07cc7c42aab16c42fd17d8bc5c81be87">Continua...</a><br /></td></tr>
+<tr class="separator:a07cc7c42aab16c42fd17d8bc5c81be87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variabili</h2></td></tr>
+<tr class="memitem:aa5f4d1eda21c196bd8401ff73f105073"><td class="memItemLeft" align="right" valign="top"><a class="el" href="utility_8h.html#ab87bacfdad76e61b9412d7124be44c1c">Color</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utility_8h.html#aa5f4d1eda21c196bd8401ff73f105073">color</a></td></tr>
+<tr class="separator:aa5f4d1eda21c196bd8401ff73f105073"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Descrizione dettagliata</h2>
 <div class="textblock"><p>Dichiarazione enum, struts e funzioni di supporto. </p>
-</div><h2 class="groupheader">Documentazione dei tipi enumerati</h2>
+</div><h2 class="groupheader">Documentazione delle definizioni</h2>
+<a id="a374d65e23e5bc88d7056b1e42bd5a1ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a374d65e23e5bc88d7056b1e42bd5a1ab">&#9670;&nbsp;</a></span>Board</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define Board&#160;&#160;&#160;<a class="el" href="structPiece.html">Piece</a>*</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Documentazione dei tipi enumerati</h2>
 <a id="ab87bacfdad76e61b9412d7124be44c1c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab87bacfdad76e61b9412d7124be44c1c">&#9670;&nbsp;</a></span>Color</h2>
 
@@ -243,7 +273,6 @@ Funzioni</h2></td></tr>
 <p>Stato del gioco. </p>
 <table class="fieldtable">
 <tr><th colspan="2">Valori del tipo enumerato</th></tr><tr><td class="fieldname"><a id="a7899b65f1ea0f655e4bbf8d2a5714285af095245f5cebc27a97a124345269fed8"></a>PLAYING&#160;</td><td class="fielddoc"></td></tr>
-<tr><td class="fieldname"><a id="a7899b65f1ea0f655e4bbf8d2a5714285a61f3c57b6943c85413975507aede78cd"></a>DRAW&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a7899b65f1ea0f655e4bbf8d2a5714285ad1c89ec0662e3b1583f95f7130e143ec"></a>WHITE_WIN&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a7899b65f1ea0f655e4bbf8d2a5714285acd2b0231ac757428be6e992529ccb126"></a>BLACK_WIN&#160;</td><td class="fielddoc"></td></tr>
 </table>
@@ -271,16 +300,16 @@ Funzioni</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Documentazione delle funzioni</h2>
-<a id="a10319fb425e78822b6f22b07d75a32a5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a10319fb425e78822b6f22b07d75a32a5">&#9670;&nbsp;</a></span>clone_board()</h2>
+<a id="ad7d2ac083e7e236adc1a123319bda28e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7d2ac083e7e236adc1a123319bda28e">&#9670;&nbsp;</a></span>clone_board()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structPiece.html">Piece</a>* clone_board </td>
+          <td class="memname"><a class="el" href="utility_8h.html#a374d65e23e5bc88d7056b1e42bd5a1ab">Board</a> clone_board </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structPiece.html">Piece</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="utility_8h.html#a374d65e23e5bc88d7056b1e42bd5a1ab">Board</a>&#160;</td>
           <td class="paramname"><em>board</em></td><td>)</td>
           <td></td>
         </tr>
@@ -295,6 +324,72 @@ Funzioni</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Restituisce</dt><dd>Piece* - copia della scacchiera </dd></dl>
+
+</div>
+</div>
+<a id="a07cc7c42aab16c42fd17d8bc5c81be87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07cc7c42aab16c42fd17d8bc5c81be87">&#9670;&nbsp;</a></span>count_pieces()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int count_pieces </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="utility_8h.html#a374d65e23e5bc88d7056b1e42bd5a1ab">Board</a>&#160;</td>
+          <td class="paramname"><em>board</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="utility_8h.html#ab87bacfdad76e61b9412d7124be44c1c">Color</a>&#160;</td>
+          <td class="paramname"><em>color</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Conta i pezzi che ci sono nella scacchiera di un determinato colore. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">board</td><td>scacchiera sulla quale contare i pezzi </td></tr>
+    <tr><td class="paramname">color</td><td>colore dei pezzi da contare </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Restituisce</dt><dd>int, numero di pezzi del colore dato </dd></dl>
+
+</div>
+</div>
+<a id="a2a440dc7b245b79f90c0af48162c5b50"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a440dc7b245b79f90c0af48162c5b50">&#9670;&nbsp;</a></span>cvector_vector_type()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">cvector_vector_type </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structPos.html">Pos</a>&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Restituisce un array con tutte le posizioni delle pedine di un determinato colore. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">board</td><td>scacchiera sulla quale cercare le pedine </td></tr>
+    <tr><td class="paramname">color</td><td>colore del giocatore di cui cercare le pedine </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Restituisce</dt><dd>Pos*, array di posizioni </dd></dl>
 
 </div>
 </div>
@@ -659,18 +754,15 @@ Funzioni</h2></td></tr>
 
 </div>
 </div>
-<a id="ad6c7d1f53fd988ae8dc3c473288757b6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad6c7d1f53fd988ae8dc3c473288757b6">&#9670;&nbsp;</a></span>print_moves()</h2>
+<h2 class="groupheader">Documentazione delle variabili</h2>
+<a id="aa5f4d1eda21c196bd8401ff73f105073"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5f4d1eda21c196bd8401ff73f105073">&#9670;&nbsp;</a></span>color</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void print_moves </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="logic_8h.html#a93927fa23bcda98db4b5f15936c8cc50">cvector_vector_type</a>(<a class="el" href="structMove.html">Move</a>)&#160;</td>
-          <td class="paramname"><em>moves</em></td><td>)</td>
-          <td></td>
+          <td class="memname"><a class="el" href="utility_8h.html#ab87bacfdad76e61b9412d7124be44c1c">Color</a> color</td>
         </tr>
       </table>
 </div><div class="memdoc">
