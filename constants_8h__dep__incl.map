@@ -2,7 +2,7 @@
 <area shape="rect" id="node2" href="$logic_8h.html" title="Gestione della logica del gioco miniLaska. " alt="" coords="117,155,199,181"/>
 <area shape="rect" id="node4" href="$main_8c.html" title="Gioco miniLaska. " alt="" coords="349,229,431,256"/>
 <area shape="rect" id="node7" href="$utility_8h.html" title="Dichiarazione enum, struts e funzioni di supporto. " alt="" coords="196,80,283,107"/>
-<area shape="rect" id="node8" href="$terminal_8h.html" title="Gestione dell&#39;interfaccia grafica del gioco miniLaska attraversio il terminale. " alt="" coords="274,155,375,181"/>
+<area shape="rect" id="node8" href="$terminal_8h.html" title="Gestione dell&#39;interfaccia grafica del gioco miniLaska attraverso il terminale. " alt="" coords="274,155,375,181"/>
 <area shape="rect" id="node3" href="$logic_8c.html" title="src/logic.c" alt="" coords="117,229,199,256"/>
 <area shape="rect" id="node5" href="$terminal_8c.html" title="src/terminal.c" alt="" coords="223,229,325,256"/>
 <area shape="rect" id="node6" href="$utility_8c.html" title="src/utility.c" alt="" coords="5,229,92,256"/>
