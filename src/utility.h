@@ -31,9 +31,8 @@ typedef enum {
  */
 typedef enum {
     PLAYING = 0,
-    DRAW = 1,
-    WHITE_WIN = 2,
-    BLACK_WIN = 3
+    WHITE_WIN = 1,
+    BLACK_WIN = 2
 } GameState;
 
 /**

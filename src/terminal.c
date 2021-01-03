@@ -55,49 +55,46 @@ GameSettings read_game_settings() {
     GameSettings settings;
     char input = 0;
 
-    /* white */
-    while (input != 'h' && input != 'c') {
-        printf("Select the type of the white player (human or computer) by typing h or c: ");
-        if (scanf(" %c", &input) != 1) printf("scanf error while reading character");
+    /* Selezione della modalità di gioco, giocatore vs giocatore oppure giocatore vs computer */
+    while(input != '1' && input != '2'){
+        printf("Select the game mode:\n 1 - Player VS Player\n 2 - Player VS Computer\n");
+        if(scanf(" %c", &input) != 1) printf("scanf error while reading character");
     }
-    if (input == 'h') settings.white.type = HUMAN;
-    else {
-        settings.white.type = COMPUTER;
+    if(input == '1'){
+        settings.white.type = HUMAN;
+        settings.black.type = HUMAN;
+    } else {
+        Player *computerPlayer;
+        input = 0;
+        while(input != '1' && input != '2'){
+            printf("Do you want to play with white or black pieces?\n 1 - White\n 2 - Black\n");
+            if(scanf(" %c", &input) != 1) printf("scanf error while reading character");
+        }
+        if(input == '1'){
+            settings.white.type = HUMAN;
+            computerPlayer = &settings.black;
+        } else {
+            settings.black.type = HUMAN;
+            computerPlayer = &settings.white;
+        }
+        input = 0;
         while (input < '1' || input > '3') {
-            printf("Select the level of the computer playing with white \n  1 - Easy\n  2 - Medium\n  3 - Hard\n");
+            printf("Select the level of the computer \n  1 - Easy\n  2 - Medium\n  3 - Hard\n");
             if (scanf(" %c", &input) != 1) printf("scanf error while reading character");
         }
-        settings.white.level = input - '1';
-    }
-
-    input = 0;
-    /* black */
-    while (input != 'h' && input != 'c') {
-        printf("Select the type of the black player (human or computer) by typing h or c: ");
-        if (scanf(" %c", &input) != 1) printf("scanf error while reading character");
-    }
-    if (input == 'h') settings.black.type = HUMAN;
-    else {
-        settings.black.type = COMPUTER;
-        while (input < '1' || input > '3') {
-            printf("Select the level of the computer playing with black \n  1 - Easy\n  2 - Medium\n  3 - Hard\n");
-            if (scanf(" %c", &input) != 1) printf("scanf error while reading character");
-        }
-        settings.black.level = input - '1';
+        computerPlayer->level = input - '1';
     }
 
     /* Chiede all'utente se abilitare gli aiuti */
     settings.helpAllowed = false;
-    if (settings.white.type == HUMAN || settings.black.type == HUMAN) {
-        while (input != 'Y' && input != 'y' && input != 'N' && input != 'n') {
-            printf("Allow hints [Y/N]: ");
-            if (scanf(" %c", &input) != 1) printf("scanf error while reading character");
-        }
-        if (input == 'Y' || input == 'y')
-            settings.helpAllowed = true;
+    while (input != 'Y' && input != 'y' && input != 'N' && input != 'n') {
+        printf("Allow hints [Y/N]: ");
+        if (scanf(" %c", &input) != 1) printf("scanf error while reading character");
     }
+    if (input == 'Y' || input == 'y')
+        settings.helpAllowed = true;
 
-    input = ' ';
+    input = 0;
     settings.clearConsole = false;
     /* Chiede all'utente se vuole che il terminale venga pulito ad ogni turno */
     while (input != 'Y' && input != 'y' && input != 'N' && input != 'n') {
@@ -147,9 +144,6 @@ Move read_player_move(Board board, Color color, GameSettings settings) {
 
 void display_winner(GameState state) {
     switch (state) {
-        case DRAW:
-            printf("Draw");
-            break;
         case WHITE_WIN:
             printf("The winner is white");
             break;
