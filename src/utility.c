@@ -59,8 +59,8 @@ Color get_opposite_color(Color color) {
     return color == WHITE ? BLACK : WHITE;
 }
 
-Piece *clone_board(Piece *board) {
-    Piece *newBoard = malloc(BOARD_SIZE * sizeof(Piece));
+Board clone_board(Board board) {
+    Board newBoard = malloc(BOARD_SIZE * sizeof(Piece));
     if (newBoard == NULL) {
         printf("Error allocating the board in the memory");
         exit(EXIT_FAILURE);
@@ -69,7 +69,7 @@ Piece *clone_board(Piece *board) {
     return newBoard;
 }
 
-cvector_vector_type(Pos) get_pieces_pos_by_color(Piece *board, Color color) {
+cvector_vector_type(Pos) get_pieces_pos_by_color(Board board, Color color) {
     cvector_vector_type(Pos) pieces = NULL;
     int r, c;
     Pos pos;
@@ -83,7 +83,7 @@ cvector_vector_type(Pos) get_pieces_pos_by_color(Piece *board, Color color) {
     return pieces;
 }
 
-int count_pieces(Piece *board, Color color){
+int count_pieces(Board board, Color color){
     int count = 0, i;
     for(i = 0; i < BOARD_SIZE; i++){
         if(board[i].color[0] == color)

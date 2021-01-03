@@ -73,6 +73,8 @@ typedef struct {
     int height;
 } Piece;
 
+#define Board Piece*
+
 /**
  * Rappresenta un giocatore
  */
@@ -181,7 +183,7 @@ Color get_opposite_color(Color color);
  * @param board scacchiera da copiare
  * @return Piece* - copia della scacchiera
  */
-Piece *clone_board(Piece *board);
+Board clone_board(Board board);
 
 /**
  * Restituisce un array con tutte le posizioni delle pedine di un determinato colore
@@ -189,7 +191,7 @@ Piece *clone_board(Piece *board);
  * @param color colore del giocatore di cui cercare le pedine
  * @return Pos*, array di posizioni
  */
-cvector_vector_type(Pos) get_pieces_pos_by_color(Piece *board, Color color);
+cvector_vector_type(Pos) get_pieces_pos_by_color(Board board, Color color);
 
 /**
  * Conta i pezzi che ci sono nella scacchiera di un determinato colore
@@ -197,6 +199,6 @@ cvector_vector_type(Pos) get_pieces_pos_by_color(Piece *board, Color color);
  * @param color colore dei pezzi da contare
  * @return int, numero di pezzi del colore dato
  */
-int count_pieces(Piece *board, Color color);
+int count_pieces(Board board, Color color);
 
 #endif

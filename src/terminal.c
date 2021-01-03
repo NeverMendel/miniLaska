@@ -2,7 +2,7 @@
 #include "logic.h"
 #include <stdio.h>
 
-void display_board(Piece *board) {
+void display_board(Board board) {
     int c, r, i, height, currentChar;
     Piece piece;
     for (r = ROWS - 1; r >= 0; r--) {
@@ -110,7 +110,7 @@ GameSettings read_game_settings() {
     return settings;
 }
 
-Move read_player_move(Piece *board, Color color, GameSettings settings) {
+Move read_player_move(Board board, Color color, GameSettings settings) {
     /* Visualizza tutte le mosse che il giocatore può giocare e fa selezionare all'utente una di quelle
          Es: 1 - a3-b4
              2 - c3-b4

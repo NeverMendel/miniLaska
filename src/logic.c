@@ -10,7 +10,7 @@ int get_index_from_pos(Pos pos) {
     return get_index_from_coordinates(pos.c, pos.r);
 }
 
-void initialize_board(Piece *board) {
+void initialize_board(Board board) {
     int r, c;
     Color firstColor;
     for (r = 0; r < ROWS; r++) {
@@ -24,7 +24,7 @@ void initialize_board(Piece *board) {
     }
 }
 
-GameState compute_state(Piece *board, Color colorToMove) {
+GameState compute_state(Board board, Color colorToMove) {
     cvector_vector_type(Move) moves = get_possible_moves_by_color(board, colorToMove);
     cvector_vector_type(Pos) whitePiecesPos;
     cvector_vector_type(Pos) blackPiecesPos;
@@ -50,7 +50,7 @@ GameState compute_state(Piece *board, Color colorToMove) {
 }
 
 /* For internal use only */
-int compute_score(Piece *board, Color colorToMove) {
+int compute_score(Board board, Color colorToMove) {
     GameState state = compute_state(board, colorToMove);
     if (state == WHITE_WIN) return 100 * (colorToMove == WHITE ? 1 : -1);
     if (state == BLACK_WIN) return 100 * (colorToMove == BLACK ? 1 : -1);
@@ -58,7 +58,7 @@ int compute_score(Piece *board, Color colorToMove) {
 }
 
 /* For internal use only */
-int minimax(Piece *board, Color colorToMove, int depth, bool maximize) {
+int minimax(Board board, Color colorToMove, int depth, bool maximize) {
     int i, score;
     cvector_vector_type(Move) moves;
 
@@ -72,7 +72,7 @@ int minimax(Piece *board, Color colorToMove, int depth, bool maximize) {
     else score = INT_MAX;
 
     for (i = 0; i < cvector_size(moves); i++) {
-        Piece *tempBoard = clone_board(board);
+        Board tempBoard = clone_board(board);
         apply_move(tempBoard, colorToMove, moves[i]);
         if (maximize) {
             score = max(score, minimax(tempBoard, get_opposite_color(colorToMove), depth - 1, false));
@@ -86,7 +86,7 @@ int minimax(Piece *board, Color colorToMove, int depth, bool maximize) {
     return score;
 }
 
-Move best_move_minimax(Piece *board, Color colorToMove, int depth) {
+Move best_move_minimax(Board board, Color colorToMove, int depth) {
     int bestScore = INT_MIN;
     Move bestMove;
     cvector_vector_type(Move) moves = get_possible_moves_by_color(board, colorToMove);
@@ -95,7 +95,7 @@ Move best_move_minimax(Piece *board, Color colorToMove, int depth) {
         bestMove = moves[0];
     } else {
         for (i = 0; i < cvector_size(moves); i++) {
-            Piece *tempBoard = clone_board(board);
+            Board tempBoard = clone_board(board);
             apply_move(tempBoard, colorToMove, moves[i]);
             score = minimax(tempBoard, get_opposite_color(colorToMove), depth - 1, false);
             if (score > bestScore) {
@@ -110,7 +110,7 @@ Move best_move_minimax(Piece *board, Color colorToMove, int depth) {
     return bestMove;
 }
 
-bool apply_move(Piece *board, Color colorToMove, Move move) {
+bool apply_move(Board board, Color colorToMove, Move move) {
     /* Controlla se la mossa è valida, se è in quelle possibili per quel colore
        Sposta i pezzi e li modifica nel caso qualcuno abbia mangiato */
     cvector_vector_type(Move) colorMoves = get_possible_moves_by_color(board, colorToMove);
@@ -177,7 +177,7 @@ bool apply_move(Piece *board, Color colorToMove, Move move) {
     return true;
 }
 
-bool is_move_valid(Piece *board, Move move) {
+bool is_move_valid(Board board, Move move) {
     bool res = is_pos_valid(move.from) && is_pos_valid(move.to);
     int dx = abs(move.from.c - move.to.c);
     int dy = abs(move.from.r - move.to.r);
@@ -192,7 +192,7 @@ bool is_pos_valid(Pos pos) {
     return pos.c >= 0 && pos.c < 7 && pos.r >= 0 && pos.r < 7 && (pos.c % 2 == pos.r % 2 || (pos.c + pos.r) % 2 == 0);
 }
 
-bool does_move_eat(Piece *board, Move move) {
+bool does_move_eat(Board board, Move move) {
     Piece movedPiece =
             board[get_index_from_coordinates(move.from.c, move.from.r)];
 
@@ -227,7 +227,7 @@ bool does_move_eat(Piece *board, Move move) {
     return movedPieceOwnColors >= middlePieceOwnColors;
 }
 
-cvector_vector_type(Move) get_possible_moves_by_color(Piece *board, Color color) {
+cvector_vector_type(Move) get_possible_moves_by_color(Board board, Color color) {
     cvector_vector_type(Move) allMoves = NULL;
     cvector_vector_type(Move) eatMoves = NULL;
     cvector_vector_type(Pos) piecesPos = NULL;
@@ -252,7 +252,7 @@ cvector_vector_type(Move) get_possible_moves_by_color(Piece *board, Color color)
     return eatMoves;
 }
 
-cvector_vector_type(Move) get_possible_moves_by_piece(Piece *board, Pos piecePos) {
+cvector_vector_type(Move) get_possible_moves_by_piece(Board board, Pos piecePos) {
     int i;
     Move move;
     cvector_vector_type(Move) moves = NULL;

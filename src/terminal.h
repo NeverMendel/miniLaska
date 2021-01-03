@@ -13,7 +13,7 @@
  * Stampa la scacchiera sul terminale
  * @param board scacchiera da venire visualizzata
  */
-void display_board(Piece *board);
+void display_board(Board board);
 
 /**
  * Stampa l'ultima mossa effettuata sul terminale
@@ -41,7 +41,7 @@ GameSettings read_game_settings();
  * @param settings impostazioni del gioco
  * @return Move Mossa inserita dall'utente
  */
-Move read_player_move(Piece *board, Color color, GameSettings settings);
+Move read_player_move(Board board, Color color, GameSettings settings);
 
 /**
  * Stampa il vincitore sul terminale
