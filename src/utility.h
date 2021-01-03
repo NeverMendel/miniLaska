@@ -85,7 +85,7 @@ typedef struct {
 } Player;
 
 /**
- * Impostazioni del gioco, determina chi gioca
+ * Impostazioni del gioco
  */
 typedef struct {
     /** Giocatore che gioca con le pedine bianche */

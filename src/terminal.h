@@ -1,6 +1,6 @@
 /**
  * @file terminal.h
- * @brief Gestione dell'interfaccia grafica del gioco miniLaska attraversio il terminale
+ * @brief Gestione dell'interfaccia grafica del gioco miniLaska attraverso il terminale
  */
 
 #ifndef MINILASKA_TERMINAL_H
