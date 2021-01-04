@@ -25,8 +25,7 @@ void display_board(Board board) {
                         if (i != 2) printf(" ");
                     }
                 } else {
-                    for (i = 0; i < 5; i++)
-                        printf("#");
+                    for (i = 0; i < 5; i++) printf("#");
                 }
                 printf(" ");
             }
@@ -34,43 +33,39 @@ void display_board(Board board) {
         }
     }
     printf("   ");
-    for (i = 0; i < 42; i++)
-        printf("-");
+    for (i = 0; i < 42; i++) printf("-");
     printf("\n");
     printf(" ");
-    for (currentChar = 'a'; currentChar <= 'g'; currentChar++)
-        printf("     %c", currentChar);
+    for (currentChar = 'a'; currentChar <= 'g'; currentChar++) printf("     %c", currentChar);
     printf("\n");
 }
 
-void display_last_move(Move move){
-    printf("Last move: %c%d-%c%d\n", move.from.c + 'a', move.from.r + 1, move.to.c + 'a', move.to.r + 1);
-}
+void display_last_move(Move move) { printf("Last move: %c%d-%c%d\n", move.from.c + 'a', move.from.r + 1, move.to.c + 'a', move.to.r + 1); }
 
-void display_player_to_move(int turn, Color playerToMove){
-    printf("Turn %d - %s to move\n", turn, (playerToMove == WHITE ? "White" : "Black"));
-}
+void display_player_to_move(int turn, Color playerToMove) { printf("Turn %d - %s to move\n", turn, (playerToMove == WHITE ? "White" : "Black")); }
 
 GameSettings read_game_settings() {
     GameSettings settings;
     char input = 0;
 
     /* Selezione della modalità di gioco, giocatore vs giocatore oppure giocatore vs computer */
-    while(input != '1' && input != '2'){
+    while (input != '1' && input != '2') {
         printf("Select the game mode:\n 1 - Player VS Player\n 2 - Player VS Computer\n");
-        if(scanf(" %c", &input) != 1) printf("scanf error while reading character");
+        if (scanf("%c", &input) != 1) printf("Invalid value\n");
+        while (getchar() != '\n');
     }
-    if(input == '1'){
+    if (input == '1') {
         settings.white.type = HUMAN;
         settings.black.type = HUMAN;
     } else {
         Player *computerPlayer;
         input = 0;
-        while(input != '1' && input != '2'){
+        while (input != '1' && input != '2') {
             printf("Do you want to play with white or black pieces?\n 1 - White\n 2 - Black\n");
-            if(scanf(" %c", &input) != 1) printf("scanf error while reading character");
+            if (scanf("%c", &input) != 1) printf("Invalid value\n");
+            while (getchar() != '\n');
         }
-        if(input == '1'){
+        if (input == '1') {
             settings.white.type = HUMAN;
             computerPlayer = &settings.black;
         } else {
@@ -80,7 +75,8 @@ GameSettings read_game_settings() {
         input = 0;
         while (input < '1' || input > '3') {
             printf("Select the level of the computer \n  1 - Easy\n  2 - Medium\n  3 - Hard\n");
-            if (scanf(" %c", &input) != 1) printf("scanf error while reading character");
+            if (scanf("%c", &input) != 1) printf("Invalid value\n");
+            while (getchar() != '\n');
         }
         computerPlayer->level = input - '1';
     }
@@ -89,20 +85,21 @@ GameSettings read_game_settings() {
     settings.helpAllowed = false;
     while (input != 'Y' && input != 'y' && input != 'N' && input != 'n') {
         printf("Allow hints [Y/N]: ");
-        if (scanf(" %c", &input) != 1) printf("scanf error while reading character");
+        if (scanf(" %c", &input) != 1) printf("Invalid value\n");
+        while (getchar() != '\n');
     }
-    if (input == 'Y' || input == 'y')
-        settings.helpAllowed = true;
+    if (input == 'Y' || input == 'y') settings.helpAllowed = true;
 
     input = 0;
     settings.clearConsole = false;
     /* Chiede all'utente se vuole che il terminale venga pulito ad ogni turno */
     while (input != 'Y' && input != 'y' && input != 'N' && input != 'n') {
         printf("Clear console after every move [Y/N]: ");
-        if (scanf(" %c", &input) != 1) printf("scanf error while reading character");
+        if (scanf("%c", &input) != 1) printf("Invalid value\n");
+        while (getchar() != '\n')
+            ;
     }
-    if (input == 'Y' || input == 'y')
-        settings.clearConsole = true;
+    if (input == 'Y' || input == 'y') settings.clearConsole = true;
 
     return settings;
 }
@@ -123,17 +120,16 @@ Move read_player_move(Board board, Color color, GameSettings settings) {
     }
 
     for (i = 0; i < cvector_size(possible_moves); i++) {
-        printf("%d - %c%d-%c%d\n", i + 1, possible_moves[i].from.c + 'a', possible_moves[i].from.r + 1,
-               possible_moves[i].to.c + 'a', possible_moves[i].to.r + 1);
+        printf("%d - %c%d-%c%d\n", i + 1, possible_moves[i].from.c + 'a', possible_moves[i].from.r + 1, possible_moves[i].to.c + 'a', possible_moves[i].to.r + 1);
     }
 
     while (input < 1 || input > cvector_size(possible_moves)) {
         printf("Type the number of the selected move: ");
-        if (scanf(" %d", &input) != 1) printf("scanf error while reading digit");
+        if (scanf("%d", &input) != 1) printf("Invalid value\n");
+        while (getchar() != '\n');
         if (input == 0) {
             Move bestMove = best_move_minimax(board, color, 8);
-            printf("Best move: %c%d-%c%d\n", bestMove.from.c + 'a', bestMove.from.r + 1, bestMove.to.c + 'a',
-                   bestMove.to.r + 1);
+            printf("Best move: %c%d-%c%d\n", bestMove.from.c + 'a', bestMove.from.r + 1, bestMove.to.c + 'a', bestMove.to.r + 1);
         }
     }
 
@@ -160,6 +156,8 @@ void display_winner(GameState state) {
 bool does_user_want_new_game() {
     char input;
     printf("The game has ended. Do you want to play another match? [y/N]");
-    if (scanf(" %c", &input) != 1) printf("scanf error while reading character");
+    if (scanf("%c", &input) != 1) printf("Invalid value\n");
+    while (getchar() != '\n');
+
     return input == 'y' || input == 'Y';
 }
