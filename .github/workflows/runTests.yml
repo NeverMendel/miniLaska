@@ -10,21 +10,11 @@ jobs:
     - name: Checkout project
       uses: actions/checkout@v2
 
-    - name: Create Build Folder
+    - name: Run make debug
       shell: bash
-      run: mkdir build
+      run: make debug
 
-    - name: Run CMake
-      working-directory: ./build
-      shell: bash
-      run: cmake ..
-
-    - name: Run Make
-      working-directory: ./build
-      shell: bash
-      run: make
-
-    - name: Test
+    - name: Run ctest
       working-directory: ./build
       shell: bash
       run: ctest

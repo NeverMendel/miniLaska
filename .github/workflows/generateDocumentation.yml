@@ -7,18 +7,28 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    container: thomasweise/docker-texlive-full:latest
 
     steps:
       - name: Checkout project
         uses: actions/checkout@v2
 
-      - name: Install doxygen and graphviz
+      - name: Install doxygen
         shell: bash
-        run: sudo apt install doxygen graphviz
+        run: apt update && apt install -y doxygen git
 
       - name: Generate Documentation
         shell: bash
-        run: doxygen Doxyfile
+        run: doxygen
+
+      - name: Make Latex Documentation
+        shell: bash
+        working-directory: ./doc/latex
+        run: make
+
+      - name: Move refman.pdf
+        shell: bash
+        run: mv ./doc/latex/refman.pdf ./doc/html/refman.pdf
 
       - name: Deploy Documentation to gh-pages
         uses: peaceiris/actions-gh-pages@v3
