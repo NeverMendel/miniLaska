@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['gioco_20minilaska',['Gioco miniLaska',['../index.html',1,'']]]
+  ['gioco_20minilaska_201',['Gioco miniLaska',['../index.html',1,'']]]
 ];

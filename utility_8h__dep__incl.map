@@ -1,8 +1,0 @@
-<map id="src/utility.h" name="src/utility.h">
-<area shape="rect" id="node2" href="$logic_8h.html" title="Gestione della logica del gioco miniLaska. " alt="" coords="229,80,312,107"/>
-<area shape="rect" id="node4" href="$main_8c.html" title="Gioco miniLaska. " alt="" coords="5,155,88,181"/>
-<area shape="rect" id="node6" href="$utility_8c.html" title="src/utility.c" alt="" coords="345,155,431,181"/>
-<area shape="rect" id="node7" href="$terminal_8h.html" title="Gestione dell&#39;interfaccia grafica del gioco miniLaska attraverso il terminale. " alt="" coords="104,80,205,107"/>
-<area shape="rect" id="node3" href="$logic_8c.html" title="src/logic.c" alt="" coords="237,155,320,181"/>
-<area shape="rect" id="node5" href="$terminal_8c.html" title="src/terminal.c" alt="" coords="112,155,213,181"/>
-</map>
