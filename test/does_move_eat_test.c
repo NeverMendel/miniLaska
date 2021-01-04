@@ -1,7 +1,7 @@
 #include "../src/logic.h"
 #include "../src/utility.h"
 
-void test_does_move_eat1() {
+void test_does_move_eat_two_pieces() {
     Piece *board = calloc(BOARD_SIZE, sizeof(Piece));
     Pos piecePos1, piecePos2, piecePos3;
     bool actual, expected;
@@ -22,7 +22,7 @@ void test_does_move_eat1() {
     assert(expected == actual);
 }
 
-void test_does_move_eat2() {
+void test_does_move_eat_invalid_move() {
     Piece *board = calloc(BOARD_SIZE, sizeof(Piece));
     Pos piecePos1, piecePos2, piecePos3;
     Move move;
@@ -43,7 +43,7 @@ void test_does_move_eat2() {
     assert(expected == actual);
 }
 
-void test_does_move_eat3() {
+void test_does_move_eat_invalid_move2() {
     Piece *board = calloc(BOARD_SIZE, sizeof(Piece));
     Pos piecePos1, piecePos2, piecePos3;
     Move move;
@@ -65,9 +65,9 @@ void test_does_move_eat3() {
 }
 
 int main() {
-    test_does_move_eat1();
-    test_does_move_eat2();
-    test_does_move_eat3();
+    test_does_move_eat_two_pieces();
+    test_does_move_eat_invalid_move();
+    test_does_move_eat_invalid_move2();
 
     return 0;
 }

@@ -48,7 +48,7 @@ int main() {
             else currentPlayer = settings.black;
 
             display_player_to_move(turn, colorToMove);
-            if(turn > 1) display_last_move(currentMove);
+            if (turn > 1) display_last_move(currentMove);
 
             if (currentPlayer.type == HUMAN) currentMove = read_player_move(board, colorToMove, settings);
             else {

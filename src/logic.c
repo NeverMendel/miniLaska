@@ -65,7 +65,7 @@ int minimax(Board board, Color colorToMove, int depth, bool maximize) {
     if (depth == 0) return compute_score(board, colorToMove);
 
     moves = get_possible_moves_by_color(board, colorToMove);
-    if(cvector_empty(moves))
+    if (cvector_empty(moves))
         return compute_score(board, colorToMove);
 
     if (maximize) score = INT_MIN;
@@ -91,7 +91,7 @@ Move best_move_minimax(Board board, Color colorToMove, int depth) {
     Move bestMove;
     cvector_vector_type(Move) moves = get_possible_moves_by_color(board, colorToMove);
     int i, score;
-    if(cvector_size(moves) == 1) {
+    if (cvector_size(moves) == 1) {
         bestMove = moves[0];
     } else {
         for (i = 0; i < cvector_size(moves); i++) {

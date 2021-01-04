@@ -40,9 +40,13 @@ void display_board(Board board) {
     printf("\n");
 }
 
-void display_last_move(Move move) { printf("Last move: %c%d-%c%d\n", move.from.c + 'a', move.from.r + 1, move.to.c + 'a', move.to.r + 1); }
+void display_last_move(Move move) {
+    printf("Last move: %c%d-%c%d\n", move.from.c + 'a', move.from.r + 1, move.to.c + 'a', move.to.r + 1);
+}
 
-void display_player_to_move(int turn, Color playerToMove) { printf("Turn %d - %s to move\n", turn, (playerToMove == WHITE ? "White" : "Black")); }
+void display_player_to_move(int turn, Color playerToMove) {
+    printf("Turn %d - %s to move\n", turn, (playerToMove == WHITE ? "White" : "Black"));
+}
 
 GameSettings read_game_settings() {
     GameSettings settings;
@@ -96,8 +100,7 @@ GameSettings read_game_settings() {
     while (input != 'Y' && input != 'y' && input != 'N' && input != 'n') {
         printf("Clear console after every move [Y/N]: ");
         if (scanf("%c", &input) != 1) printf("Invalid value\n");
-        while (getchar() != '\n')
-            ;
+        while (getchar() != '\n');
     }
     if (input == 'Y' || input == 'y') settings.clearConsole = true;
 
@@ -120,7 +123,8 @@ Move read_player_move(Board board, Color color, GameSettings settings) {
     }
 
     for (i = 0; i < cvector_size(possible_moves); i++) {
-        printf("%d - %c%d-%c%d\n", i + 1, possible_moves[i].from.c + 'a', possible_moves[i].from.r + 1, possible_moves[i].to.c + 'a', possible_moves[i].to.r + 1);
+        printf("%d - %c%d-%c%d\n", i + 1, possible_moves[i].from.c + 'a', possible_moves[i].from.r + 1,
+               possible_moves[i].to.c + 'a', possible_moves[i].to.r + 1);
     }
 
     while (input < 1 || input > cvector_size(possible_moves)) {
@@ -129,7 +133,8 @@ Move read_player_move(Board board, Color color, GameSettings settings) {
         while (getchar() != '\n');
         if (input == 0) {
             Move bestMove = best_move_minimax(board, color, 8);
-            printf("Best move: %c%d-%c%d\n", bestMove.from.c + 'a', bestMove.from.r + 1, bestMove.to.c + 'a', bestMove.to.r + 1);
+            printf("Best move: %c%d-%c%d\n", bestMove.from.c + 'a', bestMove.from.r + 1, bestMove.to.c + 'a',
+                   bestMove.to.r + 1);
         }
     }
 

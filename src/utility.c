@@ -83,10 +83,10 @@ cvector_vector_type(Pos) get_pieces_pos_by_color(Board board, Color color) {
     return pieces;
 }
 
-int count_pieces(Board board, Color color){
+int count_pieces(Board board, Color color) {
     int count = 0, i;
-    for(i = 0; i < BOARD_SIZE; i++){
-        if(board[i].color[0] == color)
+    for (i = 0; i < BOARD_SIZE; i++) {
+        if (board[i].color[0] == color)
             count++;
     }
     return count;
