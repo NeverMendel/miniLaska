@@ -131,7 +131,7 @@ Move read_player_move(Board board, Color color, GameSettings settings) {
         printf("Type the number of the selected move: ");
         if (scanf("%d", &input) != 1) printf("Invalid value\n");
         while (getchar() != '\n');
-        if (input == 0) {
+        if (settings.helpAllowed && input == 0) {
             Move bestMove = best_move_minimax(board, color, 8);
             printf("Best move: %c%d-%c%d\n", bestMove.from.c + 'a', bestMove.from.r + 1, bestMove.to.c + 'a',
                    bestMove.to.r + 1);
