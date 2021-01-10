@@ -15,7 +15,7 @@ jobs:
 
       - name: Install doxygen
         shell: bash
-        run: apt update && apt install -y doxygen git
+        run: apt update && apt install -y doxygen git graphviz
 
       - name: Generate Documentation
         shell: bash
