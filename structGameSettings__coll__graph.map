@@ -1,0 +1,4 @@
+<map id="GameSettings" name="GameSettings">
+<area shape="rect" id="node1" title="Impostazioni del gioco." alt="" coords="5,109,111,136"/>
+<area shape="rect" id="node2" href="$structPlayer.html" title="Rappresenta un giocatore." alt="" coords="29,5,87,32"/>
+</map>
