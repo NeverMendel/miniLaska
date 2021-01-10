@@ -2,7 +2,7 @@
 #include "../src/utility.h"
 
 void test_does_move_eat_two_pieces() {
-    Piece *board = calloc(BOARD_SIZE, sizeof(Piece));
+    Board board = calloc(BOARD_SIZE, sizeof(Piece));
     Pos piecePos1, piecePos2, piecePos3;
     bool actual, expected;
     Move move;
@@ -23,7 +23,7 @@ void test_does_move_eat_two_pieces() {
 }
 
 void test_does_move_eat_invalid_move() {
-    Piece *board = calloc(BOARD_SIZE, sizeof(Piece));
+    Board board = calloc(BOARD_SIZE, sizeof(Piece));
     Pos piecePos1, piecePos2, piecePos3;
     Move move;
     bool actual, expected;
@@ -44,7 +44,7 @@ void test_does_move_eat_invalid_move() {
 }
 
 void test_does_move_eat_invalid_move2() {
-    Piece *board = calloc(BOARD_SIZE, sizeof(Piece));
+    Board board = calloc(BOARD_SIZE, sizeof(Piece));
     Pos piecePos1, piecePos2, piecePos3;
     Move move;
     bool actual, expected;

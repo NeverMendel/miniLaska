@@ -2,7 +2,7 @@
 #include "../src/utility.h"
 
 void test_get_possible_moves_by_piece1() {
-    Piece *board = calloc(BOARD_SIZE, sizeof(Piece));
+    Board board = calloc(BOARD_SIZE, sizeof(Piece));
     Pos piecePos;
     Move move1, move2;
     cvector_vector_type(Move) expected = NULL;
@@ -23,7 +23,7 @@ void test_get_possible_moves_by_piece1() {
 
 void test_get_possible_moves_by_piece2() {
     /* http://www.lasca.org/pictures/nx/2i.gif */
-    Piece *board = calloc(BOARD_SIZE, sizeof(Piece));
+    Board board = calloc(BOARD_SIZE, sizeof(Piece));
     Pos piecePos1, piecePos2;
     Move move1;
     cvector_vector_type(Move) expected = NULL;
@@ -45,7 +45,7 @@ void test_get_possible_moves_by_piece2() {
 }
 
 void test_get_possible_moves_by_piece3() {
-    Piece *board = calloc(BOARD_SIZE, sizeof(Piece));
+    Board board = calloc(BOARD_SIZE, sizeof(Piece));
     Pos piecePos1, piecePos2;
     Move move1;
     cvector_vector_type(Move) expected = NULL;
@@ -66,7 +66,7 @@ void test_get_possible_moves_by_piece3() {
 }
 
 void test_get_possible_moves_by_piece4() {
-    Piece *board = calloc(BOARD_SIZE, sizeof(Piece));
+    Board board = calloc(BOARD_SIZE, sizeof(Piece));
     Pos piecePos1, piecePos2;
     Move move1;
     cvector_vector_type(Move) expected = NULL;
@@ -87,7 +87,7 @@ void test_get_possible_moves_by_piece4() {
 }
 
 void test_get_possible_moves_by_piece_black_move() {
-    Piece *board = calloc(BOARD_SIZE, sizeof(Piece));
+    Board board = calloc(BOARD_SIZE, sizeof(Piece));
     Pos piecePos;
     cvector_vector_type(Move) expected = NULL;
     cvector_vector_type(Move) actual = NULL;
@@ -106,7 +106,7 @@ void test_get_possible_moves_by_piece_black_move() {
 
 void test_get_possible_moves_by_color1() {
     /* http://www.lasca.org/pictures/nx/2i.gif */
-    Piece *board = calloc(BOARD_SIZE, sizeof(Piece));
+    Board board = calloc(BOARD_SIZE, sizeof(Piece));
     Pos piecePos1, piecePos2;
     Move move1;
     cvector_vector_type(Move) expected = NULL;

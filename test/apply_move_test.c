@@ -2,7 +2,7 @@
 #include "../src/terminal.h"
 
 void test_apply_move_eat() {
-    Piece *board = calloc(BOARD_SIZE, sizeof(Piece));
+    Board board = calloc(BOARD_SIZE, sizeof(Piece));
     Pos piecePos1, piecePos2, newPos1;
     Move move;
     Piece expectedPiece, actualPiece;
@@ -35,7 +35,7 @@ void test_apply_move_liberate_prisoner() {
     http://www.lasca.org/pictures/nx/3iii.gif
     http://www.lasca.org/pictures/nx/3iv.gif */
 
-    Piece *board = calloc(BOARD_SIZE, sizeof(Piece));
+    Board board = calloc(BOARD_SIZE, sizeof(Piece));
     Pos piecePos1, piecePos2, piecePos3;
     Pos newPos1, newPos3;
     Move move3, move1;
@@ -73,7 +73,7 @@ void test_apply_move_liberate_prisoner() {
 }
 
 void test_apply_move_liberate_prisoner2() {
-    Piece *board = calloc(BOARD_SIZE, sizeof(Piece));
+    Board board = calloc(BOARD_SIZE, sizeof(Piece));
     Pos piecePos1, piecePos2, newPos1;
     Move move1;
     Piece expectedPiece, actualPiece;

@@ -1,8 +1,8 @@
 #include "../src/logic.h"
 
 void test_clone_board_copy() {
-    Piece *board = calloc(BOARD_SIZE, sizeof(Piece));
-    Piece *copyBoard;
+    Board board = calloc(BOARD_SIZE, sizeof(Piece));
+    Board copyBoard;
     int i;
 
     initialize_board(board);
@@ -14,8 +14,8 @@ void test_clone_board_copy() {
 }
 
 void test_clone_board_copy_and_change() {
-    Piece *board = calloc(BOARD_SIZE, sizeof(Piece));
-    Piece *copyBoard;
+    Board board = calloc(BOARD_SIZE, sizeof(Piece));
+    Board copyBoard;
 
     initialize_board(board);
     copyBoard = clone_board(board);

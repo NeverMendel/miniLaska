@@ -21,6 +21,7 @@ if(NOT ${BUILD_RELEASE})
     add_executable(get_index_from_coordinates_test ${miniLaskaSources} test/get_index_from_coordinates_test.c)
     add_executable(get_possible_moves_test ${miniLaskaSources} test/get_possible_moves.c)
     add_executable(is_pos_valid_test ${miniLaskaSources} test/is_pos_valid_test.c)
+    add_executable(minimax_test ${miniLaskaSources} test/minimax_test.c)
 
     enable_testing()
 
@@ -31,6 +32,7 @@ if(NOT ${BUILD_RELEASE})
     add_test(get_index_from_coordinates_test get_index_from_coordinates_test)
     add_test(get_possible_moves_test get_possible_moves_test)
     add_test(is_pos_valid_test is_pos_valid_test)
+    add_test(minimax_test minimax_test)
 endif()
 
 add_definitions(-pedantic-errors)
