@@ -58,7 +58,7 @@ int compute_score(Board board, Color colorToMove) {
 }
 
 /* For internal use only */
-int minimax(Board board, Color colorToMove, int depth, bool maximize) {
+int minimax(Board board, Color colorToMove, int alpha, int beta, int depth, bool maximize) {
     int i, score;
     cvector_vector_type(Move) moves;
 
@@ -68,18 +68,30 @@ int minimax(Board board, Color colorToMove, int depth, bool maximize) {
     if (cvector_empty(moves))
         return compute_score(board, colorToMove);
 
-    if (maximize) score = INT_MIN;
-    else score = INT_MAX;
+    if (maximize) {
+        score = INT_MIN;
+        for (i = 0; i < cvector_size(moves); i++) {
+            Board tempBoard = clone_board(board);
+            apply_move(tempBoard, colorToMove, moves[i]);
 
-    for (i = 0; i < cvector_size(moves); i++) {
-        Board tempBoard = clone_board(board);
-        apply_move(tempBoard, colorToMove, moves[i]);
-        if (maximize) {
-            score = max(score, minimax(tempBoard, get_opposite_color(colorToMove), depth - 1, false));
-        } else {
-            score = min(score, minimax(tempBoard, get_opposite_color(colorToMove), depth - 1, true));
+            score = max(score, minimax(tempBoard, get_opposite_color(colorToMove), alpha, beta, depth - 1, false));
+            alpha = max(alpha, score);
+            if (alpha >= beta)
+                break;
+            free(tempBoard);
         }
-        free(tempBoard);
+    } else {
+        score = INT_MAX;
+        for (i = 0; i < cvector_size(moves); i++) {
+            Board tempBoard = clone_board(board);
+            apply_move(tempBoard, colorToMove, moves[i]);
+
+            score = min(score, minimax(tempBoard, get_opposite_color(colorToMove), alpha, beta, depth - 1, true));
+            beta = min(beta, score);
+            if (beta <= alpha)
+                break;
+            free(tempBoard);
+        }
     }
     cvector_free(moves);
 
@@ -97,7 +109,7 @@ Move best_move_minimax(Board board, Color colorToMove, int depth) {
         for (i = 0; i < cvector_size(moves); i++) {
             Board tempBoard = clone_board(board);
             apply_move(tempBoard, colorToMove, moves[i]);
-            score = minimax(tempBoard, get_opposite_color(colorToMove), depth - 1, false);
+            score = minimax(tempBoard, get_opposite_color(colorToMove), INT_MIN, INT_MAX, depth - 1, false);
             if (score > bestScore) {
                 bestScore = score;
                 bestMove = moves[i];
