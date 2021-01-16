@@ -26,6 +26,13 @@ int get_index_from_coordinates(int c, int r);
 int get_index_from_pos(Pos pos);
 
 /**
+ * Calcola le coordinate della cella dato l'indice
+ * @param index indice della cella
+ * @return Pos coordinate della cella
+ */
+Pos get_pos_from_index(int index);
+
+/**
  * Inizializza la schacchiera allo stato di inizio gioco
  * @param board schacchiera da inizializzare
  */
@@ -42,11 +49,11 @@ GameState compute_state(Board board, Color colorToMove);
 /**
  * Calcola la mossa migliore utilizzando l'algoritmo mini-max
  * @param board scacchiara su cui calcolare la mossa
- * @param colorToMove colore del giocatore che deve muovere
+ * @param cpuColor colore del giocatore che deve muovere
  * @param depth profondità del calcolo della mossa
  * @return Move mossa migliore che può venire giocata
  */
-Move best_move_minimax(Board board, Color colorToMove, int depth);
+Move best_move_minimax(Board board, Color cpuColor, int depth);
 
 /**
  * Applica la mossa sulla scacchiera se la mossa è valida

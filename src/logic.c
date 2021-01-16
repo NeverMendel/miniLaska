@@ -1,6 +1,7 @@
 #include "logic.h"
 #include <stdlib.h>
 #include <limits.h>
+#include <math.h>
 
 int get_index_from_coordinates(int c, int r) {
     return (r * 4 - r / 2) + c / 2;
@@ -8,6 +9,14 @@ int get_index_from_coordinates(int c, int r) {
 
 int get_index_from_pos(Pos pos) {
     return get_index_from_coordinates(pos.c, pos.r);
+}
+
+Pos get_pos_from_index(int index){
+    Pos pos;
+    int mod7 = (index % 7);
+    pos.c = ((mod7 % 4) * 2 + (mod7 / 4));
+    pos.r = (mod7 / 4) + (index / 7 * 2);
+    return pos;
 }
 
 void initialize_board(Board board) {
@@ -49,24 +58,52 @@ GameState compute_state(Board board, Color colorToMove) {
     return state;
 }
 
-/* For internal use only */
-int compute_score(Board board, Color colorToMove) {
-    GameState state = compute_state(board, colorToMove);
-    if (state == WHITE_WIN) return 100 * (colorToMove == WHITE ? 1 : -1);
-    if (state == BLACK_WIN) return 100 * (colorToMove == BLACK ? 1 : -1);
-    return (count_pieces(board, WHITE) - count_pieces(board, BLACK)) * (colorToMove == WHITE ? 1 : -1);
+int calculate_piece_distance(Pos pos1, Pos pos2){
+    return max(abs(pos1.c - pos2.c), abs(pos1.r - pos2.r));
 }
 
 /* For internal use only */
-int minimax(Board board, Color colorToMove, int alpha, int beta, int depth, bool maximize) {
+int compute_score(Board board, Color cpuPlayer, Color colorToMove) {
+    GameState state = compute_state(board, colorToMove);
+    int whiteScore = 0, whitePieceDiff, piecesWhiteVantageScore = 0, i, j;
+    cvector_vector_type(Pos) whitePos;
+    cvector_vector_type(Pos) blackPos;
+    if (state == WHITE_WIN) return 1000000 * (cpuPlayer == WHITE ? 1 : -1);
+    if (state == BLACK_WIN) return 1000000 * (cpuPlayer == BLACK ? 1 : -1);
+
+    whitePos = get_pieces_pos_by_color(board, WHITE);
+    blackPos = get_pieces_pos_by_color(board, BLACK);
+
+    whitePieceDiff = ((int) (cvector_size(whitePos) - cvector_size(blackPos)));
+
+    whiteScore = whitePieceDiff * 10000;
+
+    if (cpuPlayer == WHITE ? (whitePieceDiff > 2) : (whitePieceDiff < -2)){
+        for(i = 0; i < cvector_size(whitePos); i++){
+            for(j = 0; j < cvector_size(blackPos); j++){
+                piecesWhiteVantageScore += (int) pow(6 - calculate_piece_distance(whitePos[i], blackPos[i]), 2);
+            }
+        }
+        whiteScore += piecesWhiteVantageScore * (whitePieceDiff ? 1 : -1);
+    }
+
+    cvector_free(whitePos);
+    cvector_free(blackPos);
+
+    return whiteScore * (cpuPlayer == WHITE ? 1 : -1);
+}
+
+/* For internal use only */
+int minimax(Board board, Color cpuColor, int alpha, int beta, int depth, bool maximize) {
     int i, score;
     cvector_vector_type(Move) moves;
+    Color colorToMove = maximize ? cpuColor : get_opposite_color(cpuColor);
 
-    if (depth == 0) return compute_score(board, colorToMove);
+    if (depth == 0) return compute_score(board, cpuColor, colorToMove);
 
     moves = get_possible_moves_by_color(board, colorToMove);
     if (cvector_empty(moves))
-        return compute_score(board, colorToMove);
+        return compute_score(board, cpuColor, colorToMove);
 
     if (maximize) {
         score = INT_MIN;
@@ -74,7 +111,7 @@ int minimax(Board board, Color colorToMove, int alpha, int beta, int depth, bool
             Board tempBoard = clone_board(board);
             apply_move(tempBoard, colorToMove, moves[i]);
 
-            score = max(score, minimax(tempBoard, get_opposite_color(colorToMove), alpha, beta, depth - 1, false));
+            score = max(score, minimax(tempBoard, cpuColor, alpha, beta, depth - 1, false));
             alpha = max(alpha, score);
             if (alpha >= beta)
                 break;
@@ -86,7 +123,7 @@ int minimax(Board board, Color colorToMove, int alpha, int beta, int depth, bool
             Board tempBoard = clone_board(board);
             apply_move(tempBoard, colorToMove, moves[i]);
 
-            score = min(score, minimax(tempBoard, get_opposite_color(colorToMove), alpha, beta, depth - 1, true));
+            score = min(score, minimax(tempBoard, cpuColor, alpha, beta, depth - 1, true));
             beta = min(beta, score);
             if (beta <= alpha)
                 break;
@@ -98,18 +135,18 @@ int minimax(Board board, Color colorToMove, int alpha, int beta, int depth, bool
     return score;
 }
 
-Move best_move_minimax(Board board, Color colorToMove, int depth) {
+Move best_move_minimax(Board board, Color cpuColor, int depth) {
     int bestScore = INT_MIN;
     Move bestMove;
-    cvector_vector_type(Move) moves = get_possible_moves_by_color(board, colorToMove);
+    cvector_vector_type(Move) moves = get_possible_moves_by_color(board, cpuColor);
     int i, score;
     if (cvector_size(moves) == 1) {
         bestMove = moves[0];
     } else {
         for (i = 0; i < cvector_size(moves); i++) {
             Board tempBoard = clone_board(board);
-            apply_move(tempBoard, colorToMove, moves[i]);
-            score = minimax(tempBoard, get_opposite_color(colorToMove), INT_MIN, INT_MAX, depth - 1, false);
+            apply_move(tempBoard, cpuColor, moves[i]);
+            score = minimax(tempBoard, cpuColor, INT_MIN, INT_MAX, depth - 1, false);
             if (score > bestScore) {
                 bestScore = score;
                 bestMove = moves[i];

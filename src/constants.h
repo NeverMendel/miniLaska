@@ -13,7 +13,7 @@
 
 #define EASY_DEPTH 3
 #define MEDIUM_DEPTH 5
-#define HARD_DEPTH 9
+#define HARD_DEPTH 7
 
 #if defined(__linux__) || defined(__unix__) || defined(__APPLE__)
 #define clearConsole() system("clear")
