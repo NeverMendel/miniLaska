@@ -1,8 +1,9 @@
 <map id="src/logic.c" name="src/logic.c">
-<area shape="rect" id="node1" title=" " alt="" coords="196,5,279,32"/>
+<area shape="rect" id="node1" title=" " alt="" coords="231,5,313,32"/>
 <area shape="rect" id="node2" href="$logic_8h.html" title="Gestione della logica del gioco miniLaska." alt="" coords="114,80,174,107"/>
 <area shape="rect" id="node6" title=" " alt="" coords="205,304,269,331"/>
 <area shape="rect" id="node8" title=" " alt="" coords="275,80,339,107"/>
+<area shape="rect" id="node9" title=" " alt="" coords="363,80,426,107"/>
 <area shape="rect" id="node3" href="$constants_8h.html" title="Dichiarazione delle costanti utilizzate nel gioco." alt="" coords="5,229,96,256"/>
 <area shape="rect" id="node4" href="$cvector_8h.html" title=" " alt="" coords="124,229,199,256"/>
 <area shape="rect" id="node7" href="$utility_8h.html" title="Dichiarazione enum, struts e funzioni di supporto." alt="" coords="86,155,149,181"/>

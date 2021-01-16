@@ -74,15 +74,17 @@ $(function() {
 <div class="textblock"><code>#include &quot;<a class="el" href="logic_8h_source.html">logic.h</a>&quot;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;limits.h&gt;</code><br />
+<code>#include &lt;math.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Grafo delle dipendenze di inclusione per logic.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="logic_8c__incl.png" border="0" usemap="#src_2logic_8c" alt=""/></div>
 <map name="src_2logic_8c" id="src_2logic_8c">
-<area shape="rect" title=" " alt="" coords="196,5,279,32"/>
+<area shape="rect" title=" " alt="" coords="231,5,313,32"/>
 <area shape="rect" href="logic_8h.html" title="Gestione della logica del gioco miniLaska." alt="" coords="114,80,174,107"/>
 <area shape="rect" title=" " alt="" coords="205,304,269,331"/>
 <area shape="rect" title=" " alt="" coords="275,80,339,107"/>
+<area shape="rect" title=" " alt="" coords="363,80,426,107"/>
 <area shape="rect" href="constants_8h.html" title="Dichiarazione delle costanti utilizzate nel gioco." alt="" coords="5,229,96,256"/>
 <area shape="rect" href="cvector_8h.html" title=" " alt="" coords="124,229,199,256"/>
 <area shape="rect" href="utility_8h.html" title="Dichiarazione enum, struts e funzioni di supporto." alt="" coords="86,155,149,181"/>
@@ -98,19 +100,24 @@ Funzioni</h2></td></tr>
 <tr class="memitem:a976802179e1ea19f8320e281612da287"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logic_8c.html#a976802179e1ea19f8320e281612da287">get_index_from_pos</a> (<a class="el" href="structPos.html">Pos</a> pos)</td></tr>
 <tr class="memdesc:a976802179e1ea19f8320e281612da287"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcola la posizione di una cella all'interno della matrice.  <a href="logic_8c.html#a976802179e1ea19f8320e281612da287">Continua...</a><br /></td></tr>
 <tr class="separator:a976802179e1ea19f8320e281612da287"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3bcfe047aa88be06250bdf777369820"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structPos.html">Pos</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logic_8c.html#ab3bcfe047aa88be06250bdf777369820">get_pos_from_index</a> (int index)</td></tr>
+<tr class="memdesc:ab3bcfe047aa88be06250bdf777369820"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcola le coordinate della cella dato l'indice.  <a href="logic_8c.html#ab3bcfe047aa88be06250bdf777369820">Continua...</a><br /></td></tr>
+<tr class="separator:ab3bcfe047aa88be06250bdf777369820"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa079e06c24cdf2949bbe925f405f5693"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logic_8c.html#aa079e06c24cdf2949bbe925f405f5693">initialize_board</a> (<a class="el" href="utility_8h.html#a374d65e23e5bc88d7056b1e42bd5a1ab">Board</a> board)</td></tr>
 <tr class="memdesc:aa079e06c24cdf2949bbe925f405f5693"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inizializza la schacchiera allo stato di inizio gioco.  <a href="logic_8c.html#aa079e06c24cdf2949bbe925f405f5693">Continua...</a><br /></td></tr>
 <tr class="separator:aa079e06c24cdf2949bbe925f405f5693"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a98804c3de1a0cee60a108fd4f57724cd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="utility_8h.html#a7899b65f1ea0f655e4bbf8d2a5714285">GameState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logic_8c.html#a98804c3de1a0cee60a108fd4f57724cd">compute_state</a> (<a class="el" href="utility_8h.html#a374d65e23e5bc88d7056b1e42bd5a1ab">Board</a> board, <a class="el" href="utility_8h.html#ab87bacfdad76e61b9412d7124be44c1c">Color</a> colorToMove)</td></tr>
 <tr class="memdesc:a98804c3de1a0cee60a108fd4f57724cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcola lo stato della scacchiera.  <a href="logic_8c.html#a98804c3de1a0cee60a108fd4f57724cd">Continua...</a><br /></td></tr>
 <tr class="separator:a98804c3de1a0cee60a108fd4f57724cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adea8a9a70bf97f9b8f3fe3ed72db360d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logic_8c.html#adea8a9a70bf97f9b8f3fe3ed72db360d">compute_score</a> (<a class="el" href="utility_8h.html#a374d65e23e5bc88d7056b1e42bd5a1ab">Board</a> board, <a class="el" href="utility_8h.html#ab87bacfdad76e61b9412d7124be44c1c">Color</a> colorToMove)</td></tr>
-<tr class="separator:adea8a9a70bf97f9b8f3fe3ed72db360d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a249886826a6038c03de24ccf7007bed3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logic_8c.html#a249886826a6038c03de24ccf7007bed3">minimax</a> (<a class="el" href="utility_8h.html#a374d65e23e5bc88d7056b1e42bd5a1ab">Board</a> board, <a class="el" href="utility_8h.html#ab87bacfdad76e61b9412d7124be44c1c">Color</a> colorToMove, int depth, <a class="el" href="constants_8h.html#abb452686968e48b67397da5f97445f5b">bool</a> maximize)</td></tr>
-<tr class="separator:a249886826a6038c03de24ccf7007bed3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad12520e05efda364115509ed102c1b4a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structMove.html">Move</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logic_8c.html#ad12520e05efda364115509ed102c1b4a">best_move_minimax</a> (<a class="el" href="utility_8h.html#a374d65e23e5bc88d7056b1e42bd5a1ab">Board</a> board, <a class="el" href="utility_8h.html#ab87bacfdad76e61b9412d7124be44c1c">Color</a> colorToMove, int depth)</td></tr>
-<tr class="memdesc:ad12520e05efda364115509ed102c1b4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcola la mossa migliore utilizzando l'algoritmo mini-max.  <a href="logic_8c.html#ad12520e05efda364115509ed102c1b4a">Continua...</a><br /></td></tr>
-<tr class="separator:ad12520e05efda364115509ed102c1b4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9133856dd0e0944c8520bac41594b89d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logic_8c.html#a9133856dd0e0944c8520bac41594b89d">calculate_piece_distance</a> (<a class="el" href="structPos.html">Pos</a> pos1, <a class="el" href="structPos.html">Pos</a> pos2)</td></tr>
+<tr class="separator:a9133856dd0e0944c8520bac41594b89d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab255db786d943a2d64d5ff1effdb3f53"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logic_8c.html#ab255db786d943a2d64d5ff1effdb3f53">compute_score</a> (<a class="el" href="utility_8h.html#a374d65e23e5bc88d7056b1e42bd5a1ab">Board</a> board, <a class="el" href="utility_8h.html#ab87bacfdad76e61b9412d7124be44c1c">Color</a> cpuPlayer, <a class="el" href="utility_8h.html#ab87bacfdad76e61b9412d7124be44c1c">Color</a> colorToMove)</td></tr>
+<tr class="separator:ab255db786d943a2d64d5ff1effdb3f53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a103ab0810404b14bf7d1eca1be595006"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logic_8c.html#a103ab0810404b14bf7d1eca1be595006">minimax</a> (<a class="el" href="utility_8h.html#a374d65e23e5bc88d7056b1e42bd5a1ab">Board</a> board, <a class="el" href="utility_8h.html#ab87bacfdad76e61b9412d7124be44c1c">Color</a> cpuColor, int alpha, int beta, int depth, <a class="el" href="constants_8h.html#abb452686968e48b67397da5f97445f5b">bool</a> maximize)</td></tr>
+<tr class="separator:a103ab0810404b14bf7d1eca1be595006"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a296a191169c42395c8bd65e5621201"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structMove.html">Move</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logic_8c.html#a7a296a191169c42395c8bd65e5621201">best_move_minimax</a> (<a class="el" href="utility_8h.html#a374d65e23e5bc88d7056b1e42bd5a1ab">Board</a> board, <a class="el" href="utility_8h.html#ab87bacfdad76e61b9412d7124be44c1c">Color</a> cpuColor, int depth)</td></tr>
+<tr class="memdesc:a7a296a191169c42395c8bd65e5621201"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcola la mossa migliore utilizzando l'algoritmo mini-max.  <a href="logic_8c.html#a7a296a191169c42395c8bd65e5621201">Continua...</a><br /></td></tr>
+<tr class="separator:a7a296a191169c42395c8bd65e5621201"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5a9fddeb32bbdf2db504a5e0feaf1a60"><td class="memItemLeft" align="right" valign="top"><a class="el" href="constants_8h.html#abb452686968e48b67397da5f97445f5b">bool</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logic_8c.html#a5a9fddeb32bbdf2db504a5e0feaf1a60">apply_move</a> (<a class="el" href="utility_8h.html#a374d65e23e5bc88d7056b1e42bd5a1ab">Board</a> board, <a class="el" href="utility_8h.html#ab87bacfdad76e61b9412d7124be44c1c">Color</a> colorToMove, <a class="el" href="structMove.html">Move</a> move)</td></tr>
 <tr class="memdesc:a5a9fddeb32bbdf2db504a5e0feaf1a60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Applica la mossa sulla scacchiera se la mossa è valida.  <a href="logic_8c.html#a5a9fddeb32bbdf2db504a5e0feaf1a60">Continua...</a><br /></td></tr>
 <tr class="separator:a5a9fddeb32bbdf2db504a5e0feaf1a60"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -173,8 +180,8 @@ Funzioni</h2></td></tr>
 
 </div>
 </div>
-<a id="ad12520e05efda364115509ed102c1b4a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad12520e05efda364115509ed102c1b4a">&#9670;&nbsp;</a></span>best_move_minimax()</h2>
+<a id="a7a296a191169c42395c8bd65e5621201"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a296a191169c42395c8bd65e5621201">&#9670;&nbsp;</a></span>best_move_minimax()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -189,7 +196,7 @@ Funzioni</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="utility_8h.html#ab87bacfdad76e61b9412d7124be44c1c">Color</a>&#160;</td>
-          <td class="paramname"><em>colorToMove</em>, </td>
+          <td class="paramname"><em>cpuColor</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -209,7 +216,7 @@ Funzioni</h2></td></tr>
 <dl class="params"><dt>Parametri</dt><dd>
   <table class="params">
     <tr><td class="paramname">board</td><td>scacchiara su cui calcolare la mossa </td></tr>
-    <tr><td class="paramname">colorToMove</td><td>colore del giocatore che deve muovere </td></tr>
+    <tr><td class="paramname">cpuColor</td><td>colore del giocatore che deve muovere </td></tr>
     <tr><td class="paramname">depth</td><td>profondità del calcolo della mossa </td></tr>
   </table>
   </dd>
@@ -218,8 +225,36 @@ Funzioni</h2></td></tr>
 
 </div>
 </div>
-<a id="adea8a9a70bf97f9b8f3fe3ed72db360d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adea8a9a70bf97f9b8f3fe3ed72db360d">&#9670;&nbsp;</a></span>compute_score()</h2>
+<a id="a9133856dd0e0944c8520bac41594b89d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9133856dd0e0944c8520bac41594b89d">&#9670;&nbsp;</a></span>calculate_piece_distance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int calculate_piece_distance </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structPos.html">Pos</a>&#160;</td>
+          <td class="paramname"><em>pos1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structPos.html">Pos</a>&#160;</td>
+          <td class="paramname"><em>pos2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab255db786d943a2d64d5ff1effdb3f53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab255db786d943a2d64d5ff1effdb3f53">&#9670;&nbsp;</a></span>compute_score()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -229,6 +264,12 @@ Funzioni</h2></td></tr>
           <td>(</td>
           <td class="paramtype"><a class="el" href="utility_8h.html#a374d65e23e5bc88d7056b1e42bd5a1ab">Board</a>&#160;</td>
           <td class="paramname"><em>board</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="utility_8h.html#ab87bacfdad76e61b9412d7124be44c1c">Color</a>&#160;</td>
+          <td class="paramname"><em>cpuPlayer</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -415,6 +456,33 @@ Funzioni</h2></td></tr>
 
 </div>
 </div>
+<a id="ab3bcfe047aa88be06250bdf777369820"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3bcfe047aa88be06250bdf777369820">&#9670;&nbsp;</a></span>get_pos_from_index()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structPos.html">Pos</a> get_pos_from_index </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calcola le coordinate della cella dato l'indice. </p>
+<dl class="params"><dt>Parametri</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>indice della cella </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Restituisce</dt><dd><a class="el" href="structPos.html" title="Rappresenta una posizione nella scacchiera.">Pos</a> coordinate della cella </dd></dl>
+
+</div>
+</div>
 <a id="aa079e06c24cdf2949bbe925f405f5693"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa079e06c24cdf2949bbe925f405f5693">&#9670;&nbsp;</a></span>initialize_board()</h2>
 
@@ -506,8 +574,8 @@ Funzioni</h2></td></tr>
 
 </div>
 </div>
-<a id="a249886826a6038c03de24ccf7007bed3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a249886826a6038c03de24ccf7007bed3">&#9670;&nbsp;</a></span>minimax()</h2>
+<a id="a103ab0810404b14bf7d1eca1be595006"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a103ab0810404b14bf7d1eca1be595006">&#9670;&nbsp;</a></span>minimax()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -522,7 +590,19 @@ Funzioni</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="utility_8h.html#ab87bacfdad76e61b9412d7124be44c1c">Color</a>&#160;</td>
-          <td class="paramname"><em>colorToMove</em>, </td>
+          <td class="paramname"><em>cpuColor</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>alpha</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>beta</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
