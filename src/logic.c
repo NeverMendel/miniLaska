@@ -251,29 +251,12 @@ bool does_move_eat(Board board, Move move) {
     int dx = abs(move.from.c - move.to.c);
     int dy = abs(move.from.r - move.to.r);
 
-    int movedPieceOwnColors = 1;
-    int middlePieceOwnColors = 1;
-
-    int i;
-
     if (dx != 2 || dy != 2 || movedPiece.color[0] == UNDEFINED || middlePiece.color[0] == UNDEFINED ||
         !is_opposite_color(movedPiece.color[0], middlePiece.color[0])) {
         return false;
     }
 
-    for (i = 1; i < 3; i++) {
-        if (movedPiece.color[0] == movedPiece.color[i]) {
-            movedPieceOwnColors++;
-        }
-    }
-
-    for (i = 1; i < 3; i++) {
-        if (middlePiece.color[0] == middlePiece.color[i]) {
-            middlePieceOwnColors++;
-        }
-    }
-
-    return movedPieceOwnColors >= middlePieceOwnColors;
+    return true;
 }
 
 cvector_vector_type(Move) get_possible_moves_by_color(Board board, Color color) {
