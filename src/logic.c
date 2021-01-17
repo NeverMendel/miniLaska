@@ -113,9 +113,9 @@ int minimax(Board board, Color cpuColor, int alpha, int beta, int depth, bool ma
 
             score = max(score, minimax(tempBoard, cpuColor, alpha, beta, depth - 1, false));
             alpha = max(alpha, score);
+            free(tempBoard);
             if (alpha >= beta)
                 break;
-            free(tempBoard);
         }
     } else {
         score = INT_MAX;
@@ -125,9 +125,9 @@ int minimax(Board board, Color cpuColor, int alpha, int beta, int depth, bool ma
 
             score = min(score, minimax(tempBoard, cpuColor, alpha, beta, depth - 1, true));
             beta = min(beta, score);
+            free(tempBoard);
             if (beta <= alpha)
                 break;
-            free(tempBoard);
         }
     }
     cvector_free(moves);
