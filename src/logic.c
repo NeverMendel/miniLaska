@@ -11,7 +11,7 @@ int get_index_from_pos(Pos pos) {
     return get_index_from_coordinates(pos.c, pos.r);
 }
 
-Pos get_pos_from_index(int index){
+Pos get_pos_from_index(int index) {
     Pos pos;
     int mod7 = (index % 7);
     pos.c = ((mod7 % 4) * 2 + (mod7 / 4));
@@ -58,7 +58,7 @@ GameState compute_state(Board board, Color colorToMove) {
     return state;
 }
 
-int calculate_piece_distance(Pos pos1, Pos pos2){
+int calculate_piece_distance(Pos pos1, Pos pos2) {
     return max(abs(pos1.c - pos2.c), abs(pos1.r - pos2.r));
 }
 
@@ -78,13 +78,13 @@ int compute_score(Board board, Color cpuPlayer, Color colorToMove) {
 
     whiteScore = whitePieceDiff * 10000;
 
-    if (cpuPlayer == WHITE ? (whitePieceDiff > 2) : (whitePieceDiff < -2)){
-        for(i = 0; i < cvector_size(whitePos); i++){
-            for(j = 0; j < cvector_size(blackPos); j++){
-                piecesWhiteVantageScore += (int) pow(6 - calculate_piece_distance(whitePos[i], blackPos[i]), 2);
+    if (cpuPlayer == WHITE ? (whitePieceDiff > 2) : (whitePieceDiff < -2)) {
+        for (i = 0; i < cvector_size(whitePos); i++) {
+            for (j = 0; j < cvector_size(blackPos); j++) {
+                piecesWhiteVantageScore += (int) pow(6 - calculate_piece_distance(whitePos[i], blackPos[j]), 2);
             }
         }
-        whiteScore += piecesWhiteVantageScore * (whitePieceDiff ? 1 : -1);
+        whiteScore += piecesWhiteVantageScore;
     }
 
     cvector_free(whitePos);

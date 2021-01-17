@@ -14,9 +14,10 @@ set(miniLaskaSources "src/constants.h" "src/terminal.c" "src/terminal.h" "src/lo
 add_executable(miniLaska ${miniLaskaSources} src/main.c)
 target_link_libraries(miniLaska m)
 
-enable_testing()
 
 if(NOT ${BUILD_RELEASE})
+    enable_testing()
+
     file( GLOB TEST_SOURCES test/*.c )
 
     foreach( testsourcefile ${TEST_SOURCES} )
