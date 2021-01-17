@@ -16,17 +16,17 @@
 #define HARD_DEPTH 6
 
 #if defined(__linux__) || defined(__unix__) || defined(__APPLE__)
-#define clearConsole() system("clear")
+#define clearConsole() if(system("clear")) printf("Error while clearing the screen")
 #endif
 #if defined(_WIN32) || defined(_WIN64)
-#define clearConsole() system("cls")
+#define clearConsole() if(system("cls")) printf("Error while clearing the screen")
 #endif
 
 #ifndef max
-#define max(a,b) ((a)>(b)?(a):(b))
+#define max(a, b) ((a)>(b)?(a):(b))
 #endif
 #ifndef min
-#define min(a,b) ((a)<(b)?(a):(b))
+#define min(a, b) ((a)<(b)?(a):(b))
 #endif
 
 #define bool int
