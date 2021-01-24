@@ -6,7 +6,7 @@ void display_board(Board board) {
     int c, r, i, height, currentChar;
     Piece piece;
     for (r = ROWS - 1; r >= 0; r--) {
-        for (height = 2; height >= 0; height--) {
+        for (height = MAX_HEIGHT - 1; height >= 0; height--) {
             if (height == 1)
                 printf("%d | ", r + 1);
             else
@@ -19,9 +19,9 @@ void display_board(Board board) {
                         if (diff < 0)
                             printf(" ");
                         else if (piece.color[diff] == WHITE)
-                            printf("%c", 'w' + (piece.promoted ? -32 : 0));
+                            printf("%c", WHITE_SPRITE + (piece.promoted ? -32 : 0));
                         else
-                            printf("%c", 'b' + (piece.promoted ? -32 : 0));
+                            printf("%c", BLACK_SPRITE + (piece.promoted ? -32 : 0));
                         if (i != 2) printf(" ");
                     }
                 } else {

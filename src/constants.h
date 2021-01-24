@@ -6,14 +6,17 @@
 #ifndef MINILASKA_CONSTANTS_H
 #define MINILASKA_CONSTANTS_H
 
-#define ROWS 7
-#define COLUMNS 7
-#define BOARD_SIZE 25
-#define MAX_HEIGHT 3
+#define ROWS (7)
+#define COLUMNS (7)
+#define BOARD_SIZE (25)
+#define MAX_HEIGHT (3)
 
-#define EASY_DEPTH 2
-#define MEDIUM_DEPTH 4
-#define HARD_DEPTH 6
+#define WHITE_SPRITE 'w'
+#define BLACK_SPRITE 'b'
+
+#define EASY_DEPTH (2)
+#define MEDIUM_DEPTH (4)
+#define HARD_DEPTH (6)
 
 #if defined(__linux__) || defined(__unix__) || defined(__APPLE__)
 #define clearConsole() if(system("clear")) printf("Error while clearing the screen")

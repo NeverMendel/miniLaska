@@ -103,10 +103,42 @@ void test_apply_move_liberate_prisoner2() {
     assert(true == is_piece_null(board[get_index_from_pos(piecePos1)]));
 }
 
+void test_apply_move_complex_column() {
+    Board board = calloc(BOARD_SIZE, sizeof(Piece));
+    Pos piecePos1, piecePos2, newPos1;
+    Move move1;
+    Piece expectedPiece, actualPiece;
+    bool expected, actual;
+
+    piecePos1 = initialize_pos(1, 1);
+    board[get_index_from_pos(piecePos1)] = initialize_piece(WHITE, WHITE, UNDEFINED, false, 2);
+
+    piecePos2 = initialize_pos(2, 2);
+    board[get_index_from_pos(piecePos2)] = initialize_piece(BLACK, BLACK, WHITE, false, 3);
+
+    newPos1 = initialize_pos(3, 3);
+    move1 = initialize_move(piecePos1, newPos1);
+
+    expected = true;
+    actual = apply_move(board, WHITE, move1);
+    assert(expected == actual);
+
+    expectedPiece = initialize_piece(WHITE, WHITE, BLACK, false, 3);
+    actualPiece = board[get_index_from_pos(newPos1)];
+    assert(true == is_piece_equal(expectedPiece, actualPiece));
+
+    expectedPiece = initialize_piece(WHITE, UNDEFINED, UNDEFINED, false, 1);
+    actualPiece = board[get_index_from_pos(piecePos2)];
+    assert(true == is_piece_equal(expectedPiece, actualPiece));
+
+    assert(true == is_piece_null(board[get_index_from_pos(piecePos1)]));
+}
+
 int main() {
     test_apply_move_eat();
     test_apply_move_liberate_prisoner();
     test_apply_move_liberate_prisoner2();
+    test_apply_move_complex_column();
 
     return 0;
 }

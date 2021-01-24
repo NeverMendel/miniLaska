@@ -164,7 +164,7 @@ bool apply_move(Board board, Color colorToMove, Move move) {
        Sposta i pezzi e li modifica nel caso qualcuno abbia mangiato */
     cvector_vector_type(Move) colorMoves = get_possible_moves_by_color(board, colorToMove);
     Piece piece, eatenPiece;
-    int i, pieceIndex;
+    int i, j, pieceIndex, ownColor;
     bool validMove = false;
 
     for (i = 0; i < cvector_size(colorMoves); i++) {
@@ -184,27 +184,33 @@ bool apply_move(Board board, Color colorToMove, Move move) {
         int eatenIndex = get_index_from_coordinates((move.from.c + move.to.c) / 2, (move.from.r + move.to.r) / 2);
         eatenPiece = board[eatenIndex];
 
-        /* Aggiorno l'altezza */
-        piece.height += 1;
+        /* Aggiorna i colori della pedina che mangia */
+        for (i = piece.height, j = 0; i < MAX_HEIGHT; i++) {
+            if (piece.color[i] == UNDEFINED && eatenPiece.color[j] != UNDEFINED && is_opposite_color(piece.color[0], eatenPiece.color[j])) {
+                piece.color[i] = eatenPiece.color[j];
+                j++;
+            }
+        }
+        piece.height += j;
 
-        if (piece.height > MAX_HEIGHT) {
-            piece.height = MAX_HEIGHT;
+        /* Aggiorna i colori della pedina mangiata */
+        for (i = 0, ownColor = 0; i < eatenPiece.height; i++) {
+            if (piece.color[0] == eatenPiece.color[i]) {
+                ownColor++;
+            }
         }
 
-        if (piece.color[MAX_HEIGHT - 1] == UNDEFINED) {
-            /* Aggiorno i colori */
-            piece.color[piece.height - 1] = eatenPiece.color[0];
-        }
-
-        /* Modifico il pezzo nella board */
-        eatenPiece.height -= 1;
-        if (eatenPiece.height == 0) {
+        if (ownColor == 0) {
             board[eatenIndex] = initialize_null_piece();
         } else {
-            for (i = 0; i < eatenPiece.height; i++) {
-                eatenPiece.color[i] = eatenPiece.color[i + 1];
+            eatenPiece.height = ownColor;
+            for (i = 0; i < MAX_HEIGHT; i++) {
+                if (i < eatenPiece.height) {
+                    eatenPiece.color[i] = piece.color[0];
+                } else {
+                    eatenPiece.color[i] = UNDEFINED;
+                }
             }
-            eatenPiece.color[eatenPiece.height] = UNDEFINED;
             board[eatenIndex] = eatenPiece;
         }
         board[get_index_from_pos(move.to)] = piece;
@@ -230,8 +236,8 @@ bool is_move_valid(Board board, Move move) {
     bool res = is_pos_valid(move.from) && is_pos_valid(move.to);
     int dx = abs(move.from.c - move.to.c);
     int dy = abs(move.from.r - move.to.r);
-    int maxDiff = does_move_eat(board, move) ? 2 : 1;
-    res = res && dx <= maxDiff && dy <= maxDiff;
+    int diff = does_move_eat(board, move) ? 2 : 1;
+    res = res && dx == diff && dy == diff;
     /* Controlla se la nuova cella è vuota */
     res = res && is_piece_null(board[get_index_from_pos(move.to)]);
     return res;

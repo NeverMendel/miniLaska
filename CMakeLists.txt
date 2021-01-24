@@ -32,4 +32,10 @@ if (NOT ${BUILD_RELEASE})
     endforeach (testsourcefile ${TEST_SOURCES})
 endif ()
 
-add_definitions(-pedantic-errors -O3)
+if (${BUILD_RELEASE})
+    set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -O3")
+else()
+    set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -O0")
+endif()
+
+add_definitions(-pedantic-errors)
