@@ -2,12 +2,14 @@ name: Doxygen Documentation
 
 on:
   push:
-    branches: [ master ]
+    branches: 
+      - master
 
 jobs:
   build:
+    name: Generate Doxygen Documentation
     runs-on: ubuntu-latest
-    container: thomasweise/docker-texlive-full:latest
+    container: ghcr.io/nevermendel/docker-texlive-xetex:1.0
 
     steps:
       - name: Checkout project
