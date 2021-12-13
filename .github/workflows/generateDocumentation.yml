@@ -9,7 +9,7 @@ jobs:
   build:
     name: Generate Doxygen Documentation
     runs-on: ubuntu-latest
-    container: ghcr.io/nevermendel/docker-texlive-xetex:1.0
+    container: thomasweise/docker-texlive-full:latest
 
     steps:
       - name: Checkout project

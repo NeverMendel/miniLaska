@@ -1,22 +1,23 @@
 # miniLaska
-> Terminal based Laska game
+
+Terminal based Lasca game written in ANSI C. Lasca is a game similar to checkers and is played in a 7x7 chess board.
+
+## Features
+
+- Cross-platform thanks to CMake
+- Documentation
+- Test cases
+- AI bot powered by Minimax algorithm with Alpha–beta pruning and a set of custom rules. Have a look at the code [here](https://github.com/NeverMendel/miniLaska/blob/master/src/logic.c#L97).
 
 ## How to build it
 
 ### Production
 
-To build for production, just execute `make` or alternatively:
-```
-make production
-```
+To build for production, just execute `make` or alternatively `make production`.
 
 ### Debug
 
-To build for debugging, execute:
-
-```
-make debug
-```
+To build for debugging, execute `make debug`.
 
 You can now run the tests by executing `ctest` in the `debug` folder.
 
