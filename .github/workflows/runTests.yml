@@ -1,9 +1,12 @@
-name: RunTests
+name: Run Tests
 
-on: [push]
+on: 
+  - push
+  - pull_request
 
 jobs:
-  build:
+  run-tests:
+    name: Run Tests
     runs-on: ubuntu-20.04
 
     steps:
@@ -11,10 +14,19 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Run make debug
-      shell: bash
       run: make debug
 
     - name: Run ctest
-      working-directory: ./build
-      shell: bash
+      working-directory: ./debug
       run: ctest
+
+  make-production:
+    name: Make production
+    runs-on: ubuntu-20.04
+
+    steps:
+    - name: Checkout project
+      uses: actions/checkout@v2
+
+    - name: Run make production
+      run: make debug

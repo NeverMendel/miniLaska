@@ -1,14 +1,12 @@
 .PHONY: release
 
 release:
-	make clean
-	mkdir build
+	mkdir -p build
 	cd build && cmake .. && make
 
 debug:
-	make clean
-	mkdir build
-	cd build && cmake -DBUILD_RELEASE=OFF .. && make
+	mkdir -p debug
+	cd debug && cmake -DBUILD_RELEASE=OFF .. && make
 
 clean:
-	rm -rf build
+	rm -rf build debug

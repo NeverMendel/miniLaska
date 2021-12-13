@@ -3,16 +3,22 @@
 
 ## How to build it
 
-This project uses CMake. To build the project you need to:
+### Production
 
-- Run CMake on main folder
-  ```
-  cmake -S . -B build
-  ```
-- Build the project
-  ```
-  cmake --build build
-  ```
+To build for production, just execute `make` or alternatively:
+```
+make production
+```
+
+### Debug
+
+To build for debugging, execute:
+
+```
+make debug
+```
+
+You can now run the tests by executing `ctest` in the `debug` folder.
 
 ## Project structure
 
